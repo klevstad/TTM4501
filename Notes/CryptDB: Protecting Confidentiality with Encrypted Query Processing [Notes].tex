@@ -62,8 +62,108 @@ SQL-aware encryption that dynamically adapts to the queries asked from the user.
 Reveals the overlaying table structure of the database, but not column names or types, number of rows and size.\\
 
 
+Properties provided:
+
+\begin{itemize}
+
+\item Sensitive data is never in plaintext on database server
+\item Data exposed to the database server depends on what the application is allowed to query, and on the developers schema.
+\item The database server can not compute (encrypted) results for queries that arent requested by the application.
+\end{itemize}
+
+Encrypt data that belongs to different users with different encryption keys. This is specified in the database schema using annotations. CryptDB leaks at most the data of the users that are logged in during the server compromise.
+
+\section{Queries over Encrypted Data}
+
+No need to change existing applications to be able to support SQL queries over encrypted data.\\
+
+CryptDB's proxy server stores a secret masterkey MK, the database schema and the current encryption layer of all columns. The database server sees an anonymized database schema.\\
+
+Equips the server with CryptDB's own user-defined functions (UDF). Basically enables the server to perform certain operators on the ciphertexts.\\
+
+\textbf{How to CryptDB:}\\
+The user performs an action in the application that triggers a query. The query is intercepted by the CryptDB proxy server and rewritten. This involves renaming all column names in the query so it is anonymized. It then encrypts (using the masterkey MK) each constant in the query with the encryption schema that is the best fit for the given query and operation.
+
+If necessary, the proxy sends the keys for adjusting the encryption layer to the database server. If so, it sends an UPDATE that adjust the encryption layer for the appropriate columns.
+
+The proxy forwards the encrypted query to the database, which executes and returns the encrypted results to the proxy. The proxy then decrypts the returned data and ships it to the application.
+
+\subsection{SQL-aware Encryption}
+\textbf{Different encryption types:}\\
+Random (RND): Highest level of security. IND-CPA. Does not allow any computation. Uses AES or Blowfish in CBC mode with an IV.\\
+
+\textbf{Deterministic (DET):} Leaks which encrypted values that decrypts to the same value. Allows select with equality check, joins, group by, count and distinct. Should be a pseudo-random permutation (PRP). Uses AES with CMC mode.\\
+
+\textbf{Order-preserving encryption (OPE):} Allows order relations between values based on their encrypted values. Enables the server to perform Order by, Max, Min, Sort. Weaker, because it reveals the order. Only used if the user request order-queries on the columns.\\
+
+\textbf{Homomorphic Encryption (HOM):} IND-CPA secure. Using Pailler: $HOM_k(x) * HOM_k(y) = HOM_k(x + y)$. Examples: SUM, then the proxy replaces the a call to a UDF that performs Pailler multiplication.\\ 
+
+\textbf{Join (JOIN and OPE-JOIN):} To enable equality joins between two columns. OPE-JOIN enables to joins based on order relations.\\
+
+\textbf{Word search (SEARCH):} Perform search on encrypted text. "Like" operator from MySQL.
+If column needs SEARCH, split text on delimiter. Nearly as secure as RND. Gets an encrypted token from the proxy. Searches for words matching the token. Can only search on whole words. Not regular expressions.
+
+\subsection{Adjustable Query-based Encryption}
+
+Idea: Dynamically adjust the encryption layer based on the queries that are observed in real-time. Always use the highest possible layer while still be able to execute the query. Encrypt data items in one or multiple layers. Encrypted in layers, where each layer enable certain functionalities. Multiple onions needed because of performance etc. Do not need all onions for every column.
+
+"For each layer of each onion, the proxy uses the same key for encrypting values in the same column, and different keys across tables, columns, onions and onion layers." All keys are derived from the master key MK.
+
+$K_{t;c;o;l} = PRP_{MK}(table t; column c; onion o; layer l)$
+
+Proxy server adjustes encryption layer of onion based on query received. Uses DecryptUDF in UPDATE querys to adjust onion layer.
 
 
+\subsection{Executing over Encrypted Data}
 
+When the onion layer is adjusted properly, the proxy server transform into a query that can operate on the transformed onion. Changing names of column, tables and variables, etc. Send to database, and gets the result in return.
+
+Example:\\
+\verb!SELECT ID FROM EMPLOYEES WHERE NAME = 'ALICE';!\\
+triggers\\
+\verb!UPDATE TABLE_1 SET C2-Eq = DECRYPT_RND(Key, C2-Eq, C2-IV)!\\
+proxy then queries\\
+\verb!SELECT C1-Eq, C1-IV FROM TABLE_1 WHERE C2-Eq = x7..d!
+
+Exposes NULL-values to the database without any encryption.
+
+\subsection{Computing Joins}
+
+Meh.
+
+\subsection{Security Improvements}
+
+Application developer specifies the lowest onion level for each column.\\
+Evaluating in proxy can improve security.\\
+Training mode: CryptDB suggests encryption level based on a training set of queries.\\
+Onion re-encryption: Re-encrypt to a higher level after an infrequent query.\\
+
+\subsection{Performance Optimizations}
+Using annotations if fields are not sensitive to avoid using encryption.\\
+If the developer knows most of the queries that the users will perform, possible to compute a prior.\\
+
+\section{Multiple Principals}
+
+In cryptDB: Each user has a key(The application level password) that gives access to the user's data. Encrypts different data items with different keys. Onion keys to decrypt data from different fields in the database are derived from the password of the logged-in user. The keys are deleted when user logs out.\\
+
+Access control policy determines the data that a user has access to.\\
+
+Developer specifies in the schema using annotations which user entities that should be granted access to different data items.\\
+
+
+Step 1:
+
+Define principal types using PRINCTYPE. Examples: Users, Groups, Messages.
+To types: External and internal. External users are end-users with passwords, internal can only be acquired through delegation inside the application.\\
+
+Step 2:
+Developer specifies which columns contains sensitive data plus the principal entities that should have access to it.\\
+
+Step 3:
+Using "speaks for", programmer can delegate privileges of one principal to other principals.\\
+
+
+\subsection{Key chaining}
+Each principal is associated with a randomly chosen key. 
 
 \end{document}

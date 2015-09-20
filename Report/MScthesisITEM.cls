@@ -273,7 +273,7 @@
 \renewcommand\@pnumwidth{2em} % adjust page number column width
 
 % Language
-\RequirePackage[english,norsk]{babel}
+\RequirePackage[english]{babel}
 
 % Title page and project description
 \let\ordinal\undefined
