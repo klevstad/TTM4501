@@ -164,6 +164,16 @@ Using "speaks for", programmer can delegate privileges of one principal to other
 
 
 \subsection{Key chaining}
-Each principal is associated with a randomly chosen key. 
+Each principal is associated with a randomly chosen key which is stored in the special $access\_keys$ table.\\
+
+A \textbf{SPEAKS FOR} B: B's key is encrypted using A's key.\\
+
+Message example: Message between A and B are encrypted individually using A and B's keys.\\
+
+\textbf{ENC FOR}:  Sensitive field encrypted using the key of the specified principal. Onion keys are derived from a principal's key.\\
+
+The key of each principal is a combination of a symmetric key and a public-key-pair. Uses primarily the symmetric key. If user is not logged in, use public-key.\\
+
+For external principals (users): Generate random key as for internal principals. Stores the key of each external in a table $external\_keys$. Allows CryptDB to obtain the user's key given its password. 
 
 \end{document}

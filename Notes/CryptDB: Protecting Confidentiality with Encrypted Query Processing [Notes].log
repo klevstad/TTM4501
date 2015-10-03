@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.9.7)  18 SEP 2015 15:39
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.9.7)  21 SEP 2015 10:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -216,14 +216,49 @@ Underfull \hbox (badness 10000) in paragraph at lines 156--158
 
  []
 
-[5] [6]
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 159--161
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 162--164
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 167--168
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 169--170
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 171--172
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 173--174
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 175--176
+
+ []
+
+[6]
 (./CryptDB: Protecting Confidentiality with Encrypted Query Processing [Notes].
 aux) ) 
 Here is how much of TeX's memory you used:
- 251 strings out of 495028
- 3420 string characters out of 6181498
+ 252 strings out of 495028
+ 3438 string characters out of 6181498
  50928 words of memory out of 5000000
- 3532 multiletter control sequences out of 15000+600000
+ 3533 multiletter control sequences out of 15000+600000
  8063 words of font info for 29 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  23i,6n,19p,470b,187s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -238,7 +273,7 @@ e1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
 c/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
 onts/cm/cmtt10.pfb>
 Output written on "CryptDB: Protecting Confidentiality with Encrypted Query Pro
-cessing [Notes].pdf" (6 pages, 136946 bytes).
+cessing [Notes].pdf" (6 pages, 139110 bytes).
 PDF statistics:
  63 PDF objects out of 1000 (max. 8388607)
  44 compressed objects within 1 object stream
