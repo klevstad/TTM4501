@@ -55,35 +55,42 @@
 \cleardoublepage
 
 %% include if relevant
-\listoffigures
-\cleardoublepage
+%\listoffigures
+%\cleardoublepage
 
 %% include if relevant
-\listoftables
-\cleardoublepage
+%\listoftables
+%\cleardoublepage
 
 %% include if relevant
-\listofalgorithms
-\addcontentsline{toc}{chapter}{List of Algorithms}
-\cleardoublepage
+%\listofalgorithms
+%\addcontentsline{toc}{chapter}{List of Algorithms}
+%\cleardoublepage
 
 %% include if relevant
-\printglossary[title=List of Symbols, style=long]
-\cleardoublepage
-\glsaddall[]
+%\printglossary[title=List of Symbols, style=long]
+%\cleardoublepage
+%\glsaddall[]
 
 %% include if relevant
-\printglossary[title=List of Acronyms,type=\acronymtype] % prints just the list of acronyms
-\cleardoublepage
+%\printglossary[title=List of Acronyms,type=\acronymtype] % prints just the list of acronyms
+%\cleardoublepage
 
 \pagenumbering{arabic}
 \pagestyle{ruled}
-\include{example_chapter}
+
+\include{Chapter1/Introduction}
+
+\include{Chapter3/Homomorphic_Encryption}
+
+\include{Chapter4/Investigate_CryptDB}
+
+%\include{example_chapter}
 %% include here the other chapters
 
 \renewcommand*{\bibname}{References}
-\bibliographystyle{alpha}
-\bibliography{main}
+\bibliographystyle{acm}
+\bibliography{main.bib}
 
 %% Uncomment the following if you have any appendix
 % \appendix

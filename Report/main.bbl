@@ -1,0 +1,14 @@
+\begin{thebibliography}{1}
+
+\bibitem{iDASH}
+{Integrated Data for Analysis, Anonymization, and Sharing} kernel description.
+\newblock \url{https://idash.ucsd.edu/}.
+\newblock Accessed: 2015-10-04.
+
+\bibitem{CryptDB_Main_Paper}
+{\sc Popa, R.~A., Redfield, C. M.~S., Zeldovich, N., and Balakrishnan, H.}
+\newblock Cryptdb: Protecting confidentiality with encrypted query processing.
+\newblock In {\em Proceedings of the Twenty-Third ACM Symposium on Operating
+  Systems Principles\/} (New York, NY, USA, 2011), SOSP '11, ACM, pp.~85--100.
+
+\end{thebibliography}

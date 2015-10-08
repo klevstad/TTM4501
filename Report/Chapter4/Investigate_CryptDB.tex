@@ -1,0 +1,47 @@
+\chapter{Overview of CryptDB}
+\label{chp:overview_cryptDB}
+
+\section{CryptDB}
+
+\subsection{System Architecture}
+
+
+* Create a figure of the system architecture *
+
+Explain the client application\\
+Explain the use of the proxy server\\
+Explain the key storage\\
+Explain the use of the database server\\
+
+\subsection{SQL-Aware Encryption}
+
+CryptDB uses an encryption scheme called \emph{SQL-aware encryption} or \textit{onion encryption}. Basically, this means that the encryption scheme is a collection of different schemes, each providing different levels of security and computations to be executed. Data items stored using CryptDB are encrypted multiple times using these different schemes, or layers, of encryption.
+
+Må skrive en del mer på introen her.\\
+
+\Gls{random_onion} is the highest security level in CryptDB and provides the maximum security found in encryption scheme. It uses a strong block cipher such as Blowfish or \Gls{aes} in \Gls{cbc_mode} mode and a random initialization vector (IV) to ensure that the block cipher is probabilistic. \Gls{random_onion}, being the maximum security level provided, does not allow any computation to be done on the encrypted data. In other terms, this level is a natural choice for sensitive data that are only meant to be read. When a block cipher is probabilistic, it has properties such that when encrypting the same message $m_1$ multiple times, the resulting ciphertexts are unequal. For example, given two encryptions of the same plaintext $c_1 = E_k(m_1)$ and $c_2 = E_k(m_1)$, the resulting ciphertexts are $c_1$ and $c_2$ such that $c_1 \neq c_2$.
+
+
+
+
+Where \Gls{random_onion} provides no computation to be done on the encrypted data, the next layer does. \Gls{deterministic_onion} is an encryption scheme enabling the application to perform standard SQL operations such as equality checks, distinct, group by and count. By allowing these sorts of computation, the application leaks information to an adversary. In particular, it leaks which ciphertexts that decrypts to the same plaintext value. Following the previous example; if the scheme encrypted the message $M_1$ two times, the resulting ciphertexts $C_1$ and $C_2$ are equal. \Gls{deterministic_onion} is a deterministic scheme which, to be used correctly, should be a \Gls{prp}. In order to cope with leaking prefix equality, the authors have designed their own version of the CMC mode \cite{CryptDB_Main_Paper}.
+
+
+
+
+
+
+Order-Preserving Encryption (OPE)
+
+
+Homomorphic Encryption (HOM)
+
+
+Join (Join and OPE-Join)
+
+
+Word Search (SEARCH)
+
+
+\subsection{Adjusting the encryption level based on the query}
+

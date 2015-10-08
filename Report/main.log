@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.9.7)  17 SEP 2015 18:06
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.9.7)  8 OCT 2015 16:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1566,7 +1566,9 @@ Package glossaries Info: Writing glossary file main.glo on input line 22.
 
 Package glossaries Info: Writing glossary file main.acn on input line 22.
 
-(./main.aux (./abstract_english.aux) (./preface.aux) (./example_chapter.aux))
+(./main.aux (./abstract_english.aux) (./preface.aux)
+(./Chapter1/Introduction.aux) (./Chapter3/Homomorphic_Encryption.aux)
+(./Chapter4/Investigate_CryptDB.aux))
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
@@ -1657,7 +1659,7 @@ e
 ))
 \c@lstlisting=\count329
 
-<./figs/ntnu-logo.pdf, id=36, 241.4922pt x 52.79724pt>
+<./figs/ntnu-logo.pdf, id=48, 241.4922pt x 52.79724pt>
 File: ./figs/ntnu-logo.pdf Graphic file (type pdf)
 
 <use ./figs/ntnu-logo.pdf>
@@ -1710,120 +1712,106 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 ] (./main.toc) [7]
 [8
 
-] (./main.lof) [9] [10
-
-] (./main.lot) [11] [12
-
-] (./main.loa) [13
-
-] [14
-
 ]
-No file main.gls.
-[15] [16
+\openout2 = `Chapter1/Introduction.aux'.
 
-]
-No file main.acr.
-[17] [18
-
-]
-\openout2 = `example_chapter.aux'.
-
- (./example_chapter.tex
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 4.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 4.
-
-
-Package natbib Warning: Citation `Author:year:XYZ' on page 1 undefined on input
- line 4.
-
-[1
+ (./Chapter1/Introduction.tex) [1
 
 
 ]
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 19.
- [2pdfTeX warning (ext4): destination with the same identifier (name{figure.1.1
-}) has been already used, duplicate ignored
+\openout2 = `Chapter3/Homomorphic_Encryption.aux'.
 
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.32 
-     ]
-Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 61.
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 64.
- (/usr/share/texmf/tex/latex/lm/t1lmtt.fd
-File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+ (./Chapter3/Homomorphic_Encryption.tex
+[2
+
+
+
+]) [3]
+\openout2 = `Chapter4/Investigate_CryptDB.aux'.
+
+ (./Chapter4/Investigate_CryptDB.tex [4
+
+
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 20--21
+
+ []
+
+[5]) [6] (./main.bbl
+bibitemlist
+
+! Class memoir Error: Font command \sc is not supported.
+
+See the memoir class documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.9 {\sc
+         Popa, R.~A., Redfield, C. M.~S., Zeldovich, N., and Balakrishnan, H.}
+Use \textsc, or \scshape{...}, or the oldfontcommands option
+
 )
-Package microtype Info: Loading generic settings for font family
-(microtype)             `lmtt' (encoding: T1).
-(microtype)             For optimal results, create family-specific settings.
-(microtype)             See the microtype manual for details.
-) [3pdfTeX warning (ext4): destination with the same identifier (name{table.1.1
-}) has been already used, duplicate ignored
 
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.81 \include{example_chapter}
-                              ]
-No file main.bbl.
+Package glossaries Warning: No \printglossary or \printglossaries found.
+This document will not have a glossary.
 
-Package natbib Warning: There were undefined citations.
+[7
 
+
+]
 \tf@toc=\write8
 \openout8 = `main.toc'.
 
-\tf@lof=\write9
-\openout9 = `main.lof'.
-
-\tf@lot=\write10
-\openout10 = `main.lot'.
-
-\tf@loa=\write11
-\openout11 = `main.loa'.
-
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 99.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 99.
-(./main.aux (./abstract_english.aux) (./preface.aux) (./example_chapter.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 99.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 99.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 106.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 106.
+ (./main.aux (./abstract_english.aux) (./preface.aux)
+(./Chapter1/Introduction.aux) (./Chapter3/Homomorphic_Encryption.aux)
+(./Chapter4/Investigate_CryptDB.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 106.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 106.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: CC97587EA4A081CF3517D0001B3F3BAF;483.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 99.
+(rerunfilecheck)             Checksum: BF5D5AEF77F03DEC8E753527FCF19F07;666.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 106.
  ) 
 Here is how much of TeX's memory you used:
- 21471 strings out of 495028
- 314108 string characters out of 6181498
- 566457 words of memory out of 5000000
- 24097 multiletter control sequences out of 15000+600000
- 102451 words of font info for 123 fonts, out of 8000000 for 9000
+ 21533 strings out of 495028
+ 316439 string characters out of 6181498
+ 567872 words of memory out of 5000000
+ 24178 multiletter control sequences out of 15000+600000
+ 80383 words of font info for 95 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 58i,12n,45p,1753b,487s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{glo:ntnu} has been referenced but does not exist,
- replaced by a fixed one
+ 58i,12n,44p,1753b,487s stack positions out of 5000i,500n,10000p,200000b,80000s
+pdfTeX warning (dest): name{glo:prp} has been referenced but does not exist, 
+replaced by a fixed one
+
+pdfTeX warning (dest): name{glo:deterministic_onion} has been referenced but do
+es not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{glo:cbc_mode} has been referenced but does not exis
+t, replaced by a fixed one
+
+pdfTeX warning (dest): name{glo:aes} has been referenced but does not exist, re
+placed by a fixed one
+
+pdfTeX warning (dest): name{glo:random_onion} has been referenced but does not 
+exist, replaced by a fixed one
 
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvip
-s/lm/lm-mathex.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/sha
-re/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/
-lm-rm.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/
-fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmex10
-.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts
-/type1/public/lm/lmmi5.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb></
-usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/p
-ublic/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/
-texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lm
-r9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fon
-ts/type1/public/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss17.pf
-b></usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/
-type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></
-usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb>
-Output written on main.pdf (21 pages, 314063 bytes).
+s/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/t
+exmf/fonts/enc/dvips/lm/lm-mathsy.enc}</usr/share/texmf/fonts/type1/public/lm/l
+mbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/
+fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi7.
+pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/t
+ype1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/
+share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/publ
+ic/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss17.pfb></usr/share
+/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/public/
+lm/lmsy10.pfb>
+Output written on main.pdf (15 pages, 247113 bytes).
 PDF statistics:
- 252 PDF objects out of 1000 (max. 8388607)
- 206 compressed objects within 3 object streams
- 36 named destinations out of 1000 (max. 500000)
- 27206 words of extra memory for PDF output out of 29859 (max. 10000000)
+ 215 PDF objects out of 1000 (max. 8388607)
+ 182 compressed objects within 2 object streams
+ 35 named destinations out of 1000 (max. 500000)
+ 19038 words of extra memory for PDF output out of 20736 (max. 10000000)
 
