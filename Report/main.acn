@@ -19,5 +19,5 @@
 (indexentry :tkey (("SQL" "\\glossentry{sql}") ) :locref "{}{7}" :attr "pageglsnumberformat" ) 
 (indexentry :tkey (("HOM" "\\glossentry{hom_onion}") ) :locref "{}{7}" :attr "pageglsnumberformat" ) 
 (indexentry :tkey (("JOIN-ADJ" "\\glossentry{join_adj}") ) :locref "{}{7}" :attr "pageglsnumberformat" ) 
-(indexentry :tkey (("JOIN-ADJ" "\\glossentry{join_adj}") ) :locref "{}{7}" :attr "pageglsnumberformat" ) 
-(indexentry :tkey (("RND" "\\glossentry{random_onion}") ) :locref "{}{7}" :attr "pageglsnumberformat" ) 
+(indexentry :tkey (("OPE" "\\glossentry{ope_onion}") ) :locref "{}{7}" :attr "pageglsnumberformat" ) 
+(indexentry :tkey (("RND" "\\glossentry{random_onion}") ) :locref "{}{8}" :attr "pageglsnumberformat" ) 
