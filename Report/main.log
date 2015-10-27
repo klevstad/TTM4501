@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.9.7)  8 OCT 2015 16:13
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.9.7)  27 OCT 2015 18:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -647,11 +647,11 @@ Headheight and headsep: 12pt and 18.06749pt
 Footskip: 25.29494pt
 Columnsep and columnseprule: 10pt and 0pt
 Marginparsep and marginparwidth: 7pt and 50.73027pt
-Sidecapsep and sidecapwidth: 7pt and 59pt
-Sidebarhsep and sidebarwidth: 7pt and 59pt
+Sidecapsep and sidecapwidth: 7pt and 15pt
+Sidebarhsep and sidebarwidth: 7pt and 15pt
 Sidebarvsep and sidebartopsep: 12pt and 0pt
 Sidebarheight: 464.39996pt
-Sidefoothsep and sidefootwidth: 7pt and 59pt
+Sidefoothsep and sidefootwidth: 7pt and 15pt
 Sidefootvsep and sidefootheight: 12pt and 464.39996pt
 ******************************************************
 
@@ -1567,8 +1567,8 @@ Package glossaries Info: Writing glossary file main.glo on input line 22.
 Package glossaries Info: Writing glossary file main.acn on input line 22.
 
 (./main.aux (./abstract_english.aux) (./preface.aux)
-(./Chapter1/Introduction.aux) (./Chapter3/Homomorphic_Encryption.aux)
-(./Chapter4/Investigate_CryptDB.aux))
+(./Chapter1/Introduction.aux) (./Chapter2/Background.aux)
+(./Chapter3/Investigate_CryptDB.aux) (./Chapter5/Attacks.aux))
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
@@ -1659,7 +1659,7 @@ e
 ))
 \c@lstlisting=\count329
 
-<./figs/ntnu-logo.pdf, id=48, 241.4922pt x 52.79724pt>
+<./figs/ntnu-logo.pdf, id=100, 241.4922pt x 52.79724pt>
 File: ./figs/ntnu-logo.pdf Graphic file (type pdf)
 
 <use ./figs/ntnu-logo.pdf>
@@ -1691,127 +1691,157 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 
 \openout4 = `main.xdy'.
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./figs/ntnu-logo.pdf>] [2
-
-]
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./figs/ntnu-logo.pdf>]
 \openout2 = `abstract_english.aux'.
 
 
-(./abstract_english.tex [3
+(./abstract_english.tex) [2
 
-]) [4]
+
+]
 \openout2 = `preface.aux'.
 
- (./preface.tex) [5
+ (./preface.tex) [3
 
 
 
-] [6
+] (./main.toc) [4
 
 
-] (./main.toc) [7]
-[8
+] (./main.lof)
+[5
+
+] (./main.acr) [6
+
+
 
 ]
 \openout2 = `Chapter1/Introduction.aux'.
 
- (./Chapter1/Introduction.tex) [1
-
-
-]
-\openout2 = `Chapter3/Homomorphic_Encryption.aux'.
-
- (./Chapter3/Homomorphic_Encryption.tex
-[2
+ (./Chapter1/Introduction.tex [1
 
 
 
-]) [3]
-\openout2 = `Chapter4/Investigate_CryptDB.aux'.
+]) [2]
+\openout2 = `Chapter2/Background.aux'.
 
- (./Chapter4/Investigate_CryptDB.tex [4
+
+(./Chapter2/Background.tex) [3
 
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 20--21
+\openout2 = `Chapter3/Investigate_CryptDB.aux'.
 
+ (./Chapter3/Investigate_CryptDB.tex
+<./figs/CryptDB_Plain.png, id=204, 618.31pt x 157.58875pt>
+File: ./figs/CryptDB_Plain.png Graphic file (type png)
+
+<use ./figs/CryptDB_Plain.png>
+Package pdftex.def Info: ./figs/CryptDB_Plain.png used on input line 10.
+(pdftex.def)             Requested size: 370.98886pt x 94.55397pt.
+
+Overfull \hbox (6.98886pt too wide) in paragraph at lines 10--11
+[][]
  []
 
-[5]) [6] (./main.bbl
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 15.
+(/usr/share/texmf/tex/latex/lm/t1lmtt.fd
+File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+Package microtype Info: Loading generic settings for font family
+(microtype)             `lmtt' (encoding: T1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+ [4
+
+
+
+] [5pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
+1}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.28 
+      <./figs/CryptDB_Plain.png>] [6] [7]
+<./figs/Onions.png, id=273, 861.2175pt x 204.765pt>
+File: ./figs/Onions.png Graphic file (type png)
+ <use ./figs/Onions.png>
+Package pdftex.def Info: ./figs/Onions.png used on input line 54.
+(pdftex.def)             Requested size: 361.70888pt x 86.0007pt.
+)
+[8pdfTeX warning (ext4): destination with the same identifier (name{figure.3.2}
+) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.86 \include{Chapter3/Investigate_CryptDB}
+                                            <./figs/Onions.png>]
+\openout2 = `Chapter5/Attacks.aux'.
+
+
+(./Chapter5/Attacks.tex) [9
+
+
+
+] (./main.bbl
 bibitemlist
 
-! Class memoir Error: Font command \sc is not supported.
+Class memoir Warning: The \sc font command is deprecated. 
+(memoir)              Use \textsc{...} or {\scshape... } instead on input line 
+19.
 
-See the memoir class documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.9 {\sc
-         Popa, R.~A., Redfield, C. M.~S., Zeldovich, N., and Balakrishnan, H.}
-Use \textsc, or \scshape{...}, or the oldfontcommands option
-
-)
-
-Package glossaries Warning: No \printglossary or \printglossaries found.
-This document will not have a glossary.
-
-[7
+Package microtype Info: Character `029' is missing
+(microtype)             in font `T1/lmr/m/sc/10'.
+(microtype)             Ignoring protrusion settings for this character.
+) [10
 
 
 ]
 \tf@toc=\write8
 \openout8 = `main.toc'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 106.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 106.
+\tf@lof=\write9
+\openout9 = `main.lof'.
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 108.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 108.
  (./main.aux (./abstract_english.aux) (./preface.aux)
-(./Chapter1/Introduction.aux) (./Chapter3/Homomorphic_Encryption.aux)
-(./Chapter4/Investigate_CryptDB.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 106.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 106.
+(./Chapter1/Introduction.aux) (./Chapter2/Background.aux)
+(./Chapter3/Investigate_CryptDB.aux) (./Chapter5/Attacks.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 108.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 108.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: BF5D5AEF77F03DEC8E753527FCF19F07;666.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 106.
+(rerunfilecheck)             Checksum: 3BEEE17312E0F3E57E6CE8C44D317DB6;1494.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 108.
  ) 
 Here is how much of TeX's memory you used:
- 21533 strings out of 495028
- 316439 string characters out of 6181498
- 567872 words of memory out of 5000000
- 24178 multiletter control sequences out of 15000+600000
- 80383 words of font info for 95 fonts, out of 8000000 for 9000
+ 21918 strings out of 495028
+ 322207 string characters out of 6181498
+ 573927 words of memory out of 5000000
+ 24461 multiletter control sequences out of 15000+600000
+ 85655 words of font info for 120 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 58i,12n,44p,1753b,487s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{glo:prp} has been referenced but does not exist, 
-replaced by a fixed one
-
-pdfTeX warning (dest): name{glo:deterministic_onion} has been referenced but do
-es not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{glo:cbc_mode} has been referenced but does not exis
-t, replaced by a fixed one
-
-pdfTeX warning (dest): name{glo:aes} has been referenced but does not exist, re
-placed by a fixed one
-
-pdfTeX warning (dest): name{glo:random_onion} has been referenced but does not 
-exist, replaced by a fixed one
-
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvip
-s/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/t
-exmf/fonts/enc/dvips/lm/lm-mathsy.enc}</usr/share/texmf/fonts/type1/public/lm/l
-mbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/
-fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi7.
-pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/t
-ype1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/
-share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/publ
-ic/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss17.pfb></usr/share
-/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/public/
-lm/lmsy10.pfb>
-Output written on main.pdf (15 pages, 247113 bytes).
+ 58i,12n,48p,1753b,423s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dv
+ips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/s
+hare/texmf/fonts/enc/dvips/lm/lm-rm.enc}</usr/share/texmf/fonts/type1/public/lm
+/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/lm/lmm
+i10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb></usr/share/texmf/fon
+ts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb><
+/usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/p
+ublic/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb></usr/sh
+are/texmf/fonts/type1/public/lm/lmss17.pfb></usr/share/texmf/fonts/type1/public
+/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share
+/texmf/fonts/type1/public/lm/lmtt10.pfb>
+Output written on main.pdf (16 pages, 377348 bytes).
 PDF statistics:
- 215 PDF objects out of 1000 (max. 8388607)
- 182 compressed objects within 2 object streams
- 35 named destinations out of 1000 (max. 500000)
- 19038 words of extra memory for PDF output out of 20736 (max. 10000000)
+ 362 PDF objects out of 1000 (max. 8388607)
+ 320 compressed objects within 4 object streams
+ 66 named destinations out of 1000 (max. 500000)
+ 21712 words of extra memory for PDF output out of 24883 (max. 10000000)
 

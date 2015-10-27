@@ -3,4 +3,8 @@
 \select@language {english}
 \select@language {english}
 \addvspace {10pt}
-\contentsline {figure}{\numberline {1.1}{\ignorespaces A figure}}{2}{figure.1.1}
+\addvspace {10pt}
+\addvspace {10pt}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces System architecture of CryptDB interacting with a client application}}{5}{figure.3.1}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces From left: The EQ-onion, ORD-onion, SEARCH-onion and ADD-onion}}{8}{figure.3.2}
+\addvspace {10pt}

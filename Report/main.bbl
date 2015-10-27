@@ -1,14 +1,64 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
+
+\bibitem{apple_health}
+Apple health.
+\newblock \url{http://www.apple.com/researchkit/}.
+\newblock Accessed: 2015-10-23.
 
 \bibitem{iDASH}
-{Integrated Data for Analysis, Anonymization, and Sharing} kernel description.
+Integrated data for analysis, anonymization, and sharing (idash).
 \newblock \url{https://idash.ucsd.edu/}.
 \newblock Accessed: 2015-10-04.
+
+\bibitem{microsoft_health}
+Microsoft health.
+\newblock \url{https://www.microsoft.com/microsoft-health/en-us}.
+\newblock Accessed: 2015-10-23.
+
+\bibitem{Gentry_thesis}
+{\sc Gentry, C.}
+\newblock {\em A Fully Homomorphic Encryption Scheme}.
+\newblock PhD thesis, Stanford, CA, USA, 2009.
+\newblock AAI3382729.
+
+\bibitem{Merkle}
+{\sc Merkle, R.}
+\newblock A digital signature based on a conventional encryption function.
+\newblock In {\em Advances in Cryptology — CRYPTO ’87}, C.~Pomerance, Ed.,
+  vol.~293 of {\em Lecture Notes in Computer Science}. Springer Berlin
+  Heidelberg, 1988, pp.~369--378.
+
+\bibitem{naehrig2011can}
+{\sc Naehrig, M., Lauter, K., and Vaikuntanathan, V.}
+\newblock Can homomorphic encryption be practical?
+\newblock In {\em Proceedings of the 3rd ACM workshop on Cloud computing
+  security workshop\/} (2011), ACM, pp.~113--124.
+
+\bibitem{Paillier}
+{\sc Paillier, P.}
+\newblock Public-key cryptosystems based on composite degree residuosity
+  classes.
+\newblock In {\em Proceedings of the 17th International Conference on Theory
+  and Application of Cryptographic Techniques\/} (Berlin, Heidelberg, 1999),
+  EUROCRYPT'99, Springer-Verlag, pp.~223--238.
+
+\bibitem{CryptDB_OPE_Encoding}
+{\sc Popa, R.~A., Li, F.~H., and Zeldovich, N.}
+\newblock An ideal-security protocol for order-preserving encoding.
+\newblock In {\em Proceedings of the 2013 IEEE Symposium on Security and
+  Privacy\/} (Washington, DC, USA, 2013), SP '13, IEEE Computer Society,
+  pp.~463--477.
 
 \bibitem{CryptDB_Main_Paper}
 {\sc Popa, R.~A., Redfield, C. M.~S., Zeldovich, N., and Balakrishnan, H.}
 \newblock Cryptdb: Protecting confidentiality with encrypted query processing.
 \newblock In {\em Proceedings of the Twenty-Third ACM Symposium on Operating
   Systems Principles\/} (New York, NY, USA, 2011), SOSP '11, ACM, pp.~85--100.
+
+\bibitem{cryptdb_guidelines}
+{\sc Popa, R.~A., Zeldovich, N., and Balakrishnan, H.}
+\newblock Guidelines for using the cryptdb system securely.
+\newblock Cryptology ePrint Archive, Report 2015/979, 2015.
+\newblock \url{http://eprint.iacr.org/}.
 
 \end{thebibliography}

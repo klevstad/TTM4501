@@ -1,22 +1,28 @@
 \chapter{Introduction}
 \label{chp:introduction}
 
+\section{Motivation}
+
+Cloud services are becoming larger and more complex. Users want their content available in the cloud. Companies such as Apple \cite{apple_health}, Microsoft \cite{microsoft_health} and other corporations are looking into health information and how your personal information can be integrated into their services. iDASH \cite{iDASH} leads on into combining biomedical research and technology.  Medical research facilities stores tremendous amounts of personal data, and currently looking into how to share their research material across facilities and borders. Along with these types of sensitive data, follows great responsibility and security measures. When developing applications and systems, data security and confidentiality are important topics.
+
+As a developer, you are left with two choices. Option one is to build our own server farm or data center on a secure site, which is a rather expensive solution with costs related to both hardware, maintenance, electricity and rent. Another downside with this approach is that it might be inefficient as the traffic in the data center is likely to fluctuate, making some racks standing "cold" from time to time. Option two is to out-source the storage to a cloud provider, where the developer stumbles into another problem. How can we guarantee that the data, stored at a possible distrustful provider, is protected and that they will not snoop in our database?
+
+The first solution that comes to our mind is that the user could encrypt its data with a strong block cipher such as AES and a 256-bit key, and then decrypt the result at the client side. Sure, but this does not really solve anything. Problems arise when the application needs to perform operations that are too heavy for an ordinary client's machine. What if there existed a database system that could solve these problems for us? A system where the data is safely stored in the cloud without the possibility of having database administrators snooping around, or adversaries able to extract any information in the (un)likely case of a database breach. A system that could perform all kinds of operations on our data and send the encrypted result back, without leaking any sort of information about the query, the result, the data itself or any intermediate values. Homomorphic encryption schemes might be our rescue.
+
+In short terms, homomorphic encryption is a cryptographic property describing the ability to perform certain operations on encrypted data (ciphertexts) without decrypting it first. Fully homomorphic encryption is the enhanced version where the encryption scheme is capable of performing all efficient functions \cite{Gentry_thesis}. While still in research mode, fully homomorphic encryption schemes' biggest challenge is efficiency. As for practicality, fully homomorphic encryption schemes still have a long way to go \cite{naehrig2011can}.
+
+Something more specific about CryptDB and why it is interesting. Its key ideas.
+
 \section{Problem}
 
-Cloud services are becoming larger and more complex. Users want their content available in the cloud, and easily access to it. Companies such as Apple, [flere] are looking into health information and how your personal information can be integrated in their services. Medical research facilities stores tremendous amounts of personal data, and currently looking into how to share their research material across facilities and borders. \cite{iDASH} Along with these type of sensitive data, follows great responsibility and security measures. 
-
-
-- Homomorphic encryption to the rescue. Even if the developer of a new system that needs to store sensitive information follows the guidelines of best-practice of cryptographic storage, he will still face problems.
-
-The idea of a homomorphic encryption (HE) scheme is to enable the system to query and compute on encrypted data (ciphertexts) without the need of decrypting it first. 
-
-\section{Background}
+Introduction to the problem.\\
+The aim of the project.
+Short explanation of results
 
 \section{Scope}
 
+Any differences from the project description goes here. Redefine. Explain.
 
-Background, what is the problem, scope and objective(s) of your 
-work. It may also be relevant to state what you do not 
-address.
+\section{Related Work}
 
-If the scope/goal of your project has changed compared to what you submitted in your project description; redefine it and  explain why it has changed.
+To be continued. 

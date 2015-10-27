@@ -4,49 +4,54 @@ The top-level auxiliary file: main.aux
 A level-1 auxiliary file: abstract_english.aux
 A level-1 auxiliary file: preface.aux
 A level-1 auxiliary file: Chapter1/Introduction.aux
-A level-1 auxiliary file: Chapter3/Homomorphic_Encryption.aux
+A level-1 auxiliary file: Chapter2/Background.aux
+A level-1 auxiliary file: Chapter3/Investigate_CryptDB.aux
+A level-1 auxiliary file: Chapter5/Attacks.aux
 The style file: acm.bst
 Database file #1: main.bib.bib
+Warning--to sort, need author or key in apple_health
+Warning--to sort, need author or key in microsoft_health
 Warning--to sort, need author or key in iDASH
-You've used 2 entries,
+Warning--empty school in Gentry_thesis
+You've used 10 entries,
             2253 wiz_defined-function locations,
-            546 strings with 4414 characters,
-and the built_in function-call counts, 675 in all, are:
-= -- 65
-> -- 23
+            605 strings with 5884 characters,
+and the built_in function-call counts, 3365 in all, are:
+= -- 340
+> -- 101
 < -- 0
-+ -- 10
-- -- 8
-* -- 45
-:= -- 99
-add.period$ -- 6
-call.type$ -- 2
-change.case$ -- 10
++ -- 46
+- -- 33
+* -- 209
+:= -- 484
+add.period$ -- 33
+call.type$ -- 10
+change.case$ -- 45
 chr.to.int$ -- 0
-cite$ -- 3
-duplicate$ -- 29
-empty$ -- 64
-format.name$ -- 8
-if$ -- 151
+cite$ -- 14
+duplicate$ -- 157
+empty$ -- 318
+format.name$ -- 33
+if$ -- 766
 int.to.chr$ -- 0
-int.to.str$ -- 2
-missing$ -- 1
-newline$ -- 13
-num.names$ -- 2
-pop$ -- 18
+int.to.str$ -- 10
+missing$ -- 5
+newline$ -- 55
+num.names$ -- 16
+pop$ -- 77
 preamble$ -- 1
-purify$ -- 8
+purify$ -- 36
 quote$ -- 0
-skip$ -- 21
+skip$ -- 117
 stack$ -- 0
-substring$ -- 37
-swap$ -- 9
+substring$ -- 204
+swap$ -- 56
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 8
-warning$ -- 1
-while$ -- 5
-width$ -- 3
-write$ -- 23
-(There was 1 warning)
+type$ -- 40
+warning$ -- 4
+while$ -- 29
+width$ -- 12
+write$ -- 114
+(There were 4 warnings)
