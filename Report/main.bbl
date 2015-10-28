@@ -15,11 +15,27 @@ Microsoft health.
 \newblock \url{https://www.microsoft.com/microsoft-health/en-us}.
 \newblock Accessed: 2015-10-23.
 
+\bibitem{damgaard2012secure}
+{\sc Damg{\aa}rd, I., Faust, S., and Hazay, C.}
+\newblock Secure two-party computation with low communication.
+\newblock In {\em Theory of Cryptography}. Springer, 2012, pp.~54--74.
+
 \bibitem{Gentry_thesis}
 {\sc Gentry, C.}
 \newblock {\em A Fully Homomorphic Encryption Scheme}.
 \newblock PhD thesis, Stanford, CA, USA, 2009.
 \newblock AAI3382729.
+
+\bibitem{Gentry_first_lattices}
+{\sc Gentry, C.}
+\newblock Fully homomorphic encryption using ideal lattices.
+\newblock In {\em Proceedings of the Forty-first Annual ACM Symposium on Theory
+  of Computing\/} (New York, NY, USA, 2009), STOC '09, ACM, pp.~169--178.
+
+\bibitem{Gentry_computing_arb_func_enc_data}
+{\sc Gentry, C.}
+\newblock Computing arbitrary functions of encrypted data.
+\newblock {\em Commun. ACM 53}, 3 (Mar. 2010), pp. 97--105.
 
 \bibitem{Merkle}
 {\sc Merkle, R.}
@@ -59,6 +75,10 @@ Microsoft health.
 {\sc Popa, R.~A., Zeldovich, N., and Balakrishnan, H.}
 \newblock Guidelines for using the cryptdb system securely.
 \newblock Cryptology ePrint Archive, Report 2015/979, 2015.
-\newblock \url{http://eprint.iacr.org/}.
+
+\bibitem{rivest1978data}
+{\sc Rivest, R.~L., Adleman, L., and Dertouzos, M.~L.}
+\newblock On data banks and privacy homomorphisms.
+\newblock {\em Foundations of secure computation\/} (1978), pp. 169--180.
 
 \end{thebibliography}

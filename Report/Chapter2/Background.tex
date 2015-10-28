@@ -1,2 +1,18 @@
 \chapter{Background}
 \label{chp:background}
+
+
+We love to describe encryption as safes where we store our data, secures it with one or more locks, and hides the secret key. Without the secret key, our data is securely stored inside the safe. Whenever we need our data, we take our hidden key out from its hideout and opens all the locks of the safe, where the data is as intact as we left it. The, perhaps, holiest grail of all the holy grails in cryptography is called \emph{homomorphic encryption}. This is a special case of encryption where operations on the encrypted data is possible without decrypting it first, or in the perspective of our locked safe: Modify the data on the inside of the safe without ever unlocking it. 
+
+\Gls{fhe}, which has no restrictions to what types of operations that can be performed on the encrypted data, was first suggested in 1978 by Rivest, Adleman, and Dertouzos \cite{rivest1978data}. At this point in time, researchers did not have any secure scheme for using these ideas. More importantly, there were not many use cases driving the need of such schemes. It has therefore been a slightly displaced and forgotten grail until 2009, when Gentry presented the first \gls{fhe} scheme using lattices \cite{Gentry_first_lattices}. With cloud computing and BLABLA MER OM HVORFOR TING HAR TATT SEG OPP I DET SISTE.
+
+
+Regular \gls{pke} schemes consists of three algorithms, namely a key generation algorithm (\texttt{KeyGen}), an encryption algorithm (\texttt{Enc}) and a decryption algorithm (\texttt{Dec}). \gls{fhe} schemes adds another algorithm to the toolbox, an evaluation algorithm (\texttt{Eval}), where
+
+\textit{Eval, given a well-formed public key $pk$, a boolean circuit $C$ with fan-in of size $t$ and well-formed ciphertexts $c_1, ... , c_l$ encrypting $m_1, ..., m_l$ respectively, outputs a ciphertext $c$ such that $Dec_{sk}(c) = C(m_1, ..., m_l)$.} \cite{damgaard2012secure}
+
+For practical homomorphic encryption schemes, $Eval$ will be associated to a set of permitted functions which guarantee that 
+
+
+
+\cite{Gentry_computing_arb_func_enc_data}.

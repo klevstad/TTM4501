@@ -14,6 +14,11 @@ Another vital part of the proxy server's domain is to issue queries to the datab
 
 The authors \citep{CryptDB_Main_Paper} have implemented CryptDB both with MySQL and PostgreSQL database management systems. CryptDB requires no modifying of the database system, other than adding a set of \Gls{udf}. \Gls{udf} in CryptDB allows the database to perform cryptographic operations on the encrypted data and are created using the \verb!CREATE FUNCTION! command of \gls{sql}. It also holds an encrypted table of all user-keys when in multi-user mode.
 
+Todo:\\
+Annotations of SQL schemas.\\
+Key-chaining. Speaks for. Encrypts for.\\
+
+
 \section{SQL-Aware Encryption and the Onion Scheme}
 
 CryptDB uses an encryption scheme called \emph{SQL-aware encryption} or \textit{onion encryption}. Basically, this means that the encryption scheme is a collection of different schemes, each providing different levels of security and computations to be executed. Data items stored using CryptDB are encrypted multiple times using these different schemes, or layers, of encryption. The result is a onion-like structure where the outer layers provide maximum security and low functionality, while the inferior layers provide less security, but more functionality.
@@ -50,11 +55,11 @@ In order to perform search for words in the encrypted texts, CryptDB has a schem
 
 % How to escape this subsection?
 
-These different layers are wrapped into four different onion classes, namely \texttt{EQ}(Equality checks), \texttt{ORD}(Order relations), \texttt{SEARCH}(Searching) and \texttt{ADD}(Addition) as shown in Figure \ref{cryptdb_onions}. Each onion has a special purpose in means of supporting certain operations, and every data item is encrypted multiple times in each of the different onions. However, the application does not necessary maintain all of onions. There is, for example, no need for maintaining the ADD-onion if the data type is a string. 
+These different layers are wrapped into four different onion classes, namely \texttt{EQ}(Equality checks), \texttt{ORD}(Order relations), \texttt{SEARCH}(Searching) and \texttt{ADD}(Addition) as shown in Figure \ref{cryptdb_onions}. Each onion has a special purpose in means of supporting certain operations, and every data item is encrypted each of the different onions using the different layers. However, the application does not necessary maintain all of onions. There is, for example, no need for maintaining the ADD-onion if the data item is a string. 
 
 \begin{figure}[ht]
 	\includegraphics[scale=0.42]{Onions.png}
-	\caption{From left: The EQ-onion, ORD-onion, SEARCH-onion and ADD-onion}
+	\caption{Overview of the structure of the onions. From left: The EQ-onion, ORD-onion, SEARCH-onion and ADD-onion}
 	\label{cryptdb_onions}
 \end{figure}
 

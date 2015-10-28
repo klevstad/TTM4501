@@ -13,45 +13,45 @@ Warning--to sort, need author or key in apple_health
 Warning--to sort, need author or key in microsoft_health
 Warning--to sort, need author or key in iDASH
 Warning--empty school in Gentry_thesis
-You've used 10 entries,
+You've used 14 entries,
             2253 wiz_defined-function locations,
-            605 strings with 5884 characters,
-and the built_in function-call counts, 3365 in all, are:
-= -- 340
-> -- 101
+            629 strings with 6493 characters,
+and the built_in function-call counts, 4942 in all, are:
+= -- 506
+> -- 149
 < -- 0
-+ -- 46
-- -- 33
-* -- 209
-:= -- 484
-add.period$ -- 33
-call.type$ -- 10
-change.case$ -- 45
++ -- 66
+- -- 49
+* -- 327
+:= -- 716
+add.period$ -- 45
+call.type$ -- 14
+change.case$ -- 65
 chr.to.int$ -- 0
-cite$ -- 14
-duplicate$ -- 157
-empty$ -- 318
-format.name$ -- 33
-if$ -- 766
+cite$ -- 18
+duplicate$ -- 221
+empty$ -- 460
+format.name$ -- 49
+if$ -- 1114
 int.to.chr$ -- 0
-int.to.str$ -- 10
-missing$ -- 5
-newline$ -- 55
-num.names$ -- 16
-pop$ -- 77
+int.to.str$ -- 14
+missing$ -- 9
+newline$ -- 74
+num.names$ -- 24
+pop$ -- 97
 preamble$ -- 1
-purify$ -- 36
+purify$ -- 52
 quote$ -- 0
-skip$ -- 117
+skip$ -- 164
 stack$ -- 0
-substring$ -- 204
-swap$ -- 56
+substring$ -- 351
+swap$ -- 78
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 40
+type$ -- 56
 warning$ -- 4
-while$ -- 29
-width$ -- 12
-write$ -- 114
+while$ -- 47
+width$ -- 16
+write$ -- 156
 (There were 4 warnings)

@@ -1,3 +1,7 @@
+(indexentry :tkey (("FHE" "\\glossentry{fhe}") ) :locref "{}{3}" :attr "pageglsnumberformat" ) 
+(indexentry :tkey (("FHE" "\\glossentry{fhe}") ) :locref "{}{3}" :attr "pageglsnumberformat" ) 
+(indexentry :tkey (("PKE" "\\glossentry{pke}") ) :locref "{}{3}" :attr "pageglsnumberformat" ) 
+(indexentry :tkey (("FHE" "\\glossentry{fhe}") ) :locref "{}{3}" :attr "pageglsnumberformat" ) 
 (indexentry :tkey (("UDFs" "\\glossentry{udf}") ) :locref "{}{4}" :attr "pageglsnumberformat" ) 
 (indexentry :tkey (("UDFs" "\\glossentry{udf}") ) :locref "{}{4}" :attr "pageglsnumberformat" ) 
 (indexentry :tkey (("SQL" "\\glossentry{sql}") ) :locref "{}{4}" :attr "pageglsnumberformat" ) 
