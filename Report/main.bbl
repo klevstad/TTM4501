@@ -1,84 +1,81 @@
 \begin{thebibliography}{10}
 
 \bibitem{apple_health}
-Apple health.
+Apple {H}ealth.
 \newblock \url{http://www.apple.com/researchkit/}.
-\newblock Accessed: 2015-10-23.
+\newblock Accessed: \today.
 
 \bibitem{iDASH}
-Integrated data for analysis, anonymization, and sharing (idash).
+Integrated {D}ata for {A}nalysis, {A}nonymization, and {SH}aring (i{DASH}).
 \newblock \url{https://idash.ucsd.edu/}.
 \newblock Accessed: 2015-10-04.
 
 \bibitem{microsoft_health}
-Microsoft health.
+Microsoft {H}ealth.
 \newblock \url{https://www.microsoft.com/microsoft-health/en-us}.
 \newblock Accessed: 2015-10-23.
 
 \bibitem{damgaard2012secure}
 {\sc Damg{\aa}rd, I., Faust, S., and Hazay, C.}
 \newblock Secure two-party computation with low communication.
-\newblock In {\em Theory of Cryptography}. Springer, 2012, pp.~54--74.
+\newblock In {\em Theory of Cryptography}. 2012, pp.~54--74.
 
 \bibitem{Gentry_thesis}
 {\sc Gentry, C.}
 \newblock {\em A Fully Homomorphic Encryption Scheme}.
-\newblock PhD thesis, Stanford, CA, USA, 2009.
-\newblock AAI3382729.
+\newblock PhD thesis, 2009.
 
 \bibitem{Gentry_first_lattices}
 {\sc Gentry, C.}
-\newblock Fully homomorphic encryption using ideal lattices.
+\newblock Fully {H}omomorphic {E}ncryption {U}sing {I}deal {L}attices.
 \newblock In {\em Proceedings of the Forty-first Annual ACM Symposium on Theory
-  of Computing\/} (New York, NY, USA, 2009), STOC '09, ACM, pp.~169--178.
+  of Computing\/} (2009), pp.~169--178.
 
 \bibitem{Gentry_computing_arb_func_enc_data}
 {\sc Gentry, C.}
 \newblock Computing arbitrary functions of encrypted data.
-\newblock {\em Commun. ACM 53}, 3 (Mar. 2010), pp. 97--105.
+\newblock {\em Commun. ACM\/} (2010), pp. 97--105.
 
 \bibitem{Merkle}
-{\sc Merkle, R.}
-\newblock A digital signature based on a conventional encryption function.
-\newblock In {\em Advances in Cryptology — CRYPTO ’87}, C.~Pomerance, Ed.,
-  vol.~293 of {\em Lecture Notes in Computer Science}. Springer Berlin
-  Heidelberg, 1988, pp.~369--378.
+{\sc Merkle, R.~C.}
+\newblock A {D}igital {S}ignature {B}ased on a {C}onventional {E}ncryption
+  {F}unction.
+\newblock In {\em Advances in Cryptology — CRYPTO ’87}. 1988, pp.~369--378.
 
 \bibitem{naehrig2011can}
 {\sc Naehrig, M., Lauter, K., and Vaikuntanathan, V.}
-\newblock Can homomorphic encryption be practical?
+\newblock Can {H}omomorphic {E}ncryption be {P}ractical?
 \newblock In {\em Proceedings of the 3rd ACM workshop on Cloud computing
-  security workshop\/} (2011), ACM, pp.~113--124.
+  security workshop\/} (2011), pp.~113--124.
 
 \bibitem{Paillier}
 {\sc Paillier, P.}
-\newblock Public-key cryptosystems based on composite degree residuosity
-  classes.
+\newblock Public-key {C}ryptosystems {B}ased on {C}omposite {D}egree
+  {R}esiduosity {C}lasses.
 \newblock In {\em Proceedings of the 17th International Conference on Theory
-  and Application of Cryptographic Techniques\/} (Berlin, Heidelberg, 1999),
-  EUROCRYPT'99, Springer-Verlag, pp.~223--238.
+  and Application of Cryptographic Techniques\/} (1999), pp.~223--238.
 
 \bibitem{CryptDB_OPE_Encoding}
 {\sc Popa, R.~A., Li, F.~H., and Zeldovich, N.}
 \newblock An ideal-security protocol for order-preserving encoding.
 \newblock In {\em Proceedings of the 2013 IEEE Symposium on Security and
-  Privacy\/} (Washington, DC, USA, 2013), SP '13, IEEE Computer Society,
-  pp.~463--477.
+  Privacy\/} (2013), pp.~463--477.
 
 \bibitem{CryptDB_Main_Paper}
 {\sc Popa, R.~A., Redfield, C. M.~S., Zeldovich, N., and Balakrishnan, H.}
-\newblock Cryptdb: Protecting confidentiality with encrypted query processing.
+\newblock {C}rypt{DB}: Protecting {C}onfidentiality with {E}ncrypted {Q}uery
+  {P}rocessing.
 \newblock In {\em Proceedings of the Twenty-Third ACM Symposium on Operating
-  Systems Principles\/} (New York, NY, USA, 2011), SOSP '11, ACM, pp.~85--100.
+  Systems Principles\/} (2011), pp.~85--100.
 
 \bibitem{cryptdb_guidelines}
 {\sc Popa, R.~A., Zeldovich, N., and Balakrishnan, H.}
-\newblock Guidelines for using the cryptdb system securely.
+\newblock Guidelines for {U}sing the {C}rypt{DB} {S}ystem {S}ecurely.
 \newblock Cryptology ePrint Archive, Report 2015/979, 2015.
 
 \bibitem{rivest1978data}
 {\sc Rivest, R.~L., Adleman, L., and Dertouzos, M.~L.}
-\newblock On data banks and privacy homomorphisms.
-\newblock {\em Foundations of secure computation\/} (1978), pp. 169--180.
+\newblock On {D}ata {B}anks and {P}rivacy {H}omomorphisms.
+\newblock {\em Foundations of Secure Computation\/} (1978), pp. 169--180.
 
 \end{thebibliography}

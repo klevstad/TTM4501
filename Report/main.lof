@@ -5,6 +5,8 @@
 \addvspace {10pt}
 \addvspace {10pt}
 \addvspace {10pt}
-\contentsline {figure}{\numberline {3.1}{\ignorespaces System architecture of CryptDB interacting with a client application}}{5}{figure.3.1}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Overview of the structure of the onions. From left: The EQ-onion, ORD-onion, SEARCH-onion and ADD-onion}}{8}{figure.3.2}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces System architecture of CryptDB interacting with a client application}}{7}{figure.3.1}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Overview of the structure of the SQL-aware Encryption Scheme. From left: The EQ-onion, ORD-onion, SEARCH-onion and ADD-onion}}{11}{figure.3.2}
+\addvspace {10pt}
+\addvspace {10pt}
 \addvspace {10pt}

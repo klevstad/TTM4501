@@ -1,18 +1,52 @@
 \chapter{Background}
 \label{chp:background}
 
+This chapter will cover the cryptographic background of the necessary components in order to understand CryptDB, along with some of the basic cryptographic principals.
 
-We love to describe encryption as safes where we store our data, secures it with one or more locks, and hides the secret key. Without the secret key, our data is securely stored inside the safe. Whenever we need our data, we take our hidden key out from its hideout and opens all the locks of the safe, where the data is as intact as we left it. The, perhaps, holiest grail of all the holy grails in cryptography is called \emph{homomorphic encryption}. This is a special case of encryption where operations on the encrypted data is possible without decrypting it first, or in the perspective of our locked safe: Modify the data on the inside of the safe without ever unlocking it. 
+...More.
 
-\Gls{fhe}, which has no restrictions to what types of operations that can be performed on the encrypted data, was first suggested in 1978 by Rivest, Adleman, and Dertouzos \cite{rivest1978data}. At this point in time, researchers did not have any secure scheme for using these ideas. More importantly, there were not many use cases driving the need of such schemes. It has therefore been a slightly displaced and forgotten grail until 2009, when Gentry presented the first \gls{fhe} scheme using lattices \cite{Gentry_first_lattices}. With cloud computing and BLABLA MER OM HVORFOR TING HAR TATT SEG OPP I DET SISTE.
+\section{Symmetric Encryption}
 
+Symmetric key encryption is, perhaps, the most trivial type of encryption where the sender encrypts the data with a secret key that the sender and receiver has agreed upon in advance. When receiving data, the receiver uses the pre-shared secret key in order to decrypt the data. In a more formal matter, symmetric key encryption is usually used either with a block cipher(which encrypts messages in chunks of data) or a stream cipher (which encrypts data bit-by-bit). The scheme consists of three algorithms, $KeyGen$, $Enc$ and $Dec$. $KeyGen$ is the algorithm that generates the key $k_s$ used for encryption and decryption, $Enc_k$ encrypts the data with the secret key, and $Dec_k$ decrypts it. One of the major drawbacks with symmetric key cryptography is that the secret key $k_s$ needs to be shared between the parties that are communicating. If an adversary obtains the secret key, say that one of the parties stored it on a piece of paper that was misplaced and lost, the whole communication channel would be compromised as the adversary could easily decrypt the data.
 
-Regular \gls{pke} schemes consists of three algorithms, namely a key generation algorithm (\texttt{KeyGen}), an encryption algorithm (\texttt{Enc}) and a decryption algorithm (\texttt{Dec}). \gls{fhe} schemes adds another algorithm to the toolbox, an evaluation algorithm (\texttt{Eval}), where
+\section{Asymmetric Encryption}
 
-\textit{Eval, given a well-formed public key $pk$, a boolean circuit $C$ with fan-in of size $t$ and well-formed ciphertexts $c_1, ... , c_l$ encrypting $m_1, ..., m_l$ respectively, outputs a ciphertext $c$ such that $Dec_{sk}(c) = C(m_1, ..., m_l)$.} \cite{damgaard2012secure}
-
-For practical homomorphic encryption schemes, $Eval$ will be associated to a set of permitted functions which guarantee that 
-
+In contrast to symmetric key encryption, asymmetric key encryption does not depend on a pre-shared secret key. Asymmetric key encryption, or Public-Key Encryption, is based upon the fact that some mathematical problems are considered \emph{hard}, such as the integer factorization, discrete logarithms and elliptic curves. By computing a key-pair consisting of a public key and a private key, two users are able to exchange keys over a public channel without worrying about their secret keys being compromised. The public key is used for encrypting data sent to the user, and the private key is used to decrypt received data that is encrypted with said public key.
 
 
-\cite{Gentry_computing_arb_func_enc_data}.
+
+For example, the Diffi-Hellman key exchange can be used by two parties without previous knowledge to agree upon a shared secret key over an insecure channel, 
+
+
+Another use of of public key cryptography is to create digital signatures, which provides authentication and data integrity.
+
+\section{Homomorphic Encryption}
+
+We love to describe encryption as safes where we store our data, then secures it with one or more locks, and hide the secret key. Without the secret key, the data is securely stored inside the safe. Whenever we need our data, we take the hidden key out from its hideout and opens all the locks of the safe, where the data is as intact as we left it. The, perhaps, holiest grail of all the holy grails in cryptography is called \emph{homomorphic encryption}. This is a special case of encryption where operations on the encrypted data is possible without decrypting it first, or in the perspective of our locked safe: Modify the data on the inside of the safe without ever unlocking it.
+
+Regular \gls{pke} schemes consists of three algorithms, namely a key generation algorithm (\texttt{KeyGen}), an encryption algorithm (\texttt{Enc}) and a decryption algorithm (\texttt{Dec}). \gls{he} schemes adds another algorithm to the toolbox, an evaluation algorithm (\texttt{Eval}), where
+
+\begin{theorem}[{\cite{damgaard2012secure}}]
+
+Eval, given a well-formed public key $pk$, a boolean circuit $C$ with fan-in of size $t$ and well-formed ciphertexts $c_1, ... , c_l$ encrypting $m_1, ..., m_l$ respectively, outputs a ciphertext $c$ such that $Dec_{sk}(c) = C(m_1, ..., m_l)$.
+
+\end{theorem}
+
+For \gls{phe} schemes, $Eval$ will be associated to a set of permitted functions. These are functions that the algorithm can handle, and which guarantee a meaningful result when executed. These functions can be expressed as circuits consisting of logical gates such as AND, OR and NOT. Gentry .......
+
+Addition vs multiplication\\
+
+\section{Fully Homomorphic Encryption}
+
+\Gls{fhe}, which has no restrictions to what types of operations that can be performed on the encrypted data, was first suggested in 1978 by Rivest, Adleman, and Dertouzos \cite{rivest1978data}. At this point in time, researchers did not have any secure scheme for using these ideas. More importantly, there were not many use cases driving the need of such schemes. It has therefore been a slightly displaced and forgotten grail until 2009, when Gentry presented the first \gls{fhe} scheme using lattices \cite{Gentry_first_lattices}. With cloud computing and ... blabla. More on this. % HEIHEIHEIHEI
+
+\section{El Gamal}
+
+\section{Searchable Encryption}
+
+\section{Database Security}
+
+...More background stuff.\\
+...Highlevel of how it works (as described in Gentry \cite{Gentry_computing_arb_func_enc_data}) noise, etc.\\
+...Bootstrappable\\
+...Use an analogy?\\
