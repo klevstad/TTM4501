@@ -5,8 +5,10 @@
 \addvspace {10pt}
 \addvspace {10pt}
 \addvspace {10pt}
-\contentsline {figure}{\numberline {3.1}{\ignorespaces System architecture of CryptDB interacting with a client application}}{7}{figure.3.1}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Overview of the structure of the SQL-aware Encryption Scheme. From left: The EQ-onion, ORD-onion, SEARCH-onion and ADD-onion}}{11}{figure.3.2}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces System architecture of CryptDB interacting with a client application}}{8}{figure.3.1}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Overview of the structure of the SQL-aware Encryption Scheme. From left: The EQ-onion, ORD-onion, SEARCH-onion and ADD-onion}}{16}{figure.3.2}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Encryption layer adjustment performed by proxy server upon receiving a query. (Is the figure too small/hard to read?. Adjust colors?)}}{17}{figure.3.3}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Rewritten query to be sent to server after encryption level adjustment. (Is the figure too small/hard to read?. Adjust colors?)}}{17}{figure.3.4}
 \addvspace {10pt}
 \addvspace {10pt}
 \addvspace {10pt}

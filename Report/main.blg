@@ -6,56 +6,57 @@ A level-1 auxiliary file: preface.aux
 A level-1 auxiliary file: Chapter1/Introduction.aux
 A level-1 auxiliary file: Chapter2/Background.aux
 A level-1 auxiliary file: Chapter3/Investigate_CryptDB.aux
-A level-1 auxiliary file: Chapter4/Comparison.aux
-A level-1 auxiliary file: Chapter5/Attacks.aux
+A level-1 auxiliary file: Chapter4/Attacks.aux
+A level-1 auxiliary file: Chapter5/Demo.aux
 A level-1 auxiliary file: Chapter6/Conclusion.aux
 The style file: acm.bst
 Database file #1: main.bib.bib
 Warning--to sort, need author or key in apple_health
 Warning--to sort, need author or key in microsoft_health
-Warning--to sort, need author or key in iDASH
+Warning--to sort, need author or key in mylar_homepage
+Warning--to sort, need author or key in docker_homepage
+Warning--empty publisher in ope_cryptdb
 Warning--empty publisher in damgaard2012secure
 Warning--empty school in Gentry_thesis
-Warning--empty publisher in Merkle
-You've used 14 entries,
+You've used 15 entries,
             2253 wiz_defined-function locations,
-            614 strings with 6399 characters,
-and the built_in function-call counts, 4851 in all, are:
-= -- 491
-> -- 145
+            613 strings with 6340 characters,
+and the built_in function-call counts, 5010 in all, are:
+= -- 505
+> -- 151
 < -- 0
-+ -- 65
-- -- 48
-* -- 298
-:= -- 694
-add.period$ -- 44
-call.type$ -- 14
-change.case$ -- 65
++ -- 67
+- -- 50
+* -- 305
+:= -- 716
+add.period$ -- 47
+call.type$ -- 15
+change.case$ -- 69
 chr.to.int$ -- 0
-cite$ -- 20
-duplicate$ -- 221
-empty$ -- 458
-format.name$ -- 48
-if$ -- 1095
+cite$ -- 22
+duplicate$ -- 226
+empty$ -- 478
+format.name$ -- 50
+if$ -- 1132
 int.to.chr$ -- 0
-int.to.str$ -- 14
+int.to.str$ -- 15
 missing$ -- 9
-newline$ -- 73
+newline$ -- 78
 num.names$ -- 22
-pop$ -- 115
+pop$ -- 126
 preamble$ -- 1
-purify$ -- 52
+purify$ -- 55
 quote$ -- 0
-skip$ -- 166
+skip$ -- 168
 stack$ -- 0
-substring$ -- 351
-swap$ -- 77
+substring$ -- 347
+swap$ -- 76
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 56
-warning$ -- 6
+type$ -- 60
+warning$ -- 7
 while$ -- 46
-width$ -- 16
-write$ -- 141
-(There were 6 warnings)
+width$ -- 17
+write$ -- 150
+(There were 7 warnings)

@@ -3,22 +3,38 @@
 \bibitem{apple_health}
 Apple {H}ealth.
 \newblock \url{http://www.apple.com/researchkit/}.
-\newblock Accessed: \today.
+\newblock Accessed: 2015-10-23.
 
-\bibitem{iDASH}
-Integrated {D}ata for {A}nalysis, {A}nonymization, and {SH}aring (i{DASH}).
-\newblock \url{https://idash.ucsd.edu/}.
-\newblock Accessed: 2015-10-04.
+\bibitem{docker_homepage}
+Docker.
+\newblock \url{https://docker.com/}.
+\newblock Accessed: 2015-11-12.
 
 \bibitem{microsoft_health}
 Microsoft {H}ealth.
 \newblock \url{https://www.microsoft.com/microsoft-health/en-us}.
 \newblock Accessed: 2015-10-23.
 
+\bibitem{mylar_homepage}
+Mylar -{ MIT}.
+\newblock \url{https://css.csail.mit.edu/mylar/}.
+\newblock Accessed: 2015-11-11.
+
+\bibitem{ope_cryptdb}
+{\sc Boldyreva, A., Chenette, N., Lee, Y., and O’Neill, A.}
+\newblock Order-{P}reserving {S}ymmetric {E}ncryption.
+\newblock In {\em Advances in Cryptology - EUROCRYPT 2009}. 2009, pp.~224--241.
+
 \bibitem{damgaard2012secure}
 {\sc Damg{\aa}rd, I., Faust, S., and Hazay, C.}
 \newblock Secure two-party computation with low communication.
 \newblock In {\em Theory of Cryptography}. 2012, pp.~54--74.
+
+\bibitem{elgamal}
+{\sc ElGamal, T.}
+\newblock A {P}ublic {K}ey {C}ryptosystem and a {S}ignature {S}cheme {B}ased on
+  {D}iscrete {L}ogarithms.
+\newblock In {\em Advances in {C}ryptology\/} (1985), pp.~10--18.
 
 \bibitem{Gentry_thesis}
 {\sc Gentry, C.}
@@ -36,12 +52,6 @@ Microsoft {H}ealth.
 \newblock Computing arbitrary functions of encrypted data.
 \newblock {\em Commun. ACM\/} (2010), pp. 97--105.
 
-\bibitem{Merkle}
-{\sc Merkle, R.~C.}
-\newblock A {D}igital {S}ignature {B}ased on a {C}onventional {E}ncryption
-  {F}unction.
-\newblock In {\em Advances in Cryptology — CRYPTO ’87}. 1988, pp.~369--378.
-
 \bibitem{naehrig2011can}
 {\sc Naehrig, M., Lauter, K., and Vaikuntanathan, V.}
 \newblock Can {H}omomorphic {E}ncryption be {P}ractical?
@@ -54,12 +64,6 @@ Microsoft {H}ealth.
   {R}esiduosity {C}lasses.
 \newblock In {\em Proceedings of the 17th International Conference on Theory
   and Application of Cryptographic Techniques\/} (1999), pp.~223--238.
-
-\bibitem{CryptDB_OPE_Encoding}
-{\sc Popa, R.~A., Li, F.~H., and Zeldovich, N.}
-\newblock An ideal-security protocol for order-preserving encoding.
-\newblock In {\em Proceedings of the 2013 IEEE Symposium on Security and
-  Privacy\/} (2013), pp.~463--477.
 
 \bibitem{CryptDB_Main_Paper}
 {\sc Popa, R.~A., Redfield, C. M.~S., Zeldovich, N., and Balakrishnan, H.}

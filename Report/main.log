@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.9.7)  8 NOV 2015 17:53
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.9.7)  12 NOV 2015 17:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1532,58 +1532,69 @@ LaTeX Info: Redefining \today on input line 736.
 \dt@a=\toks57
 \dt@b=\toks58
 ))
-(./glossary.tex)
-\glo@main@file=\write5
-\openout5 = `main.glo'.
+(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Package: fancyvrb 2008/02/07
 
-Package glossaries Info: Writing glossary file main.glo on input line 22.
-\glo@acronym@file=\write6
-\openout6 = `main.acn'.
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
+<2008/02/07> (tvz)
+\FV@CodeLineNo=\count304
+\FV@InFile=\read2
+\FV@TabBox=\box72
+\c@FancyVerbLine=\count305
+\FV@StepNumber=\count306
+\FV@OutFile=\write5
+) (./glossary.tex)
+\glo@main@file=\write6
+\openout6 = `main.glo'.
 
-Package glossaries Info: Writing glossary file main.acn on input line 22.
- (./main.aux (./abstract_english.aux) (./preface.aux)
-(./Chapter1/Introduction.aux) (./Chapter2/Background.aux)
-(./Chapter3/Investigate_CryptDB.aux) (./Chapter4/Comparison.aux)
-(./Chapter5/Attacks.aux) (./Chapter6/Conclusion.aux))
+Package glossaries Info: Writing glossary file main.glo on input line 26.
+\glo@acronym@file=\write7
+\openout7 = `main.acn'.
+
+Package glossaries Info: Writing glossary file main.acn on input line 26.
+ (./main.aux (./abstract_english.aux)
+(./preface.aux) (./Chapter1/Introduction.aux) (./Chapter2/Background.aux)
+(./Chapter3/Investigate_CryptDB.aux) (./Chapter4/Attacks.aux)
+(./Chapter5/Demo.aux) (./Chapter6/Conclusion.aux))
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 24.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 24.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 28.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 28.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count304
+\scratchcounter=\count307
 \scratchdimen=\dimen204
-\scratchbox=\box72
-\nofMPsegments=\count305
-\nofMParguments=\count306
+\scratchbox=\box73
+\nofMPsegments=\count308
+\nofMParguments=\count309
 \everyMPshowfont=\toks59
-\MPscratchCnt=\count307
+\MPscratchCnt=\count310
 \MPscratchDim=\dimen205
-\MPnumerator=\count308
-\makeMPintoPDFobject=\count309
+\MPnumerator=\count311
+\makeMPintoPDFobject=\count312
 \everyMPtoPDFconversion=\toks60
 )
-LaTeX Info: Redefining \microtypecontext on input line 24.
+LaTeX Info: Redefining \microtypecontext on input line 28.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -1597,8 +1608,8 @@ Package microtype Info: No adjustment of character kerning.
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
 )
-\AtBeginShipoutBox=\box73
-Package hyperref Info: Link coloring ON on input line 24.
+\AtBeginShipoutBox=\box74
+Package hyperref Info: Link coloring ON on input line 28.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -1606,17 +1617,17 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count310
+\c@section@level=\count313
 )
 Redoing nameref's sectioning
 Redoing nameref's label
-LaTeX Info: Redefining \nameref on input line 24.
-LaTeX Info: Redefining \ref on input line 24.
-LaTeX Info: Redefining \pageref on input line 24.
-LaTeX Info: Redefining \nameref on input line 24.
+LaTeX Info: Redefining \nameref on input line 28.
+LaTeX Info: Redefining \ref on input line 28.
+LaTeX Info: Redefining \pageref on input line 28.
+LaTeX Info: Redefining \nameref on input line 28.
 (./main.out) (./main.out)
-\@outlinefile=\write7
-\openout7 = `main.out'.
+\@outlinefile=\write8
+\openout8 = `main.out'.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
@@ -1633,15 +1644,15 @@ Package grfext Info: Graphics extension search list:
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\c@lstlisting=\count311
+\c@lstlisting=\count314
 
-<./figs/ntnu-logo.pdf, id=148, 241.4922pt x 52.79724pt>
+<./figs/ntnu-logo.pdf, id=184, 241.4922pt x 52.79724pt>
 File: ./figs/ntnu-logo.pdf Graphic file (type pdf)
 
 <use ./figs/ntnu-logo.pdf>
-Package pdftex.def Info: ./figs/ntnu-logo.pdf used on input line 31.
+Package pdftex.def Info: ./figs/ntnu-logo.pdf used on input line 35.
 (pdftex.def)             Requested size: 170.71652pt x 37.32436pt.
-LaTeX Font Info:    Try loading font information for T1+lmss on input line 31.
+LaTeX Font Info:    Try loading font information for T1+lmss on input line 35.
  (/usr/share/texmf/tex/latex/lm/t1lmss.fd
 File: t1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
@@ -1649,14 +1660,14 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             `lmss' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    Calculating math sizes for size <11.49994> on input line 31
+LaTeX Font Info:    Calculating math sizes for size <11.49994> on input line 35
 .
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <11.49994> on input line 31.
+(Font)              <11.49994> on input line 35.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8.04991> on input line 31.
+(Font)              <8.04991> on input line 35.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5.74997> on input line 31.
+(Font)              <5.74997> on input line 35.
 
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
@@ -1687,7 +1698,9 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 ]) [5]
 (./main.lof) [6
 
-] (./main.acr) [7
+] (./main.lot) [7
+
+] (./main.acr) [8
 
 
 
@@ -1701,100 +1714,143 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 ]) [2]
 \openout2 = `Chapter2/Background.aux'.
 
-
-(./Chapter2/Background.tex [3
+ (./Chapter2/Background.tex [3
 
 
 
 ]
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 27.
- (/usr/share/texmf/tex/latex/lm/t1lmtt.fd
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 22.
+
+(/usr/share/texmf/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 Package microtype Info: Loading generic settings for font family
 (microtype)             `lmtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-
-Underfull \hbox (badness 10000) in paragraph at lines 37--38
-
- []
-
-[4])
-Underfull \hbox (badness 10000) in paragraph at lines 49--85
-
- []
-
-[5]
+ [4] [5] [6]) [7]
 \openout2 = `Chapter3/Investigate_CryptDB.aux'.
 
- (./Chapter3/Investigate_CryptDB.tex
-<./figs/CryptDB_Plain.png, id=301, 618.31pt x 157.58875pt>
+
+(./Chapter3/Investigate_CryptDB.tex
+<./figs/CryptDB_Plain.png, id=382, 618.31pt x 157.58875pt>
 File: ./figs/CryptDB_Plain.png Graphic file (type png)
 
 <use ./figs/CryptDB_Plain.png>
-Package pdftex.def Info: ./figs/CryptDB_Plain.png used on input line 17.
+Package pdftex.def Info: ./figs/CryptDB_Plain.png used on input line 12.
 (pdftex.def)             Requested size: 370.98886pt x 94.55397pt.
 
-Overfull \hbox (6.98886pt too wide) in paragraph at lines 17--18
+Overfull \hbox (6.98886pt too wide) in paragraph at lines 12--13
+[][]
+ []
+
+[8
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.3.1}) 
+has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.18 
+      <./figs/CryptDB_Plain.png>] [9]
+Underfull \hbox (badness 10000) in paragraph at lines 61--64
+
+ []
+
+[10pdfTeX warning (ext4): destination with the same identifier (name{table.3.1}
+) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.68 
+     ]
+Underfull \hbox (badness 10000) in paragraph at lines 69--72
+
+ []
+
+[11pdfTeX warning (ext4): destination with the same identifier (name{table.3.2}
+) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.101 
+      ] [12] [13] [14] <./figs/Onions.png, id=455, 861.2175pt x 204.765pt>
+File: ./figs/Onions.png Graphic file (type png)
+
+<use ./figs/Onions.png>
+Package pdftex.def Info: ./figs/Onions.png used on input line 203.
+(pdftex.def)             Requested size: 361.70888pt x 86.0007pt.
+ [15]
+<./figs/terminal/adjustOnionLayer.jpg, id=464, 523.9575pt x 131.49126pt>
+File: ./figs/terminal/adjustOnionLayer.jpg Graphic file (type jpg)
+
+<use ./figs/terminal/adjustOnionLayer.jpg>
+Package pdftex.def Info: ./figs/terminal/adjustOnionLayer.jpg used on input lin
+e 224.
+(pdftex.def)             Requested size: 366.76775pt x 92.04324pt.
+
+Overfull \hbox (2.76775pt too wide) in paragraph at lines 224--225
 [][]
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[6
+[16pdfTeX warning (ext4): destination with the same identifier (name{figure.3.2
+}) has been already used, duplicate ignored
 
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.229 \newpage
+               <./figs/Onions.png>]
+<./figs/terminal/executeQuery.jpg, id=471, 519.9425pt x 158.5925pt>
+File: ./figs/terminal/executeQuery.jpg Graphic file (type jpg)
 
+<use ./figs/terminal/executeQuery.jpg>
+Package pdftex.def Info: ./figs/terminal/executeQuery.jpg used on input line 23
+3.
+(pdftex.def)             Requested size: 363.95728pt x 111.01396pt.
 
-]
-Underfull \hbox (badness 10000) in paragraph at lines 25--28
-
+Underfull \hbox (badness 10000) in paragraph at lines 233--234
+[][]
  []
 
-[7pdfTeX warning (ext4): destination with the same identifier (name{figure.3.1}
-) has been already used, duplicate ignored
+[17pdfTeX warning (ext4): destination with the same identifier (name{figure.3.3
+}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.37 
-      <./figs/CryptDB_Plain.png>]
-
-Package natbib Warning: Citation `ope_cryptdb' on page 8 undefined on input lin
-e 50.
-
-[8] [9] <./figs/Onions.png, id=366, 861.2175pt x 204.765pt>
-File: ./figs/Onions.png Graphic file (type png)
-
-<use ./figs/Onions.png>
-Package pdftex.def Info: ./figs/Onions.png used on input line 87.
-(pdftex.def)             Requested size: 361.70888pt x 86.0007pt.
- [10]) [11pdfTeX warning (ext4): destination with the same identifier (name{fig
-ure.3.2}) has been already used, duplicate ignored
+l.251 O
+       n the hack queries and other things that simply does not work with Cr...
+pdfTeX warning (ext4): destination with the same identifier (name{figure.3.4}) 
+has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.87 \include{Chapter3/Investigate_CryptDB}
-                                            <./figs/Onions.png>]
-\openout2 = `Chapter4/Comparison.aux'.
+l.251 O
+       n the hack queries and other things that simply does not work with Cr...
+ <./figs/terminal/adjustOnionLayer.jpg> <./figs/terminal/executeQuery.jpg>])
+[18]
+\openout2 = `Chapter4/Attacks.aux'.
 
-
-(./Chapter4/Comparison.tex) [12
+ (./Chapter4/Attacks.tex) [19
 
 
 
 ]
-\openout2 = `Chapter5/Attacks.aux'.
+\openout2 = `Chapter5/Demo.aux'.
 
- (./Chapter5/Attacks.tex) [13
+ (./Chapter5/Demo.tex [20
 
 
 
-]
+]) [21]
 \openout2 = `Chapter6/Conclusion.aux'.
 
 
-(./Chapter6/Conclusion.tex) [14
+(./Chapter6/Conclusion.tex) [22
 
 
 
@@ -1803,47 +1859,55 @@ bibitemlist
 
 Class memoir Warning: The \sc font command is deprecated. 
 (memoir)              Use \textsc{...} or {\scshape... } instead on input line 
-19.
+24.
 
 Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/lmr/m/sc/10'.
 (microtype)             Ignoring protrusion settings for this character.
-[15
+[23
 
 
-])
+]) [24]
+\tf@toc=\write9
+\openout9 = `main.toc'.
 
-Package natbib Warning: There were undefined citations.
+\tf@lof=\write10
+\openout10 = `main.lof'.
 
-[16]
-\tf@toc=\write8
-\openout8 = `main.toc'.
+\tf@lot=\write11
+\openout11 = `main.lot'.
 
-\tf@lof=\write9
-\openout9 = `main.lof'.
-
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 113.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 113.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 117.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 117.
  (./main.aux (./abstract_english.aux) (./preface.aux)
 (./Chapter1/Introduction.aux) (./Chapter2/Background.aux)
-(./Chapter3/Investigate_CryptDB.aux) (./Chapter4/Comparison.aux)
-(./Chapter5/Attacks.aux) (./Chapter6/Conclusion.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 113.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 113.
+(./Chapter3/Investigate_CryptDB.aux) (./Chapter4/Attacks.aux)
+(./Chapter5/Demo.aux) (./Chapter6/Conclusion.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 117.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 117.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: E2A137647FBE6B908FC2CDC445271EB0;2239.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 113.
+(rerunfilecheck)             Checksum: 829C3241105949B2B55BBE2DC0344C85;2905.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 117.
  ) 
 Here is how much of TeX's memory you used:
- 21937 strings out of 495028
- 322242 string characters out of 6181498
- 565670 words of memory out of 5000000
- 24441 multiletter control sequences out of 15000+600000
- 88629 words of font info for 121 fonts, out of 8000000 for 9000
+ 22457 strings out of 495028
+ 330180 string characters out of 6181498
+ 576145 words of memory out of 5000000
+ 24910 multiletter control sequences out of 15000+600000
+ 86330 words of font info for 127 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 58i,12n,48p,1753b,596s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{glo:he} has been referenced but does not exist, r
-eplaced by a fixed one
+ 58i,13n,48p,1753b,600s stack positions out of 5000i,500n,10000p,200000b,80000s
+pdfTeX warning (dest): name{glo:vmm} has been referenced but does not exist, 
+replaced by a fixed one
+
+pdfTeX warning (dest): name{glo:vm} has been referenced but does not exist, rep
+laced by a fixed one
+
+pdfTeX warning (dest): name{glo:he} has been referenced but does not exist, rep
+laced by a fixed one
+
+pdfTeX warning (dest): name{glo:rsa} has been referenced but does not exist, re
+placed by a fixed one
 
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvip
 s/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/t
@@ -1857,10 +1921,10 @@ lic/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb></usr/shar
 e/texmf/fonts/type1/public/lm/lmss17.pfb></usr/share/texmf/fonts/type1/public/l
 m/lmssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/t
 exmf/fonts/type1/public/lm/lmtt10.pfb>
-Output written on main.pdf (23 pages, 399376 bytes).
+Output written on main.pdf (32 pages, 483371 bytes).
 PDF statistics:
- 484 PDF objects out of 1000 (max. 8388607)
- 434 compressed objects within 5 object streams
- 94 named destinations out of 1000 (max. 500000)
- 22320 words of extra memory for PDF output out of 24883 (max. 10000000)
+ 606 PDF objects out of 1000 (max. 8388607)
+ 544 compressed objects within 6 object streams
+ 120 named destinations out of 1000 (max. 500000)
+ 21890 words of extra memory for PDF output out of 24883 (max. 10000000)
 

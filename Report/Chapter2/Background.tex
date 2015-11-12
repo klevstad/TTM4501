@@ -3,22 +3,17 @@
 
 This chapter will cover the cryptographic background of the necessary components in order to understand CryptDB, along with some of the basic cryptographic principals.
 
-...More.
+...More. Symmetric/Asymmetric/ has no references. Is this trivial enough to go without?
 
 \section{Symmetric Encryption}
 
-Symmetric key encryption is, perhaps, the most trivial type of encryption where the sender encrypts the data with a secret key that the sender and receiver has agreed upon in advance. When receiving data, the receiver uses the pre-shared secret key in order to decrypt the data. In a more formal matter, symmetric key encryption is usually used either with a block cipher(which encrypts messages in chunks of data) or a stream cipher (which encrypts data bit-by-bit). The scheme consists of three algorithms, $KeyGen$, $Enc$ and $Dec$. $KeyGen$ is the algorithm that generates the key $k_s$ used for encryption and decryption, $Enc_k$ encrypts the data with the secret key, and $Dec_k$ decrypts it. One of the major drawbacks with symmetric key cryptography is that the secret key $k_s$ needs to be shared between the parties that are communicating. If an adversary obtains the secret key, say that one of the parties stored it on a piece of paper that was misplaced and lost, the whole communication channel would be compromised as the adversary could easily decrypt the data.
+Symmetric key encryption is, perhaps, the most trivial type of encryption where the sender encrypts the data with a secret key that the sender and receiver has agreed upon in advance. When receiving data, the receiver uses the pre-shared secret key in order to decrypt the data. In a more formal matter, symmetric key encryption is usually used either with a block cipher(which encrypts messages in chunks of data) or a stream cipher (which encrypts data bit-by-bit). The scheme consists of three algorithms, $KeyGen$, $Enc$ and $Dec$.
+
+$KeyGen$ is the algorithm that generates the secret key $k_s$ used for encryption and decryption, $Enc_k$ encrypts the data with the secret key, and $Dec_k$ decrypts it using the same secret key. One of the major drawbacks with symmetric key cryptography is that the secret key $k_s$ needs to be shared between the parties that are communicating. If an adversary obtains the secret key, say that one of the parties stored it on a piece of paper that was misplaced and lost, the whole communication channel would be compromised as the adversary could easily decrypt the data.
 
 \section{Asymmetric Encryption}
 
-In contrast to symmetric key encryption, asymmetric key encryption does not depend on a pre-shared secret key. Asymmetric key encryption, or Public-Key Encryption, is based upon the fact that some mathematical problems are considered \emph{hard}, such as the integer factorization, discrete logarithms and elliptic curves. By computing a key-pair consisting of a public key and a private key, two users are able to exchange keys over a public channel without worrying about their secret keys being compromised. The public key is used for encrypting data sent to the user, and the private key is used to decrypt received data that is encrypted with said public key.
-
-
-
-For example, the Diffi-Hellman key exchange can be used by two parties without previous knowledge to agree upon a shared secret key over an insecure channel, 
-
-
-Another use of of public key cryptography is to create digital signatures, which provides authentication and data integrity.
+In contrast to symmetric key encryption, asymmetric key encryption does not depend on a pre-shared secret key. Asymmetric key encryption, or Public-Key Encryption, is based upon the fact that some mathematical problems are considered \emph{hard}, such as the integer factorization, discrete logarithms and elliptic curves. By computing a key-pair consisting of a public key and a private key, two users are able to exchange keys over a public channel without worrying about their secret keys being compromised. The public key is used for encrypting data sent to the user, and the private key is used to decrypt received data that is encrypted with said public key. Two of the most recognized public-key cryptosystems are \gls{rsa}, which relies of the integer factorization problem, and El Gamal, which relies on the discrete logarithms problem. In addition to secure communication between multiple parties, public key cryptography is also applied to create digital signatures, which provides authentication and data integrity.
 
 \section{Homomorphic Encryption}
 
@@ -32,21 +27,86 @@ Eval, given a well-formed public key $pk$, a boolean circuit $C$ with fan-in of 
 
 \end{theorem}
 
-For \gls{phe} schemes, $Eval$ will be associated to a set of permitted functions. These are functions that the algorithm can handle, and which guarantee a meaningful result when executed. These functions can be expressed as circuits consisting of logical gates such as AND, OR and NOT. Gentry .......
-
-Addition vs multiplication\\
+For \gls{phe} schemes, $Eval$ will be associated to a set of permitted functions $f$. These are functions that the algorithm can handle, and which guarantee a meaningful result when executed. These functions can be expressed as circuits consisting of logical gates such as AND, OR and NOT. Gentry \cite{Gentry_computing_arb_func_enc_data} presented a homomorphic encryption scheme consisting of three functions; addition ($Add_{\epsilon}$), subtraction ($Sub_{\epsilon}$) and multiplication ($Mult_{\epsilon}$). When performing homomorphic operations using functions from $f$, an N-bit noise is generated and added to the encrypted ciphertext, making the relation between the encrypted result and its corresponding plaintext weaker. By performing multiple operations on the ciphertexts, the noise grows larger. Problems arise if the noisy part gets large enough, as the decryption algorithm might not be able to decrypt in a reliable way in order to obtain the correct result.
 
 \section{Fully Homomorphic Encryption}
 
-\Gls{fhe}, which has no restrictions to what types of operations that can be performed on the encrypted data, was first suggested in 1978 by Rivest, Adleman, and Dertouzos \cite{rivest1978data}. At this point in time, researchers did not have any secure scheme for using these ideas. More importantly, there were not many use cases driving the need of such schemes. It has therefore been a slightly displaced and forgotten grail until 2009, when Gentry presented the first \gls{fhe} scheme using lattices \cite{Gentry_first_lattices}. With cloud computing and ... blabla. More on this. % HEIHEIHEIHEI
+\Gls{fhe}, which has no restrictions to what types of operations that can be performed on the encrypted data, was first suggested in 1978 by Rivest, Adleman, and Dertouzos \cite{rivest1978data}. At this point in time, researchers did not have any secure scheme for using these ideas. More importantly, there were not many use cases driving the need of such schemes. It has therefore been a slightly displaced and forgotten grail until 2009,
+when Gentry presented the first \gls{fhe} scheme based on lattices \cite{Gentry_first_lattices}, and a year later another scheme using a \emph{bootstrappable} approach based on asymmetric encryption \citep{Gentry_computing_arb_func_enc_data}. Nearly all modern \gls{fhe} schemes are based on this bootstrappable concept using Gentry's blueprints. 
+
+% Komme inn på noise
+As mentioned in the previous section, a homomorphic operation creates noise when executed. Multiple operations adds more noise which may change the decrypted result beyond the recognizable. But what if we had a scheme that was able to reduce the noise generated by such operations? 
+
+
+By using an approach where decryption keys are bootstrapped to 
+
+
+When allowing the encryption function to handle its own decryption at the same time, the modified algorithm encrypts a message under two different public keys, Gentry showed that the noise added by the homomorphic operations was less than the noise removed by the additional decryption, and the breakthrough was made in hunt for a fully homomorphic encryption scheme. The modified algorithm $Recrypt(pk_{i+1}, D_{\epsilon}, \overline{sk_i}, c_i)$ consists of two operations.
+
+\[\overline{c_i} = Enc(pk_{i+1}, c_i)\] and \[c = Eval(pk_{i+1}, D_{\epsilon}, \overline{sk_i}, \overline{c_i})\]
+
+encrypts both the ciphertext $c_i$ and the secret key $sk_i$ under the new public key $pk_{i+1}$, $D_{\epsilon}$ is a decryption function 
+
+
+
+ before it uses the $Eval$ algorithm to decrypt the inner ciphertext using the provided secret key $sk_i$. 
+
+
+
+
+What is the point of an encryption algorithm to be able to decrypt at the same time? Well, this somewhat untraditional way of encrypting something holds an interesting property.
+
+\[\overline{sk_1} = Enc(pk_2, sk_1)\]
+
+
+
+
+
+By recursively encrypting the secret keys, a chain of encrypted keys are created such that $sk_i$ is encrypted under $pk_{i+1}$.
+
+
+
+To give this chain a bit more context, imagine a set of boxes encrypted with a 
+
+
+
+
+
+Assume a secret key $sk_1$ and a plaintext message $m$.
+
+\[c_1 = Enc(sk_1, m)\]
+
+
+
+\[\overline{c_1} = Enc(pk_2, c_1)\]
+
+After the the recent breakthroughs in homomorphic encryption, mainly by Gentry \citep{Gentry_first_lattices} \citep{Gentry_thesis} \citep{Gentry_computing_arb_func_enc_data}, most of the \gls{he} schemes follow the basic ideas, handling noisy ciphertexts and using the bootstrappable approach in order to obtain \gls{fhe}. 
+
+% Mer her
+
+% Bør være nederst
+
+While Gentry's system is great in theory, it has been shown that creating \gls{fhe} schemes is practical hard. However, some other cryptographic schemes holds different types of homomorphic properties which when combined can provide different homomorphic operations. Addition is, for example, the homomorphic property of the Pailler cryptosystem \citep{Paillier}. Pailler is originally a trapdoor mechanism based on the Composite Residuosity Class Problem which conveniently has the cryptographic property such that \[ENC_k(x) * ENC_k(y) = ENC_k(x + y)\]
+
+Another practical cryptosystem providing a similar property, is the ElGamal cryptosystem. While originally being a cryptosystem used for encryption, it has the cryptographic property shown below, which enables it to perform homomorphic multiplications if used correctly.  \[ENC_k(x) * ENC_k(y) = ENC(x * y)\]
 
 \section{El Gamal}
+
+By taking the advantage of the discrete logarithms problem, Taher El Gamal described a cryptosystem \cite{elgamal} based on the Diffie-Hellman key exchange. Hmm.
 
 \section{Searchable Encryption}
 
 \section{Database Security}
+\label{chp:database_Security}
 
-...More background stuff.\\
-...Highlevel of how it works (as described in Gentry \cite{Gentry_computing_arb_func_enc_data}) noise, etc.\\
-...Bootstrappable\\
-...Use an analogy?\\
+Databases are central building blocks in most computer systems, allowing data to be stored, shared, and read by users. As the amount of data stored does not decrease over time, database systems experience an exponential growth. There are companies that stores banking information, health records, and other sensitive information, which makes them a target for criminals and hackers. In order to cope with such attacks, systems that are relying on some sort of database structure, are in need of defence mechanisms. 
+
+
+Most database systems are stored behind different network security measures such as firewalls and intrusion detection systems. A database firewall will, for example, monitor all traffic to and from a database system in order to detect situations that deflects from the predetermined database policy. Such measures does however only provide security for the outside of the system, but a system is in need of security on the inside as well. Most database systems provide different security measures for handling situations that can occur on the inside.
+
+Access control is used for granting different privileges for a user or user groups to a certain object in the database, such as a table, view or procedure. Authentication is used to ensure that only trusted entities are able to reach the database, and to grant the correct privileges based on the identity of the user. For applications where certain user groups are handling sensitive information, a person in charge of the system may have the need to monitor who accessed a given table at a certain time in case of information leaks and similar circumstances. Auditing is a database security technique which does not directly prevent security protocols from being broken, but allows the system administrator to backtrack and discover breaches in the security.
+
+Another vital part of keeping a database secure, is of course the use of database encryption. Both symmetric and asymmetric encryption is possible to perform on database systems, and there exists different ways of layering the encryption based on the application.
+
+
+Hmm. Not sure about how good this section is. What to add, remove, etc?
