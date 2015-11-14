@@ -5,7 +5,7 @@ Although CryptDB is mainly a proof of concept rather than a commercial software,
 
 \section{Installation of CryptDB's Software}
 
-CryptDB comes as a software available through MIT, and can be downloaded using the version control system Git. As the creators has moved on to other projects, the source code has not been maintained since 2014, and is currently only tested on Ubuntu 12.04 and Ubuntu 13.04. During the installation of CryptDB, some issues has been encountered. As CryptDB is only tested with said Ubuntu versions, developers are in need of installing the software on such operating systems. This often involves running some sort of \gls{vm} in some \gls{vmm}, which is very inconvenient when developing applications that should be able to run regardless of operating system and environment. When working inside a \gls{vm} with software that is, at best, ready for alpha testing, you better watch your steps. 
+CryptDB comes as a software available through MIT, and can be downloaded using the version control system Git. As the creators has moved on to other projects, the source code has not been maintained since 2014, and is currently only tested on Ubuntu 12.04 and Ubuntu 13.04. During the installation of CryptDB, some issues has been encountered. Since CryptDB is only tested with said Ubuntu versions, developers should install the software on one of the two tested Ubuntu versions. This often involves running some sort of \gls{vm} in some \gls{vmm}, which is very inconvenient when developing applications that should be able to run regardless of operating system and environment. When working inside a \gls{vm} installing and working with software that is at best ready for alpha testing, you better watch your steps. 
 
 \subsection{Docker to the Rescue}
 
@@ -24,12 +24,16 @@ A thorough guide for installing CryptDB can be found at \url{https://github.com/
 
 How big should a demo application be? What should be in here?
 
+Single-mode application because of the deprecating of multi-mode in recent releases of the software.
+
+\section{Ninja hacks}
+
+To perform nested SQL queries:
+
+Store results as intermediate values, then new query.
+
+
 
 \section{Discussion of CryptDB as a Software}
-
-Should I compare CryptDB to another HE-database. Perhaps MuteDB ? \url{http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6977940}
-
-
-
 
 The authors of CryptDB has taken the idea further with Mylar (\url{https://css.csail.mit.edu/mylar/} which I assume to be CryptDB 2.0, or at least building on the main idea. Have not studied yet.

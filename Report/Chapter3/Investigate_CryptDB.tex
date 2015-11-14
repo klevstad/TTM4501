@@ -1,7 +1,6 @@
 \chapter{Overview of CryptDB}
 \label{chp:overview_cryptDB}
 
-
 This chapter covers the overview of CryptDB, starting with the system architecture, followed by its different encryption mechanisms and encryption layer adjustments. Along with the investigation, a small application will be introduced and used as an example to help the reader in understanding the practical and impractical usages of CryptDB.
 
 \section{System Architecture}
@@ -14,62 +13,45 @@ CryptDB's architecture (Figure \ref{cryptdb_plain}) is divided into two pieces, 
 	\label{cryptdb_plain}
 \end{figure}
 
-Another vital part of the proxy server's domain is to issue queries to the database that adjusts the encryption layer (or onion layer) of the data items(s) that the user has issued a query on, which will be discussed in section \ref{adjust_enc_level}. The last responsibility of the proxy server is to keep track of the users that are currently logged in using a table of active keys. CryptDB has two operational modes, or principals. One for applications consisting of only one user, and another for multi-user applications. Application keys consists of both a symmetric key rooted in the users application password and a public-key pair. When logging in, the proxy derives encryption keys with the user's password as the root. These keys are used for accessing the data items that are accessible to that particular user and to encrypt new items. When the user logs out, the keys are deleted from the proxy server.
-
-In addition to keeping the list of active keys, the proxy server also keeps an embedded database with the schemes of the encrypted tables in the database. By storing this, the proxy server keeps a continuous picture of the encryption layer for each column, which is used for adjusting the encryption level (or layer) for a column in order to allow certain types of functionality.
+Another vital part of the proxy server's domain is to issue queries to the database that adjusts the encryption layer (or onion layer) of the data items(s) that the user has issued a query on, which will be discussed in section \ref{adjust_enc_level}. The last responsibility of the proxy server is to keep track of the users that are currently logged in using a table of active keys. In addition to keeping the list of active keys, the proxy server also keeps an embedded database with the schemes of the encrypted tables in the database. By storing this, the proxy server keeps a continuous picture of the encryption layer for each column, which is used for adjusting the encryption level (or layer) for a column in order to allow certain types of functionality.
 
 The authors \citep{CryptDB_Main_Paper} have implemented CryptDB both with MySQL and PostgreSQL database management systems. CryptDB requires no modifying of the database system, other than adding a set of \Gls{udf}. \Gls{udf} in CryptDB allows the database to perform cryptographic operations on the encrypted data, as well as adjust the encryption level of different columns.
 
+CryptDB has two operational modes, or principals. One for applications consisting of only one user, and another for multi-user applications. Application keys consists of both a symmetric key rooted in the users application password and a public-key pair. When logging in, the proxy derives encryption keys with the user's password as the root. These keys are used for accessing the data items that are accessible to that particular user and to encrypt new items. When the user logs out, the keys are deleted from the proxy server.
+
 \subsection{Single-user Mode}
-If an application is created with a single user in mind, then it should be running in the single-user mode where the keys are derived from one secret master key which is rooted in the user's password. By running in this particular mode, the user has access to all data encrypted through the proxy server.
+If an application is created with a single user in mind, then it should be running in the single-user mode where the keys are derived from one secret master key which is rooted in the user's password. By running in this particular mode, the user has access to all data encrypted through the proxy server. When running is this mode, the proxy server and the application are considered to be trusted. The database server however, is considered to be untrusted and subject to the snooping of a curious database administrator owning the server system hosting the database. As of the most recent versions of the CryptDB software, only the single-user mode is supported, which has been used to create a small demo application described in Chapter \ref{chp:software}.
 
-Proxy server and application considered trusted
 \subsection{Multi-user Mode}
+Picture a simple online discussion forum, where users can interact by posting messages to discussion boards or sending each other private messages. As described in Section \ref{chp:database_Security}, database applications are in need of access control in order to restrict access to certain tables based on the user's credentials, hence the need for declaring user entities as well as different groups. But how can a user read messages on the discussion board if they are encrypted by another user's key? What about private messages, with suffers from the same case, as they will be encrypted with the sender's key? CryptDB solves these cases by letting developers use annotations in their schemas.
 
-Picture a simple online discussion forum, where users can interact by posting messages to discussion boards or sending each other private messages. As described in Section \ref{chp:database_Security}, database applications are in need of access control in order to restrict access to certain tables based on the user's credentials, hence the need for declaring user entities as well as different groups.
+Table \ref{annotations} shows a basic use of such annotations. \verb!PRINCTYPE! is used to annotate external users, which are authenticated through the access control by providing their password, and internal users, which are entities inside the database. \verb!ENC_FOR! is used to indicate which columns that consist sensitive data, and in the next column CryptDB needs to store which principals that should have access to the sensitive column. Okay, so we have access to the column, but how can we decrypt something encrypted with someone else's keys?
 
-In CryptDB, annotations are used when creating tables to specify which entities that should have access to the data items, as well as allowing entities to perform operations on behalf of user within its group.
-
-
-Table \ref{annotations} shows a basic use of such annotations. \verb!PRINCTYPE! is used to annotate external users, which are authenticated through the access control by providing their password, and internal users, which are entities inside the database. \verb!ENC_FOR! is used to indicate which columns that consist sensitive data, and in the next column CryptDB needs to store which principals that should have access to the sensitive column.
-
-\begin{table}
+\begin{table}[H]
 \begin{Verbatim}[frame=single]
 PRINCTYPE physical_user EXTERNAL;
 PRINCTYPE user, msg;
 
-CREATE TABLE privmsgs(
+CREATE TABLE privmsgs (
 	msgid integer,
 	subject varchar(255)	ENC_FOR (msgid msg),
 	msgtext text		ENC_FOR (msgid msg) );
+
+CREATE TABLE privmsgs_to (
+	msgid integer,
+	recvid integer,
+	sendid integer,
+	(sendid user) SPEAKS_FOR (msgid msg),
+	(recvid user) SPEAKS_FOR (msgid msg) ); 
 \end{Verbatim}
 \caption{Use of policy annotations when creating multi-user applications}
 \label{annotations}
 \end{table}
+CryptDB chains encryption keys used to encrypt columns or data items to the root key, which is the user's password. The \verb!SPEAKS_FOR! annotation gives a principal access to all the keys that the principal it speaks for has access to. For example in Table \ref{annotations}, both the user sending the private message and the user receiving it, speaks for the principal type \verb!msg! and thereby has access to all the keys of the \verb!msg! entity. This basically means that the secret key of the message is encrypted two times, one time with the sender's key and one time with the receiver's key.
 
+Consider this case: Alice wants to send a private message to Bob, which means that the private message needs to be encrypted two times using both Alice and Bob's secret keys. Keys of users who are logged in are kept in a table at the proxy server, but what happens when the proxy server needs to encrypt something with a key which at the time is inaccessible? The keys that are used by a principal to encrypt consists of both a symmetric key and a public-private-key pair. When both parties are logged in, the proxy uses their symmetric keys to encrypt the message. If Bob is currently logged out, it encrypts the message using his public key so that he can decrypt it using the corresponding private key when he logs in.
 
-How can a user read messages on the discussion board if they are encrypted by another user's keys? What about private messages, with suffers from the same case, as they will be encrypted with the sender's key? CryptDB solves these cases by letting developers use annotations in their schemas. 
-
-In multi-user mode the proxy server holds an encrypted table of the keys of all users.
-
-Database server, Proxy server and application considered untrusted. 
-
-\subsection{Something more?}
-
-As of the most recent versions of the CryptDB software, only single-user mode is supported. One may react to the fact that the developers has stopped maintaining such a quite regular and useful way of developing applications with multiple user's and interaction between users. Mylar \cite{mylar_homepage} is the team that is behind CryptDB's new project, where they have taken some of CryptDB's best features and created a 
-
-Todo:\\
-Annotations of SQL schemas.\\
-Key-chaining. Speaks for. Encrypts for.\\
-
-\subsection{Something more?}
-
-As of the most recent versions of the CryptDB software, only single-user mode is supported. One may react to the fact that the developers has stopped maintaining such a quite regular and useful way of developing applications with multiple user's and interaction between users. Mylar \cite{mylar_homepage} is the team that is behind CryptDB's new project, where they have taken some of CryptDB's best features and created a 
-
-Todo:\\
-Annotations of SQL schemas.\\
-Key-chaining. Speaks for. Encrypts for.\\
-
+As previously mentioned, the current version of CryptDB has only the option of developing single-mode applications. One may react to the fact that the developers has stopped maintaining such a regular and useful way of developing applications with multiple user's and interaction between users. However, Mylar \cite{mylar_homepage} creators of CryptDB's new project. Mylar addresses the threat of when the insecure proxy server is compromised by an attacker, and how to protect the data of the users in such events. During a proxy server in CryptDB, the only parties that are compromised are those who are currently logged in, where their keys are stored in the table at the proxy server.
 
 \section{SQL-Aware Encryption and the Onion Scheme}
 
@@ -77,7 +59,7 @@ CryptDB uses an encryption scheme called \emph{SQL-aware encryption} or \textit{
 
 As a scenario in order to describe the different operations and situations in CryptDB, assume a simple employee application with a table structure and some example records as shown in Table \ref{demoapp_table}. Our application is created in order to provide some insight in the salary distribution within our firm, with respect to age, number of years within the firm and employment division. EmplNum is the number associated with the employee in other systems and applications, and SSN is the Social Security Number of the employee used for creating pay checks and similar operations.
 
-\begin{table}[h]
+\begin{table}[H]
 \centering
 \begin{tabular}{| r | r | l | r | r | r | l |}
 \hline
@@ -91,7 +73,7 @@ As a scenario in order to describe the different operations and situations in Cr
  \hline
 
 \end{tabular}
-\caption{Employee\_table for a simple employee application with example records}
+\caption{Employee table for a simple employee application with example records}
 \label{demoapp_table}
 \end{table}
 
@@ -126,7 +108,15 @@ SELECT DISTINCT Division
 FROM employee_table;
 \end{verbatim}
 \noindent
-which returns \verb!'Engineering'!, \verb!'Marketing'! and \verb!'Management'!. As described, a deterministic scheme encrypts the same plaintext to the same ciphertext every time. By taking advantage of this, CryptDB is capable of iterating over the encrypted data and return a distinct selection of the different ciphertexts observed. For the encryption, DET uses a strong block ciphers, and either with 64-bit or 128-bit block size. If a value is larger than 128-bits, it leaks  prefix equality when used with AES \citep{CryptDB_Main_Paper}. In order to cope with leaking prefix equality, the authors have designed their own version of the CMC mode.
+which returns \verb!'Engineering'!, \verb!'Marketing'! and \verb!'Management'!. As described, a deterministic scheme encrypts the same plaintext to the same ciphertext every time. By taking advantage of this, CryptDB is capable of iterating over the encrypted data and return a distinct selection of the different ciphertexts observed. At the \gls{deterministic_onion} layer the \verb!WHERE! clause is also supported when running equality checks. An example usage is the query below, where the name, age and salary of all employees from the management division are returned
+
+\begin{verbatim}
+SELECT Name, Age, Salary
+FROM employee_table
+WHERE Division = 'Management';
+\end{verbatim}
+
+For the encryption, DET uses a strong block ciphers, and either with 64-bit or 128-bit block size. If a value is larger than 128-bits, it leaks  prefix equality when used with AES \citep{CryptDB_Main_Paper}. In order to cope with leaking prefix equality, the authors have designed their own version of the CMC mode.
 
 
 \subsection{Order-Preserving Encoding}
@@ -137,6 +127,8 @@ CryptDB uses a modified version the scheme proposed by Boldyreva et. al \citep{o
 
 
 Popa et al. has also proposed 
+
+DETTE SKAL JEG SKRIVE SØNDAG
 
 
 % Has not been implemented in CryptDB yet because of other priorities. CryptDB uses \cite{ope_cryptdb} for their OPE scheme. Random order-preserving injective function
@@ -173,12 +165,12 @@ FROM employee_table;
 \noindent
 Or extracting the total salary for each division by using the \verb!GROUP BY! clause
 
-
 \begin{verbatim}
 SELECT Division, SUM(Salary)
 FROM employee_table
 GROUP BY Division;
 \end{verbatim}
+
 Multiplication was not initially implemented, but has been implemented in some versions of CryptDB by an outside team using the El Gamal cryptosystem \cite{cryptdb_guidelines}. 
 
 
@@ -241,6 +233,9 @@ After performing the encryption layer adjustment, the proxy rewrites the query a
 Overview of the security aspects of CryptDB
 
 \section{Limitations}
+
+
+\gls{fhe} is nowhere near being practical yet, but CryptDB tries it best to be a somewhat practical \gls{he} scheme allowing a set of operations that they claim to be enough to support 99.5\% of all queries observed in a \gls{sql} trace from a production MySQL server \citep{CryptDB_Main_Paper}. 
 
 Data structures that are not supported:
 
