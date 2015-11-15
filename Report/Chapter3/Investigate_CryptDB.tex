@@ -51,11 +51,20 @@ CryptDB chains encryption keys used to encrypt columns or data items to the root
 
 Consider this case: Alice wants to send a private message to Bob, which means that the private message needs to be encrypted two times using both Alice and Bob's secret keys. Keys of users who are logged in are kept in a table at the proxy server, but what happens when the proxy server needs to encrypt something with a key which at the time is inaccessible? The keys that are used by a principal to encrypt consists of both a symmetric key and a public-private-key pair. When both parties are logged in, the proxy uses their symmetric keys to encrypt the message. If Bob is currently logged out, it encrypts the message using his public key so that he can decrypt it using the corresponding private key when he logs in.
 
-As previously mentioned, the current version of CryptDB has only the option of developing single-mode applications. One may react to the fact that the developers has stopped maintaining such a regular and useful way of developing applications with multiple user's and interaction between users. However, Mylar \cite{mylar_homepage} creators of CryptDB's new project. Mylar addresses the threat of when the insecure proxy server is compromised by an attacker, and how to protect the data of the users in such events. During a proxy server in CryptDB, the only parties that are compromised are those who are currently logged in, where their keys are stored in the table at the proxy server.
+As previously mentioned, the current version of CryptDB has only the option of developing single-mode applications. One may react to the fact that the developers has stopped maintaining such a useful way of developing applications with multiple user's and interaction between users. However, Mylar \cite{mylar_homepage} is the creators of CryptDB's new project. Mylar addresses the threat of when the insecure proxy server is compromised by an attacker, and how to protect the data of the users in such events. During a proxy server in CryptDB, the only parties that are compromised are those who are currently logged in, where their keys are stored in the table at the proxy server.
+
+
 
 \section{SQL-Aware Encryption and the Onion Scheme}
 
-CryptDB uses an encryption scheme called \emph{SQL-aware encryption} or \textit{onion encryption}. Basically, this is a collection of different encryption schemes, each providing different levels of security and computations to be executed. Data items stored using CryptDB are encrypted multiple times using these different schemes, or layers, of encryption. The result is a onion-like structure where the outer layers provide maximum security and low functionality, while the inner layers provide less security, but more functionality.
+\begin{wrapfigure}[19]{r}[1pt]{4cm}
+\centering
+\includegraphics[width=\linewidth]{encstack/enc_stack_ope.png}
+\caption{Ordering of the different encryption layers based on their security}
+\label{fig:enc_stack}
+\end{wrapfigure}
+
+CryptDB uses an encryption scheme called \emph{SQL-aware encryption} or \textit{onion encryption}. Basically, this is a collection of different encryption schemes, each providing different levels of security and computations to be executed. Data items stored using CryptDB are encrypted multiple times using these different schemes, or layers, of encryption. The result is a onion-like structure where the outer layers provide maximum security and low functionality, while the inner layers provide less security, but more functionality. Figure \ref{fig:enc_stack} shows the ordering of the different layers from most secure to least secure. Each layer will be explained throughout this section.
 
 As a scenario in order to describe the different operations and situations in CryptDB, assume a simple employee application with a table structure and some example records as shown in Table \ref{demoapp_table}. Our application is created in order to provide some insight in the salary distribution within our firm, with respect to age, number of years within the firm and employment division. EmplNum is the number associated with the employee in other systems and applications, and SSN is the Social Security Number of the employee used for creating pay checks and similar operations.
 
@@ -78,7 +87,9 @@ As a scenario in order to describe the different operations and situations in Cr
 \end{table}
 
 
+
 \subsection{Random}
+
 \Gls{random_onion} is the highest security level in CryptDB and provides the maximum security found in encryption scheme. It uses a strong block cipher such as Blowfish or \Gls{aes} in \Gls{cbc_mode} mode and a random initialization vector (IV) to ensure that the block cipher is probabilistic \citep{CryptDB_Main_Paper}. \Gls{random_onion}, being the maximum security level provided, does not allow any computation to be done on the encrypted data. In other terms, this level is a natural choice for sensitive data that are only meant to be read. When a block cipher is probabilistic, it has properties such that when encrypting the same message $m_1$ multiple times, the resulting ciphertexts are unequal. 
 
 For example, given two encryptions of the same plaintext $c_1 = E_k(m_1)$ and $c_2 = E_k(m_1)$, the resulting ciphertexts are $c_1$ and $c_2$ such that $c_1 \neq c_2$. Operations supported by this scheme are \verb!SELECT!, \verb!UPDATE!, \verb!DELETE! and \verb!INSERT!. It also supports altering an existing table by removing or adding columns using the \verb!ALTER! statement. In our sample application, the SSN would be the most natural thing to stay encrypted under \gls{random_onion} at all times, as there are not many natural operation to perform on such numbers. However, the other columns are not likely to be encrypted under \gls{random_onion} as it is likely that the application would want to perform some operations which demands a lower encryption level. As for an example, take the perhaps most natural query at this encryption level, the \verb!INSERT! statement
@@ -100,8 +111,39 @@ DELETE FROM employee_table;
 \end{verbatim}
 
 
+
+\subsection{Homomorphic Encryption}
+
+Another vital part of \Gls{sql} is the ability to perform addition and multiplication. For CryptDB to be able to perform these operations, it utilizes a \Gls{hom_onion} scheme. As previously described, homomorphic encryption is a technique that enables computation on encrypted data without decrypting it first. CryptDB uses Pailler multiplication \cite{Paillier} for enabling summation operations. If our application is in need for finding out the total sum of the salaries within the firm, we do something like this
+
+\begin{verbatim}
+SELECT SUM(Salary)
+FROM employee_table;
+\end{verbatim}
+
+\noindent
+Or extracting the total salary for each division by using the \verb!GROUP BY! clause
+
+\begin{verbatim}
+SELECT Division, SUM(Salary)
+FROM employee_table
+GROUP BY Division;
+\end{verbatim}
+
+\noindent
+Multiplication was not initially implemented, but has been implemented in some versions of CryptDB by an outside team using the El Gamal cryptosystem \cite{cryptdb_guidelines}. 
+
+
+
+\subsection{Search}
+
+In order to perform search for words in the encrypted texts, CryptDB has a scheme called SEARCH. This was an implementation of the cryptographic protocol suggested by Song et al. making it almost as secure as the \gls{random_onion} scheme \citep{CryptDB_Main_Paper}. The main idea is to split a text encrypted with SEARCH into individual keywords on a given delimiter specified by the application developer. Removal of duplicate keywords and randomly permute them are also added to enhance the security. When executing a search, the server would be given an encrypted token of the keyword, and would retrieve encrypted values matching the token. Originally, SEARCH could perform \texttt{LIKE} operations as other database systems, but in the most recent version of CryptDB's software it has been deprecated. 
+
+
+
 \subsection{Deterministic}
-Where \Gls{random_onion} allows no computation to be done on the encrypted data, the next layer does. \Gls{deterministic_onion} is an encryption scheme enabling the application to perform standard SQL operations such as equality checks, distinct, group by and count. By allowing these sorts of computation, the application leaks information to an adversary. In particular, it leaks which ciphertexts that decrypts to the same plaintext value. Following the previous example; if the scheme encrypted the message $m_1$ two times, the resulting ciphertexts $c_1$ and $c_2$ are such that $c_1 = c_2$. For our sample application, \Gls{deterministic_onion} would be the scheme used when allowing operations such as \verb!GROUP BY!, \verb!DISTINCT! and \verb!COUNT!. Continuing with our sample application, we now want to find out what types of departments that exists in our table
+
+As \Gls{random_onion} allows no computation to be done on the encrypted data and \gls{hom_onion} only allows addition, the next layer brings some more functionality to the toolbox. \Gls{deterministic_onion} is an encryption scheme enabling the application to perform standard SQL operations such as equality checks, distinct, group by and count. By allowing these sorts of computation, the application leaks information to an adversary. In particular, it leaks which ciphertexts that decrypts to the same plaintext value. Following the previous example; if the scheme encrypted the message $m_1$ two times, the resulting ciphertexts $c_1$ and $c_2$ are such that $c_1 = c_2$. For our sample application, \Gls{deterministic_onion} would be the scheme used when allowing operations such as \verb!GROUP BY!, \verb!DISTINCT! and \verb!COUNT!. Continuing with our sample application, we now want to find out what types of departments that exists in our table
 
 \begin{verbatim}
 SELECT DISTINCT Division
@@ -119,33 +161,20 @@ WHERE Division = 'Management';
 For the encryption, DET uses a strong block ciphers, and either with 64-bit or 128-bit block size. If a value is larger than 128-bits, it leaks  prefix equality when used with AES \citep{CryptDB_Main_Paper}. In order to cope with leaking prefix equality, the authors have designed their own version of the CMC mode.
 
 
+
 \subsection{Order-Preserving Encoding}
 
-Since \Gls{sql} also allows the user to compute on order relations between items, CryptDB introduces an \Gls{ope_onion} scheme \citep{CryptDB_Main_Paper}. This scheme is based on a requirement where the sort order of the ciphertext matches the sort-order of the corresponding decrypted plaintexts. It also requires that the scheme reveals no other information about the plaintexts, other than the respective order. This common operation in \Gls{sql} supports order comparison, which can be used for range checks, ranking, sorting, and extracting minimum and maximum values. 
+Since \Gls{sql} also allows the user to compute on order relations between items, CryptDB introduces an \Gls{ope_onion} scheme \citep{CryptDB_Main_Paper}. This scheme is based on a requirement where the sort order of the ciphertext matches the sort-order of the corresponding decrypted plaintexts. It also requires that the scheme reveals no other information about the plaintexts, other than the respective order. In \Gls{sql}, such an operation is used for order comparison, which are range checks, ranking, sorting, and extracting minimum and maximum values. 
 
-CryptDB uses a modified version the scheme proposed by Boldyreva et. al \citep{ope_cryptdb} as their OPE scheme, which is a random order-preserving injective function. An injective function is a one-to-one random mapping function that preserves the order of the elements. It uses a Hyper Geometric Distribution (HGD), and uses a lazily sampling to generate ciphertext elements from the set on demand.
+CryptDB uses a modified version the scheme proposed by Boldyreva et. al \citep{ope_cryptdb} as their OPE scheme, which is a random order-preserving injective function. An injective function is a one-to-one random mapping function that preserves the order of the elements. Since queries related to order consists of retrieving items between two values, or ranges related to one particular value, the encrypted values can be stored as binary trees at the server, ensuring logarithmic run-time \cite{ope_cryptdb}.
 
+\begin{figure}[h]
+	\includegraphics[scale=0.7]{one-to-one.png}
+	\caption{Order-preserving encryption of a set of integer values}
+	\label{fig:ope_function}
+\end{figure}
 
-Popa et al. has also proposed 
-
-DETTE SKAL JEG SKRIVE SØNDAG
-
-
-% Has not been implemented in CryptDB yet because of other priorities. CryptDB uses \cite{ope_cryptdb} for their OPE scheme. Random order-preserving injective function
-% the hypergeometric (HG) and negative hypergeometric (NHG) probability distributions
-% Uses a Hypergeometric Distribution.
-
-% Lazy, so it is not need to generate the whole range, but rather just an element when necessary. Lazy generates in range a->b with respective inverse
-
-%Popa et al. \cite{CryptDB_OPE_Encoding} introduces a scheme called \Gls{mOPE} where the main technique is mutable ciphertexts. Mutability (or malleability) is a cryptographic property allowing the transformation of one ciphertext into another. More formally, given a plaintext $m_1$, it is possible to transform it into a valid encryption $f(m_1)$ by using a valid function $f$ without further knowledge of $m_1$.
-%
-%\Gls{mOPE} uses a balanced binary tree for searching which contains encryptions of all the plaintext's values and a table of \Gls{ope_onion} encodings where the encoded value of a ciphertext is its path from the root to the particular node in the binary tree. If $y$ is greater than $x$, then $y$ will be located to the right of $x$ in the tree. It also uses an interactive protocol when inserting a value into the search tree, where the server and the client plays a query game. The client asks for the encrypted root node, decrypts it and determines whether the value to be inserted is smaller or larger than the root. It replies to the server with a $0$ or $1$, making the server traverse the tree to the left or right and replying with the next encrypted node. This little game continues until there are no child nodes. In order to avoid the tree being too deep, \Gls{mOPE} uses a tree-balancing transformation summary which describes operations (most of them split-and-merge operations) that are completely done by the server.
-%
-%The balancing procedure ensures that the height of the tree is bounded by $\log(N)$, where $N$ is the number of encrypted values. Because both client and server needs a shared understanding of the structure of the search tree, the client computes a Merkle hash of the root of the tree. A Merkle tree is a tree where every parent node is labelled with the hash of all of its children's labels \cite{Merkle}. By performing the Merkle hash, the client is able to check whether the server behaves maliciously or not (Malicious in this setting would be if the server performed other operations than the client requested) by comparing its own Merkle hash of the root with the one delivered by the server.
-
-
-The OPE layer is the encryption layer that adds the most functionality
-When searching for the persons in our imaginary firm that has a yearly salary over 500 000, the query uses the \verb!WHERE! clause and then performs an order check where it navigates down the binary three for items that has a salary larger than the requested value.
+Figure \ref{fig:ope_function} shows the order-preserving encryption of a set of integers, where no information is leaked, except for the order of the ciphertexts. When searching for the persons in our imaginary firm that has a yearly salary over 500 000, the query uses the \verb!WHERE! clause and then performs an order check where it navigates down the binary three for items that has a salary larger than the requested value.
 
 \begin{verbatim}
 SELECT Name, Salary
@@ -153,39 +182,43 @@ FROM employee_table
 WHERE Salary > 500000;
 \end{verbatim}
 
+Popa et al. have also proposed their own OPE scheme to go with CryptDB \cite{CryptDB_OPE_Encoding}, but due to other priorities, this scheme was never actually implemented into CryptDB's software.
 
-\subsection{Homomorphic Encryption}
-Another vital part of \Gls{sql} is the ability to perform addition and multiplication. For CryptDB to be able to perform these operations, it utilizes a \Gls{hom_onion} scheme. As previously described, homomorphic encryption is a technique that enables computation on encrypted data without decrypting it first. CryptDB uses Pailler multiplication \cite{Paillier} for enabling summation operations. If our application is in need for finding out the total sum of the salaries within the firm, we do something like this
-
-\begin{verbatim}
-SELECT SUM(Salary)
-FROM employee_table;
-\end{verbatim}
-
-\noindent
-Or extracting the total salary for each division by using the \verb!GROUP BY! clause
-
-\begin{verbatim}
-SELECT Division, SUM(Salary)
-FROM employee_table
-GROUP BY Division;
-\end{verbatim}
-
-Multiplication was not initially implemented, but has been implemented in some versions of CryptDB by an outside team using the El Gamal cryptosystem \cite{cryptdb_guidelines}. 
 
 
 \subsection{Equality Join and Order-Preserving Join}
+
 When it comes to joining columns, two cases are supported in CryptDB. The first is the regular equality join (EQ-JOIN) between two columns, and the other is range joins (OPE-JOIN) which involves order relation checks. Ideally, the proxy server should know in advance which columns that should be allowed to be joined in order to encrypt these column with the same key. Because of the key-chaining approach where each data item is encrypted with a new key, CryptDB is in need of a separate encryption scheme in order to compute joins in a safe manner.
 
-The authors \citep{CryptDB_Main_Paper} introduces a new cryptographic primitive for equality joins, \gls{join_adj}, which is a deterministic function. The idea is to let the proxy server adjust the encryption keys of columns in real-time, based on the observed query. By using this approach, CryptDB avoids the database server to compute joins on its own as attempt to learn about relations between different columns. When a join query is observed at the proxy, it sends an adjusted key to the database server enabling it to adjust the values in one of the two affected columns. When an adjustment has been done, the columns share the key until the proxy server issues a new adjustment key to either one of the columns.
+The authors \citep{CryptDB_Main_Paper} introduces a new cryptographic primitive for equality joins, \gls{join_adj}, which is a deterministic function. The idea is to let the proxy server adjust the encryption keys of columns in real-time, based on the observed query. By using this approach, CryptDB avoids the database server to compute joins on its own as attempt to learn about relations between different tables and columns. When a join query is observed at the proxy, it sends an adjusted key to the database server enabling it to adjust the values in one of the two affected columns. When an adjustment has been done, the columns share the key until the proxy server issues a new adjustment key to either one of the columns.
 
 The second case is the order-preserving join, which depends on the \gls{ope_onion} scheme previously described. The binary tree structure of the scheme makes in infeasible to use the same approach as EQ-JOIN. Therefore, CryptDB has a requirement that columns where such joins is applicable have to be declared by the application in beforehand and encrypted under the same key. If this measure has not been addressed, CryptDB will simply encrypt all columns with the same key.
 
+\begin{table}[H]
+\centering
+\begin{tabular}{| r | r | l | r | l | r |}
+\hline
+  Id & EmplNum & University & Graduated & Degree & AdjustedGPA* \\
+  int & int & varchar(255) & int & varchar(255) & int \\
+ \hline \hline
+ 1 & 42 & HiST & 1993 & B.Sc. & 319 \\
+ 2 & 1 & NTNU & 1971 & M.Sc. & 305 \\
+ 3 & 1337 & UiO & 2015 & M.Sc & 287 \\
+ 4 & 123 & NHH & 2009 & MBA & 392 \\
+ \hline
+\end{tabular}
+\caption{Educational table for the employee application. \emph{*Because of no support for floating values, the GPA is multiplied by 100 and rounded down.}}
+\label{tab:demoapp_education}
+\end{table}
 
-Example here: join on empl\_num
+Assume that along with the table of employees, there is also a table holding the employees educational information as seen in Table \ref{tab:demoapp_education}. By performing a join between our two tables on the shared employee number EmplNum, it is possible to extract information from the two combined tables.
 
-\subsection{Search}
-In order to perform search for words in the encrypted texts, CryptDB has a scheme called SEARCH. This was an implementation of the cryptographic protocol suggested by Song et al. making it almost as secure as the \gls{random_onion} scheme \citep{CryptDB_Main_Paper}. The main idea is to split a text encrypted with SEARCH into individual keywords on a given delimiter specified by the application developer. Removal of duplicate keywords and randomly permute them are also added to enhance the security. When executing a search, the server would be given an encrypted token of the keyword, and would retrieve encrypted values matching the token. Originally, SEARCH could perform \texttt{LIKE} operations as other database systems, but in the most recent version of CryptDB's software it has been deprecated. 
+\begin{verbatim}
+SELECT Name, Division, University, Graduated
+FROM employee_table t1
+JOIN employee_education t2
+ON t1.EmplNum = t2.EmplNum;
+\end{verbatim}
 
 \subsection{Wrapping the Layers}
 
@@ -218,7 +251,6 @@ Have in mind that all data items at this point is encrypted with \gls{random_oni
 	\label{ope_layer_adjustment}
 \end{figure}
 
-\newpage
 After performing the encryption layer adjustment, the proxy rewrites the query as shown in Figure \ref{rewritten_query}. As described, each of the columns are anonymized upon the creation of a table. The proxy server keeps table schemes in order to substitute the different parts of the query so it matches the encrypted columns in the database. For the record, 'test' is the name of the current database.  
 
 \begin{figure}[h]
@@ -227,6 +259,9 @@ After performing the encryption layer adjustment, the proxy rewrites the query a
 	\label{rewritten_query}
 \end{figure}
 
+When a layer has been stripped off, it does not automatically get re-encrypted unless the developer has specified such actions. For example if an irregular query forces the encryption level lower than necessary. For applications running in single-mode, the encryption layers will over time be in a stable state supporting the relevant queries. But, for multi-mode applications, the developer decides the functionality, hence the types of queries that the application can produce. Therefore, it is possible to start application at the correct layers based on the wanted functionality, and the proxy does not perform any encryption level adjustment at all.
+
+
 
 \section{Security}
 
@@ -234,12 +269,52 @@ Overview of the security aspects of CryptDB
 
 \section{Limitations}
 
+\gls{fhe} is nowhere near being practical yet, but CryptDB tries it best to be a somewhat practical \gls{he} scheme allowing a set of operations that they claim to be enough to support 99.5\% of all queries observed in a \gls{sql} trace from a production MySQL server \citep{CryptDB_Main_Paper}. Although, there are multiple fairly trivial data types that CryptDB does not support.
 
-\gls{fhe} is nowhere near being practical yet, but CryptDB tries it best to be a somewhat practical \gls{he} scheme allowing a set of operations that they claim to be enough to support 99.5\% of all queries observed in a \gls{sql} trace from a production MySQL server \citep{CryptDB_Main_Paper}. 
+For example, all fixed-point types and floating-point types are not supported, meaning that computing on decimal values are difficult for the application to perform. In Table \ref{tab:demoapp_education}, our GPA-column, where the most natural data type would be decimal, has been adjusted to integer by the application. One way to cope with the limitations, is to let the developer be responsible to transform a data type that is not supported into a supported one, and handle the inverse transformation  upon receiving an encrypted result. Another option is to let CryptDB exclusively store such values as text with \gls{random_onion} or \gls{deterministic_onion} encryption, and let client perform operations on such data types. As you probably understand, the last option is not desirable, as it is quite the opposite the goal when using such schemes as CryptDB. 
 
-Data structures that are not supported:
+Another data type that is not supported is those related to date and time, namely Timestamp, Date, Time, DateTime, Year and NewDate. In other terms, if your application needs to encrypt dates and at the same time be able to compute on them, you are in bad luck. The authors suggestion is to encrypt each part of a data in separate columns, and perform the computations on those columns instead of a composite date column. While being a rather complicated approach, it works surprisingly well for our demo application. Assume that we add some more columns to Table \ref{demoapp_table} with the precise date of birth in stead of age as seen in Table \ref{tab:empl_tab_mod}.
 
-Float, Double, Timestamp, Date, Time, DateTime, Year, Newdate, Bit, Enum, Set, Geometry
+\begin{table}[H]
+\centering
+\begin{tabular}{| c | r | r | r | c |}
+\hline
+  ... & Day & Month & Year & ... \\
+  ... & int & int & int & ... \\
+ \hline \hline
+ ... & 24 & 12 & 1973  & ... \\
+ ... & 17 & 05 & 1946 & ... \\
+ ... & 31 & 12 & 1991 & ... \\
+ ... & 11 & 11 & 1979  & ... \\
+ \hline
+\end{tabular}
+\caption{Additional columns to the employee table with date properties stored in separate columns}
+\label{tab:empl_tab_mod}
+\end{table}
+
+Consider 17th of May 1980 as our special date, and that we want all newer dates. In a regular database system supporting date related data types, our query would be something like this on a concatenated date of birth column
+
+\begin{verbatim}
+SELECT *
+FROM employee_table
+WHERE date_of_birth > '17/5/1980'
+ORDER BY date_of_birth ASC;
+\end{verbatim}
+
+As for CryptDB where such queries do not return anything meaningful, we need to modify our approach as seen below
+
+\begin{verbatim}
+
+SELECT *
+FROM employee_table
+WHERE (year >= 1980 and month >= 5 and day >= 17) OR (year > 1980)
+ORDER BY year ASC, month ASC, day ASC;
+
+\end{verbatim}
+
+
+However, it creates a lot of overhead when dates needs to be encrypted in three separate columns, making the scheme of a table somewhat complicated. 
+
 
 Nested queries
 

@@ -18,45 +18,45 @@ Warning--to sort, need author or key in docker_homepage
 Warning--empty publisher in ope_cryptdb
 Warning--empty publisher in damgaard2012secure
 Warning--empty school in Gentry_thesis
-You've used 15 entries,
+You've used 16 entries,
             2253 wiz_defined-function locations,
-            613 strings with 6340 characters,
-and the built_in function-call counts, 5010 in all, are:
-= -- 505
-> -- 151
+            620 strings with 6567 characters,
+and the built_in function-call counts, 5488 in all, are:
+= -- 553
+> -- 168
 < -- 0
-+ -- 67
-- -- 50
-* -- 305
-:= -- 716
-add.period$ -- 47
-call.type$ -- 15
-change.case$ -- 69
++ -- 75
+- -- 56
+* -- 336
+:= -- 781
+add.period$ -- 50
+call.type$ -- 16
+change.case$ -- 75
 chr.to.int$ -- 0
-cite$ -- 22
-duplicate$ -- 226
-empty$ -- 478
-format.name$ -- 50
-if$ -- 1132
+cite$ -- 23
+duplicate$ -- 250
+empty$ -- 520
+format.name$ -- 56
+if$ -- 1241
 int.to.chr$ -- 0
-int.to.str$ -- 15
-missing$ -- 9
-newline$ -- 78
-num.names$ -- 22
-pop$ -- 126
+int.to.str$ -- 16
+missing$ -- 10
+newline$ -- 83
+num.names$ -- 24
+pop$ -- 136
 preamble$ -- 1
-purify$ -- 55
+purify$ -- 60
 quote$ -- 0
-skip$ -- 168
+skip$ -- 187
 stack$ -- 0
-substring$ -- 347
-swap$ -- 76
+substring$ -- 385
+swap$ -- 86
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 60
+type$ -- 64
 warning$ -- 7
-while$ -- 46
-width$ -- 17
-write$ -- 150
+while$ -- 51
+width$ -- 18
+write$ -- 160
 (There were 7 warnings)
