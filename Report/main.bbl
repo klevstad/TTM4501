@@ -58,12 +58,23 @@ Mylar -{ MIT}.
 \newblock In {\em Proceedings of the 3rd ACM workshop on Cloud computing
   security workshop\/} (2011), pp.~113--124.
 
+\bibitem{microsoft_cryptdb}
+{\sc Naveed, M., Kamara, S., and Wright, C.~V.}
+\newblock Inference attacks on property-preserving encrypted databases.
+\newblock In {\em Proceedings of the 22Nd ACM SIGSAC Conference on Computer and
+  Communications Security\/} (2015), pp.~644--655.
+
 \bibitem{Paillier}
 {\sc Paillier, P.}
 \newblock Public-key {C}ryptosystems {B}ased on {C}omposite {D}egree
   {R}esiduosity {C}lasses.
 \newblock In {\em Proceedings of the 17th International Conference on Theory
   and Application of Cryptographic Techniques\/} (1999), pp.~223--238.
+
+\bibitem{popa_thesis}
+{\sc Popa, R.~A.}
+\newblock {\em Building practical systems that compute on encrypted data}.
+\newblock PhD thesis, Massachusetts Institute of Technology, 2014.
 
 \bibitem{CryptDB_OPE_Encoding}
 {\sc Popa, R.~A., Li, F.~H., and Zeldovich, N.}

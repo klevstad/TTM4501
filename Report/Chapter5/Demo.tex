@@ -5,7 +5,7 @@ Although CryptDB is mainly a proof of concept rather than a commercial software,
 
 \section{Installation of CryptDB's Software}
 
-CryptDB comes as a software available through MIT, and can be downloaded using the version control system Git. As the creators has moved on to other projects, the source code has not been maintained since 2014, and is currently only tested on Ubuntu 12.04 and Ubuntu 13.04. During the installation of CryptDB, some issues has been encountered. Since CryptDB is only tested with said Ubuntu versions, developers should install the software on one of the two tested Ubuntu versions. This often involves running some sort of \gls{vm} in some \gls{vmm}, which is very inconvenient when developing applications that should be able to run regardless of operating system and environment. When working inside a \gls{vm} installing and working with software that is at best ready for alpha testing, you better watch your steps. 
+CryptDB comes as a software available through MIT, and can be downloaded using the version control system Git. As the creators has moved on to other projects, the source code has not been maintained since 2014, and is currently only tested on Ubuntu 12.04 and Ubuntu 13.04. During the installation of CryptDB, some issues has been encountered. Since CryptDB is only tested with said Ubuntu versions, the natural approach would be to install the software on one of the two Ubuntu versions. This often involves running some sort of \gls{vm} in some \gls{vmm}, which is very inconvenient when developing applications that should be able to run regardless of operating system and environment. When working inside a \gls{vm} installing and working with software that is at best ready for alpha testing, you better watch your steps. 
 
 \subsection{Docker to the Rescue}
 
@@ -15,10 +15,12 @@ CryptDB comes as a software available through MIT, and can be downloaded using t
 %\caption{Docker}
 %\label{fig:docker}
 %\end{wrapfigure}
-Because of the presented reasons, some of the work related to this project has been to detach CryptDB from such requirements and providing a workable environment regardless of operating system which is easy to reboot if one where to "step on the wrong files". Docker \cite{docker_homepage} is an open-source software allowing programs to be wrapped up in \emph{containers}. Containers are complete file systems containing every piece of code, 
-library and dependency the program need to run properly, which runs directly on the host OS without the need of \gls{vmm} and Guest OSs. After a container is built, it can be shipped and run in other environments such as Windows, OS X and Linux without issues.
+Because of the presented reasons, some of the work related to this project has been to detach CryptDB from such requirements and providing a workable environment regardless of operating system which is easy to reboot if one were to "step on the wrong files". Docker \cite{docker_homepage} is an open-source software allowing programs to be wrapped up in \emph{containers}. Containers are complete file systems containing every piece of code, 
+library and dependency the program need to run properly, which runs directly on the host OS without the need of a \gls{vmm} and Guest OSs. After a container is built, it can be shipped and run in other environments such as Windows, OS X and Linux without issues or adjustments.
 
-A thorough guide for installing CryptDB can be found at \url{https://github.com/klevstad/CryptDB_Docker}
+\subsection{Installing CryptDB using Docker}
+
+A guide to installing and setup of CryptDB's database and proxy server can be found in Appendix \ref{app:setup} along with a small demonstration of the software as presented in Appendix \ref{app:playaround}.
 
 \section{A Small Demo Application}
 

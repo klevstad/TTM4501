@@ -7,19 +7,27 @@ This chapter will cover the cryptographic background of the necessary components
 
 \section{Symmetric Encryption}
 
-Symmetric key encryption is, perhaps, the most trivial type of encryption where the sender encrypts the data with a secret key that the sender and receiver has agreed upon in advance. When receiving data, the receiver uses the pre-shared secret key in order to decrypt the data. In a more formal matter, symmetric key encryption is usually used either with a block cipher(which encrypts messages in chunks of data) or a stream cipher (which encrypts data bit-by-bit). The scheme consists of three algorithms, $KeyGen$, $Enc$ and $Dec$.
+Symmetric key encryption is, perhaps, the most intuitive type of encryption, where the sender encrypts the data with a secret key that the sender and receiver has agreed upon in advance. When receiving data, the receiver uses the pre-shared secret key in order to decrypt the data. In a more formal matter, symmetric key encryption is usually used either with a block cipher(which encrypts messages in chunks of data) or a stream cipher (which encrypts data bit-by-bit). The scheme usually consist of three algorithms, $KeyGen$, $Enc$ and $Dec$.
 
 $KeyGen$ is the algorithm that generates the secret key $k_s$ used for encryption and decryption, $Enc_k$ encrypts the data with the secret key, and $Dec_k$ decrypts it using the same secret key. One of the major drawbacks with symmetric key cryptography is that the secret key $k_s$ needs to be shared between the parties that are communicating. If an adversary obtains the secret key, say that one of the parties stored it on a piece of paper that was misplaced and lost, the whole communication channel would be compromised as the adversary could easily decrypt the data.
+
+
+% Why are we talking about symmetric encryption?
 
 \section{Asymmetric Encryption}
 
 In contrast to symmetric key encryption, asymmetric key encryption does not depend on a pre-shared secret key. Asymmetric key encryption, or Public-Key Encryption, is based upon the fact that some mathematical problems are considered \emph{hard}, such as the integer factorization, discrete logarithms and elliptic curves. By computing a key-pair consisting of a public key and a private key, two users are able to exchange keys over a public channel without worrying about their secret keys being compromised. The public key is used for encrypting data sent to the user, and the private key is used to decrypt received data that is encrypted with said public key. Two of the most recognized public-key cryptosystems are \gls{rsa}, which relies of the integer factorization problem, and El Gamal, which relies on the discrete logarithms problem. In addition to secure communication between multiple parties, public key cryptography is also applied to create digital signatures, which provides authentication and data integrity.
 
+% Why are we talking about asymmetric encryption?
+
 \section{Homomorphic Encryption}
 
-We love to describe encryption as safes where we store our data, then secures it with one or more locks, and hide the secret key. Without the secret key, the data is securely stored inside the safe. Whenever we need our data, we take the hidden key out from its hideout and opens all the locks of the safe, where the data is as intact as we left it. The, perhaps, holiest grail of all the holy grails in cryptography is called \emph{homomorphic encryption}. This is a special case of encryption where operations on the encrypted data is possible without decrypting it first, or in the perspective of our locked safe: Modify the data on the inside of the safe without ever unlocking it.
+We love to describe encryption as safes where we store our data, then secures it with one or more locks, and hide the secret key. Without the secret key, the data is securely stored inside the safe. Whenever we need our data, we take the hidden key out from its hideout and opens all the locks of the safe, where the data is as intact as we left it. The, perhaps, holiest of all the holy grails in cryptography is called \emph{homomorphic encryption}. This is a special case of encryption where operations on the encrypted data is possible without decrypting it first, or in the perspective of our locked safe: Modify the data on the inside of the safe without ever unlocking it.
 
-Regular \gls{pke} schemes consists of three algorithms, namely a key generation algorithm (\texttt{KeyGen}), an encryption algorithm (\texttt{Enc}) and a decryption algorithm (\texttt{Dec}). \gls{he} schemes adds another algorithm to the toolbox, an evaluation algorithm (\texttt{Eval}), where
+Regular \gls{pke} schemes consists of three algorithms, namely a key generation algorithm (\texttt{KeyGen}), an encryption algorithm (\texttt{Enc}) and a decryption algorithm (\texttt{Dec}). \gls{he} schemes adds another algorithm to the toolbox, an evaluation algorithm (\texttt{Eval}). Given a well formed public key $p_k$, a boolean circuit $C$ and 
+
+
+% More informal
 
 \begin{theorem}[{\cite{damgaard2012secure}}]
 
@@ -32,10 +40,10 @@ For \gls{phe} schemes, $Eval$ will be associated to a set of permitted functions
 \section{Fully Homomorphic Encryption}
 
 \Gls{fhe}, which has no restrictions to what types of operations that can be performed on the encrypted data, was first suggested in 1978 by Rivest, Adleman, and Dertouzos \cite{rivest1978data}. At this point in time, researchers did not have any secure scheme for using these ideas. More importantly, there were not many use cases driving the need of such schemes. It has therefore been a slightly displaced and forgotten grail until 2009,
-when Gentry presented the first \gls{fhe} scheme based on lattices \cite{Gentry_first_lattices}, and a year later another scheme using a \emph{bootstrappable} approach based on asymmetric encryption \citep{Gentry_computing_arb_func_enc_data}. Nearly all modern \gls{fhe} schemes are based on this bootstrappable concept using Gentry's blueprints. 
+when Gentry presented the first \gls{fhe} scheme based on lattices \cite{Gentry_first_lattices}, and a year later another scheme using a \emph{bootstrappable} approach \citep{Gentry_computing_arb_func_enc_data}. Nearly all modern \gls{fhe} schemes are based on this bootstrappable concept using Gentry's blueprints. 
 
 % Komme inn på noise
-As mentioned in the previous section, a homomorphic operation creates noise when executed. Multiple operations adds more noise which may change the decrypted result beyond the recognizable. But what if we had a scheme that was able to reduce the noise generated by such operations? Boostrapping involves to encrypt the secret key $sk$ is under its corresponding public key $pk$ and added to a modified encryption algorithm, $Recrypt(pk_{i+1}, D_{\epsilon}, \overline{sk_i}, c_i)$. This basically enables the algorithm to decrypt the ciphertext $c_i$ taken as input internally while being encrypted under the new public key $pk_{i+1}$. $Recrypt$ returns a \emph{freshly} created ciphertext $c_{i+1}$ which is less noise than the original $c_1$ ciphertext to continue to perform homomorphic operations on.
+As mentioned in the section above, a homomorphic operation creates noise when executed. Multiple operations adds more noise which may change the decrypted result beyond the recognizable. But what if we had a scheme that was able to reduce the noise generated by such operations? Boostrapping involves encrypting the secret key $sk$ under its corresponding public key $pk$ and added to a modified encryption algorithm, $Recrypt(pk_{i+1}, D_{\epsilon}, \overline{sk_i}, c_i)$. This basically enables the algorithm to decrypt the ciphertext $c_i$ taken as input internally while being encrypted under the new public key $pk_{i+1}$. $Recrypt$ returns a \emph{freshly} created ciphertext $c_{i+1}$ which is less noise than the original $c_1$ ciphertext to continue to perform homomorphic operations on.
 
 
 Equation \ref{enc_m} encrypts the message $m$ under the public key $pk_1$ as most asymmetric encryption schemes does, in order to obtain the ciphertext $c_1$. So far, nothing we have not seen before. Now, the secret key $sk_1$ from the public-key-pair $(pk_1,sk_1)$ is encrypted using a new, fresh public-key pair $(pk_2, sk_2)$ as seen in Equation \ref{enc_sk}. By doing so, the algorithm enables $Eval$ to later on decrypt $c_1$ using $sk_1$ while under the encryption of $pk_2$.
@@ -72,11 +80,10 @@ c_1' = Eval(pk_2, D_{\epsilon}, \overline{sk_1}, \overline{c_1})
 
 
 
-When allowing the encryption function to handle its own decryption function at the same time, Gentry showed that the noise added by the homomorphic operations was less than the noise removed by the additional decryption \cite{Gentry_computing_arb_func_enc_data}, and the breakthrough was made in hunt for a fully homomorphic encryption scheme. While Gentry's system is great in theory, it has been shown that creating \gls{fhe} schemes is practical hard. However, some other cryptographic schemes holds different types of homomorphic properties which when combined can provide different homomorphic operations. Addition is, for example, a homomorphic property of the Pailler cryptosystem \citep{Paillier}. Pailler is originally a trapdoor mechanism based on the Composite Residuosity Class Problem which conveniently has the cryptographic property such that \[ENC_k(x) * ENC_k(y) = ENC_k(x + y)\]
+When allowing the encryption function to handle its own decryption function at the same time, Gentry showed that the noise added by the homomorphic operations was less than the noise removed by the additional decryption \cite{Gentry_computing_arb_func_enc_data}, and the breakthrough was made in hunt for a fully homomorphic encryption scheme. While Gentry's system is great in theory, it has been shown that creating \gls{fhe} schemes is hard in practice. However, some other cryptographic schemes holds different types of homomorphic properties which when combined can provide different homomorphic operations. Addition is, for example, a homomorphic property of the Pailler cryptosystem \citep{Paillier}. Pailler is originally a trapdoor mechanism based on the Composite Residuosity Class Problem which conveniently has the cryptographic property such that \[ENC_k(x) * ENC_k(y) = ENC_k(x + y)\]
 
-Another practical cryptosystem providing a similar property, is the ElGamal cryptosystem \cite{elgamal}. While originally being a cryptosystem used for encryption, it has the cryptographic property shown below, which enables it to perform homomorphic multiplications if used correctly.  \[ENC_k(x) * ENC_k(y) = ENC(x * y)\]
+Another practical cryptosystem providing a similar property, is the ElGamal cryptosystem \cite{elgamal}. Along with being an asymmetric cryptosystem , it has the cryptographic property shown below, which enables it to perform homomorphic multiplications if used correctly.  \[ENC_k(x) * ENC_k(y) = ENC(x * y)\]
 
-\section{Searchable Encryption}
 
 \section{Database Security}
 \label{chp:database_Security}

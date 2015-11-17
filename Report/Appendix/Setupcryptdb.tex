@@ -1,0 +1,91 @@
+\chapter{Appendix}
+\label{chp:appendix}
+
+\section{Setup CryptDB Using Docker}
+\label{app:setup}
+
+\begin{enumerate}
+\item Make sure to have Docker installed. Docker can be installed by following the procedure presented at \url{http://docs.docker.com/v1.8/installation/} depending on your operating system. For operating systems other than Linux, Docker is available by installing the Docker Toolbox.
+
+\noindent
+Note: For readers running OS X or Windows, remove the 'sudo' part of the commands in this setup.
+
+\item Create a folder for your project and open a terminal window while standing in your new folder.
+
+\item Clone the github project by running
+
+\verb!git clone https://github.com/klevstad/CryptDB_Docker.git!
+
+\item Inside the cloned project, navigate to the folder containing the file called \verb!Dockerfile!.
+
+\item Build a docker image by running the command below in your terminal window. This will download and install the CryptDB software along with MySQL and a small script for running the CryptDB proxy server.
+
+Command:
+
+\verb!sudo docker build -t name-of-image:version .!
+
+Example usage:
+
+\verb!sudo docker build -t cryptdb:v1 .!
+
+\item After successfully building the docker image, open the Docker Toolbox software if running OS X or Windows. This will open a command line tool that will connect you to your internal Docker machine. All Docker commands must be executed from a terminal windows started through the Docker Toolbox software. If running Linux, you can ignore this step.
+
+\item Run a Docker container based on the previously built image by running the command below. This will create an independent container with the CryptDB software and can easily be started and stopped, or destroyed if necessary. The use of the $-p$ flag indicates what the container's incoming ports should be mapped to on the inside of the container. $-d$ tells Docker to run the container in the background, and $-e$ is used to inject the MYSQL root password into the MYSQL server running inside the container.
+
+Command:
+
+\verb!sudo docker run -d --name name-of-container -p port-in:port-out!
+
+\verb!-p port-in:port-out -e MYSQL_ROOT_PASSWORD='mypassword'!
+
+\verb!name-of-image:version!
+
+Example usage:
+
+\verb!sudo docker run -d --name cryptdb -p 3306:3306 -p 3307:3307!
+
+\verb!-e MYSQL_ROOT_PASSWORD='letmein' cryptdb:v1!
+
+\item For entering the Docker container, use the command below.
+
+Command:
+
+\verb!sudo docker exec -it name-of-container bash!
+
+Example:
+
+\verb!sudo docker exec -it cryptdb bash!
+
+\end{enumerate}
+
+
+\section{Play Around With CryptDB}
+\label{app:playaround}
+To play around with CryptDB without any application running, use the following approach using three terminal windows.
+
+\subsection{Terminal 1: The Proxy Server}
+This subsection shows how to start the proxy server that will intercept and rewrite queries sent to the database. After entering the container using the command from Step 8 in \ref{app:setup}, type the following command into the terminal window:
+
+\verb!/opt/cryptdb.sh start!
+
+\noindent
+This starts the CryptDB proxy server. For stopping the server, abort using \verb!CTRL+C! and run
+
+\verb!/opt/cryptdb.sh stop!
+
+
+\subsection{Terminal 2: The CryptDB Client}
+This subsection shows how to start a client window connected to the proxy server. In a new Docker terminal window, enter the container using the command from Step 8 in \ref{app:setup} and type the following command into the terminal window:
+
+\verb!mysql -u root -pletmein -h 127.0.0.1 -P 3307!
+
+\noindent
+Create a database, use it, create tables, etc. Observe that the proxy server intercepts the queries and rewrites them. Also, the data is in plaintext and readable for the logged-in user. \verb!-P 3307! instructs the client to connect to the CryptDB proxy server instead of the mysql database.
+
+\subsection{Terminal 3: The Snooping Database Administrator}
+This subsection shows how the data in the database stays encrypted when logging in as a regular database administrator without going through the proxy server. Enter the container using the command from Step 8 in \ref{app:setup} and type the following command into the terminal window:
+
+\verb!mysql -u root -pletmein -h 127.0.0.1!
+
+\noindent
+Snoop around in the database. Observe that all the data is encrypted and impossible for you to decrypt or make any sense out of. The \verb!-P! flag is omitted in this example as MySQL will connect to port 3306 at default.

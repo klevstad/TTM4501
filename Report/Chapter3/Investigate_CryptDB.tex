@@ -8,7 +8,7 @@ This chapter covers the overview of CryptDB, starting with the system architectu
 CryptDB's architecture (Figure \ref{cryptdb_plain}) is divided into two pieces, a proxy server and a database server. The proxy server is an intermediate server placed between the application server (used by the application to manage key set-up and interacting with clients) and the database server. The proxy server's purpose is to intercept queries going from the application to the database and anonymize the information of the query, as well as decrypting results going from the database server to the user's application. By doing so, it eliminates the possibility of eavesdropping attackers to obtain any sensible information. %Kommentere at Microsoft hevder å ha brukt freq attack her.
 
 \begin{figure}[H]
-	\includegraphics[scale=0.6]{CryptDB_Plain.png}
+	\includegraphics[scale=0.58]{CryptDB_Plain.png}
 	\caption{System architecture of CryptDB interacting with a client application}
 	\label{cryptdb_plain}
 \end{figure}
@@ -47,15 +47,17 @@ CREATE TABLE privmsgs_to (
 \caption{Use of policy annotations when creating multi-user applications}
 \label{annotations}
 \end{table}
+
 CryptDB chains encryption keys used to encrypt columns or data items to the root key, which is the user's password. The \verb!SPEAKS_FOR! annotation gives a principal access to all the keys that the principal it speaks for has access to. For example in Table \ref{annotations}, both the user sending the private message and the user receiving it, speaks for the principal type \verb!msg! and thereby has access to all the keys of the \verb!msg! entity. This basically means that the secret key of the message is encrypted two times, one time with the sender's key and one time with the receiver's key.
 
-Consider this case: Alice wants to send a private message to Bob, which means that the private message needs to be encrypted two times using both Alice and Bob's secret keys. Keys of users who are logged in are kept in a table at the proxy server, but what happens when the proxy server needs to encrypt something with a key which at the time is inaccessible? The keys that are used by a principal to encrypt consists of both a symmetric key and a public-private-key pair. When both parties are logged in, the proxy uses their symmetric keys to encrypt the message. If Bob is currently logged out, it encrypts the message using his public key so that he can decrypt it using the corresponding private key when he logs in.
+Consider this case: Alice wants to send a private message to Bob, which means that the private message needs to be encrypted two times using both Alice and Bob's secret keys. Keys of users who are logged in are kept in a table at the proxy server, but what happens when the proxy server needs to encrypt something with a key which at the time is inaccessible? The keys that are used by a principal to encrypt consists of both a symmetric key and a public-private-key pair. When both parties are logged in, the proxy uses their symmetric keys to encrypt the message. If Bob is currently logged out, the message is encrypted using his public key so that he can decrypt it using the corresponding private key when he logs in.
 
-As previously mentioned, the current version of CryptDB has only the option of developing single-mode applications. One may react to the fact that the developers has stopped maintaining such a useful way of developing applications with multiple user's and interaction between users. However, Mylar \cite{mylar_homepage} is the creators of CryptDB's new project. Mylar addresses the threat of when the insecure proxy server is compromised by an attacker, and how to protect the data of the users in such events. During a proxy server in CryptDB, the only parties that are compromised are those who are currently logged in, where their keys are stored in the table at the proxy server.
+As previously mentioned, the current version of CryptDB has only the option of developing single-mode applications. One may react to the fact that the developers has stopped maintaining such a useful way of developing applications with multiple user's and interaction between users. However, Mylar \cite{mylar_homepage} is the creators of CryptDB's new project. Mylar addresses the threat of when the insecure proxy server is compromised by an attacker, and how to protect the data of the users in such events. During an attack on the proxy server in CryptDB, the only parties that are compromised are those who are currently logged in, where their keys are stored at the proxy server.
 
 
 
 \section{SQL-Aware Encryption and the Onion Scheme}
+\label{sec:sqlaware}
 
 \begin{wrapfigure}[19]{r}[1pt]{4cm}
 \centering
@@ -142,6 +144,7 @@ In order to perform search for words in the encrypted texts, CryptDB has a schem
 
 
 \subsection{Deterministic}
+\label{sec:det}
 
 As \Gls{random_onion} allows no computation to be done on the encrypted data and \gls{hom_onion} only allows addition, the next layer brings some more functionality to the toolbox. \Gls{deterministic_onion} is an encryption scheme enabling the application to perform standard SQL operations such as equality checks, distinct, group by and count. By allowing these sorts of computation, the application leaks information to an adversary. In particular, it leaks which ciphertexts that decrypts to the same plaintext value. Following the previous example; if the scheme encrypted the message $m_1$ two times, the resulting ciphertexts $c_1$ and $c_2$ are such that $c_1 = c_2$. For our sample application, \Gls{deterministic_onion} would be the scheme used when allowing operations such as \verb!GROUP BY!, \verb!DISTINCT! and \verb!COUNT!. Continuing with our sample application, we now want to find out what types of departments that exists in our table
 
@@ -163,6 +166,7 @@ For the encryption, DET uses a strong block ciphers, and either with 64-bit or 1
 
 
 \subsection{Order-Preserving Encoding}
+\label{sec:ope}
 
 Since \Gls{sql} also allows the user to compute on order relations between items, CryptDB introduces an \Gls{ope_onion} scheme \citep{CryptDB_Main_Paper}. This scheme is based on a requirement where the sort order of the ciphertext matches the sort-order of the corresponding decrypted plaintexts. It also requires that the scheme reveals no other information about the plaintexts, other than the respective order. In \Gls{sql}, such an operation is used for order comparison, which are range checks, ranking, sorting, and extracting minimum and maximum values. 
 
@@ -259,13 +263,20 @@ After performing the encryption layer adjustment, the proxy rewrites the query a
 	\label{rewritten_query}
 \end{figure}
 
-When a layer has been stripped off, it does not automatically get re-encrypted unless the developer has specified such actions. For example if an irregular query forces the encryption level lower than necessary. For applications running in single-mode, the encryption layers will over time be in a stable state supporting the relevant queries. But, for multi-mode applications, the developer decides the functionality, hence the types of queries that the application can produce. Therefore, it is possible to start application at the correct layers based on the wanted functionality, and the proxy does not perform any encryption level adjustment at all.
+When a layer has been stripped off, it does not automatically get re-encrypted unless the developer has specified such actions. For example, if an irregular query forces the encryption level lower than necessary. For applications running in single-mode, the encryption layers will over time be in a stable state supporting the relevant queries. But, for multi-mode applications, the developer decides the functionality, hence the types of queries that the application can produce. Therefore, it is possible to start application at the correct layers based on the wanted functionality, and the proxy does not perform any encryption level adjustment at all.
 
 
 
 \section{Security}
 
 Overview of the security aspects of CryptDB
+
+Another importance related to annotations is the use of the \verb!SENSITIVE! annotation. 
+
+IF UNIQUE: Use DET
+IF NOT UNIQUE: Use SEARCH
+
+Understreke viktigheten av å markere felter som sensitive. Begrensning på hva slags  operasjoner som kan utføres.
 
 \section{Limitations}
 
@@ -292,10 +303,10 @@ Another data type that is not supported is those related to date and time, namel
 \label{tab:empl_tab_mod}
 \end{table}
 
-Consider 17th of May 1980 as our special date, and that we want all newer dates. In a regular database system supporting date related data types, our query would be something like this on a concatenated date of birth column
+Consider 17th of May 1980 as our test date, and that we want all employees born after the test date. In a regular database system supporting date related data types, our query would be something like this on a concatenated date of birth column
 
 \begin{verbatim}
-SELECT *
+SELECT Name, Day, Month, Year
 FROM employee_table
 WHERE date_of_birth > '17/5/1980'
 ORDER BY date_of_birth ASC;
@@ -305,9 +316,11 @@ As for CryptDB where such queries do not return anything meaningful, we need to 
 
 \begin{verbatim}
 
-SELECT *
+SELECT Name, Day, Month, Year
 FROM employee_table
-WHERE (year >= 1980 and month >= 5 and day >= 17) OR (year > 1980)
+WHERE (year = 1980 and month = 5 and day > 17)
+OR (year = 1980 and month > 5)
+OR (year > 1980)
 ORDER BY year ASC, month ASC, day ASC;
 
 \end{verbatim}
@@ -317,5 +330,3 @@ However, it creates a lot of overhead when dates needs to be encrypted in three 
 
 
 Nested queries
-
-On the hack queries and other things that simply does not work with CryptDB. 

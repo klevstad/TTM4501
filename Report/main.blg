@@ -10,6 +10,7 @@ A level-1 auxiliary file: Chapter4/Attacks.aux
 A level-1 auxiliary file: Chapter5/Demo.aux
 A level-1 auxiliary file: Chapter6/Conclusion.aux
 The style file: acm.bst
+A level-1 auxiliary file: Appendix/Appendix.aux
 Database file #1: main.bib.bib
 Warning--to sort, need author or key in apple_health
 Warning--to sort, need author or key in microsoft_health
@@ -18,45 +19,45 @@ Warning--to sort, need author or key in docker_homepage
 Warning--empty publisher in ope_cryptdb
 Warning--empty publisher in damgaard2012secure
 Warning--empty school in Gentry_thesis
-You've used 16 entries,
+You've used 18 entries,
             2253 wiz_defined-function locations,
-            620 strings with 6567 characters,
-and the built_in function-call counts, 5488 in all, are:
-= -- 553
-> -- 168
+            631 strings with 6939 characters,
+and the built_in function-call counts, 6167 in all, are:
+= -- 622
+> -- 192
 < -- 0
-+ -- 75
-- -- 56
-* -- 336
-:= -- 781
-add.period$ -- 50
-call.type$ -- 16
-change.case$ -- 75
++ -- 85
+- -- 64
+* -- 378
+:= -- 886
+add.period$ -- 56
+call.type$ -- 18
+change.case$ -- 84
 chr.to.int$ -- 0
-cite$ -- 23
-duplicate$ -- 250
-empty$ -- 520
-format.name$ -- 56
-if$ -- 1241
+cite$ -- 25
+duplicate$ -- 284
+empty$ -- 577
+format.name$ -- 64
+if$ -- 1389
 int.to.chr$ -- 0
-int.to.str$ -- 16
-missing$ -- 10
-newline$ -- 83
-num.names$ -- 24
-pop$ -- 136
+int.to.str$ -- 18
+missing$ -- 11
+newline$ -- 93
+num.names$ -- 28
+pop$ -- 149
 preamble$ -- 1
-purify$ -- 60
+purify$ -- 68
 quote$ -- 0
-skip$ -- 187
+skip$ -- 212
 stack$ -- 0
-substring$ -- 385
-swap$ -- 86
+substring$ -- 427
+swap$ -- 98
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 64
+type$ -- 72
 warning$ -- 7
-while$ -- 51
-width$ -- 18
-write$ -- 160
+while$ -- 58
+width$ -- 20
+write$ -- 181
 (There were 7 warnings)

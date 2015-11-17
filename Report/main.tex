@@ -100,15 +100,18 @@
 \bibliographystyle{acm}
 \bibliography{main.bib}
 
-%% Uncomment the following if you have any appendix
-% \appendix
-% \addtocontents{toc}{%
-%  \protect\vspace{1em}% 
-%  \protect\noindent \bfseries \appendixtocname\protect\par
-%  \protect\vspace{-.5em}%
-% }
-% \renewcommand{\chaptername}{\appendixname}
-%% include below possible appendices (chapters)
+% Uncomment the following if you have any appendix
+ \appendix
+ \addtocontents{toc}{%
+  \protect\vspace{1em}% 
+  \protect\noindent \bfseries \appendixtocname\protect\par
+  \protect\vspace{-.5em}%
+ }
+ \renewcommand{\chaptername}{\appendixname}
+% include below possible appendices (chapters)
+
+\include{Appendix/Setupcryptdb}
+
 
 
 \end{document} 
