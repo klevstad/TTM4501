@@ -15,7 +15,7 @@ In September 2015, a Microsoft Research team released a paper stating that they 
 \end{wrapfigure}
 Frequency analysis is to exploit the fact that in most spoken languages, some characters and combinations of characters are more common than others. In the English alphabet, E, T, A and O are the most regular characters, while J, Z, Q and X are considered to be rare. As described in \ref{sec:det} and \ref{sec:ope}, the DET and OPE schemes are deterministic and therefore encrypts the same plaintext to the same ciphertext. \gls{ope_onion} also reveals the order between the ciphertexts. Because of this, an attacker with access to the ciphertexts is able to compute a histogram of the observed frequencies in the encrypted data. By comparing the histogram to a similar histogram of frequencies computed from closely related plaintext data, the attacker is able to determine which ciphertext characters corresponds to which plaintext characters with fairly large advantage.
 
-
+% ???
 As described in section \ref{sec:sqlaware}, in order for an application to be able to execute equality checks or order comparison, columns need to be encrypted with DET or OPE respectively. 
 
 
@@ -37,6 +37,6 @@ Cumulative attack for low-density columns is an approach where the attacker does
 
 \subsection{CryptDB Developers Answer Microsoft Research}
 
-In response to Microsoft Research's paper, the developers of CryptDB has presented a paper containing guidelines \cite{cryptdb_guidelines} on how to safely use CryptDB and remarks on where they claim Microsoft Research has used CryptDB in an unsafe way
+In response to Microsoft Research's paper, the developers of CryptDB has presented a paper containing guidelines \cite{cryptdb_guidelines} on how to safely use CryptDB and remarks on where they claim Microsoft Research has used CryptDB in an unsafe way. One of the alleged flaws in the paper published by Microsoft Research was there inaccurate usage of the \gls{deterministic_onion} and \gls{ope_onion} schemes. As stated in section \ref{sec:sensitive}, sensitive data should be annotated using \verb!SENSITIVE! which ensures that the column is encrypted under a semantically secure encryption scheme such as \gls{random_onion}, \gls{hom_onion}, SEARCH or \gls{deterministic_onion} if the column has the unique constraint \cite{popa_thesis}. 
 
-\cite{popa_thesis}
+While Microsoft Research may have used CryptDB in an insecure way, it still addresses an interesting issue. Social security numbers, bank accounts, and such columns may be well suited for being marked as sensitive. But what about sensitive columns where one of the key features of the application is to perform order checks? For example in a medical system used at an emergency room, the doctors want to sort their patients based on the severity of their injuries and treat them accordingly. For this situation to work out in practice, the column has to be encrypted with \gls{ope_onion}, and therefore is vulnerable to the attacks presented above. After all, the main use of such systems as CryptDB is not to perform operations on non-sensitive data.

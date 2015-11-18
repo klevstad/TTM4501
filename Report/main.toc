@@ -12,24 +12,25 @@
 \contentsline {section}{\numberline {1.4}Related Work}{2}{section.1.4}
 \contentsline {chapter}{\chapternumberline {2}Background}{3}{chapter.2}
 \contentsline {section}{\numberline {2.1}Symmetric Encryption}{3}{section.2.1}
-\contentsline {section}{\numberline {2.2}Asymmetric Encryption}{3}{section.2.2}
+\contentsline {section}{\numberline {2.2}Asymmetric Encryption}{4}{section.2.2}
 \contentsline {section}{\numberline {2.3}Homomorphic Encryption}{4}{section.2.3}
 \contentsline {section}{\numberline {2.4}Fully Homomorphic Encryption}{5}{section.2.4}
 \contentsline {section}{\numberline {2.5}Database Security}{7}{section.2.5}
 \contentsline {chapter}{\chapternumberline {3}Overview of CryptDB}{9}{chapter.3}
 \contentsline {section}{\numberline {3.1}System Architecture}{9}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}Single-user Mode}{10}{subsection.3.1.1}
-\contentsline {subsection}{\numberline {3.1.2}Multi-user Mode}{10}{subsection.3.1.2}
-\contentsline {section}{\numberline {3.2}SQL-Aware Encryption and the Onion Scheme}{12}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Random}{13}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Homomorphic Encryption}{14}{subsection.3.2.2}
-\contentsline {subsection}{\numberline {3.2.3}Search}{14}{subsection.3.2.3}
-\contentsline {subsection}{\numberline {3.2.4}Deterministic}{15}{subsection.3.2.4}
-\contentsline {subsection}{\numberline {3.2.5}Order-Preserving Encoding}{15}{subsection.3.2.5}
-\contentsline {subsection}{\numberline {3.2.6}Equality Join and Order-Preserving Join}{16}{subsection.3.2.6}
-\contentsline {subsection}{\numberline {3.2.7}Wrapping the Layers}{18}{subsection.3.2.7}
-\contentsline {section}{\numberline {3.3}Adjusting the Encryption Level Based on the Query}{18}{section.3.3}
-\contentsline {section}{\numberline {3.4}Security}{20}{section.3.4}
+\contentsline {section}{\numberline {3.2}SQL-Aware Encryption and the Onion Scheme}{10}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Random}{11}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Homomorphic Encryption}{12}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Search}{12}{subsection.3.2.3}
+\contentsline {subsection}{\numberline {3.2.4}Deterministic}{13}{subsection.3.2.4}
+\contentsline {subsection}{\numberline {3.2.5}Order-Preserving Encoding}{14}{subsection.3.2.5}
+\contentsline {subsection}{\numberline {3.2.6}Equality Join and Order-Preserving Join}{15}{subsection.3.2.6}
+\contentsline {subsection}{\numberline {3.2.7}Wrapping the Layers}{16}{subsection.3.2.7}
+\contentsline {section}{\numberline {3.3}Adjusting the Encryption Level Based on the Query}{16}{section.3.3}
+\contentsline {section}{\numberline {3.4}Security}{18}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Single-user Mode}{18}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}Multi-user Mode}{18}{subsection.3.4.2}
+\contentsline {subsection}{\numberline {3.4.3}Securing Applications When Using CryptDB}{20}{subsection.3.4.3}
 \contentsline {section}{\numberline {3.5}Limitations}{20}{section.3.5}
 \contentsline {chapter}{\chapternumberline {4}Attacking CryptDB}{23}{chapter.4}
 \contentsline {section}{\numberline {4.1}Microsoft Research and their Frequency Analysis}{23}{section.4.1}
