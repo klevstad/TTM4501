@@ -20,6 +20,18 @@ Mylar -{ MIT}.
 \newblock \url{https://css.csail.mit.edu/mylar/}.
 \newblock Accessed: 2015-11-11.
 
+\bibitem{phpBB}
+php{BB}.
+\newblock \url{https://phpbb.com/}.
+\newblock Accessed: 2015-11-19.
+
+\bibitem{akin_2014}
+{\sc Akin, I.~H., and Sunar, B.}
+\newblock {O}n the {D}ifficulty of {S}ecuring {W}eb {A}pplications using
+  {C}rypt{DB}.
+\newblock In {\em Big Data and Cloud Computing (BdCloud), 2014 IEEE Fourth
+  International Conference on\/} (2014), pp.~745--752.
+
 \bibitem{ope_cryptdb}
 {\sc Boldyreva, A., Chenette, N., Lee, Y., and O’Neill, A.}
 \newblock Order-{P}reserving {S}ymmetric {E}ncryption.

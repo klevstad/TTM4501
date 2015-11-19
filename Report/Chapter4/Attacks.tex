@@ -3,9 +3,21 @@
 
 In this chapter, a few known attacks on CryptDB will be presented along with the discussion around...
 
+\section{Tampering with CryptDB}
+
+Akin and Sunar \cite{akin_2014} introduces an attack approach where a malicious database administrator targets web applications running in multi-user mode. More specific, software developed using the popular open-source software phpBB \cite{phpBB} where highly customisable forums can be created. By creating a fake user through the web applications, and at the same time be able to observe queries arriving at the database server, a malicious database administrator is able to attack CryptDB.
+
+When creating tables in CryptDB, the order of the columns are preserved. By combining this information with the publicly available source code from phpBB, and attacker is able to understand the encrypted schema of the user table. When creating the fake user and logging in, the administrator can observe in the database the login attempt, and also determine the fake user's row id. By trying to log in with someone else's user-name (and obvious failing), the administrator is able to locate a specific user in the encrypted table. Now the malicious administrator can start to tamper with the database.
+
+By copying any user's encrypted information directly into the fake user's corresponding fields, the attacker may be able to obtain encrypted information without necessary breaking the encryption. Another possibility is for the database manager to overwrite the password of every user with the encrypted version of the fake user's password. The consequence of this scenario is a database manager that can log into the application with every user.
+
+% Kan ta med det å joine to kolonner på samme id for å intersekte to sykehusbesøk.
+
+It is clearly stated that CryptDB does not provide any other security guarantees except for data confidentiality \cite{CryptDB_Main_Paper}. As this attack clearly targets data integrity, it is not necessary CryptDB's a weakness in the software itself. However, it gives a good example on how providing data confidentiality is not enough in order to secure a database system. Data integrity should be provided for both the encrypted data as well as the queries observed at the database.
+
 \section{Microsoft Research and their Frequency Analysis}
 
-In September 2015, a Microsoft Research team released a paper stating that they had successfully broken the \gls{ope_onion} and the \gls{deterministic_onion} encryption schemes of CryptDB \cite{microsoft_cryptdb}. They did so by using one of the oldest tricks in a crypt analyst's book; frequency analysis.
+In September 2015, a Microsoft Research team released a paper stating that they had successfully broken the \gls{ope_onion} and the \gls{deterministic_onion} encryption schemes of CryptDB \cite{microsoft_cryptdb}. They did so by using one of the oldest trick in a crypt analyst's book; frequency analysis.
 
 \begin{wrapfigure}[13]{r}[1pt]{5.2cm}
 \centering
@@ -39,4 +51,4 @@ Cumulative attack for low-density columns is an approach where the attacker does
 
 In response to Microsoft Research's paper, the developers of CryptDB has presented a paper containing guidelines \cite{cryptdb_guidelines} on how to safely use CryptDB and remarks on where they claim Microsoft Research has used CryptDB in an unsafe way. One of the alleged flaws in the paper published by Microsoft Research was there inaccurate usage of the \gls{deterministic_onion} and \gls{ope_onion} schemes. As stated in section \ref{sec:sensitive}, sensitive data should be annotated using \verb!SENSITIVE! which ensures that the column is encrypted under a semantically secure encryption scheme such as \gls{random_onion}, \gls{hom_onion}, SEARCH or \gls{deterministic_onion} if the column has the unique constraint \cite{popa_thesis}. 
 
-While Microsoft Research may have used CryptDB in an insecure way, it still addresses an interesting issue. Social security numbers, bank accounts, and such columns may be well suited for being marked as sensitive. But what about sensitive columns where one of the key features of the application is to perform order checks? For example in a medical system used at an emergency room, the doctors want to sort their patients based on the severity of their injuries and treat them accordingly. For this situation to work out in practice, the column has to be encrypted with \gls{ope_onion}, and therefore is vulnerable to the attacks presented above. After all, the main use of such systems as CryptDB is not to perform operations on non-sensitive data.
+While Microsoft Research may have used CryptDB in an insecure way, it still addresses an interesting issue. Social security numbers, bank accounts, and such columns may be well suited for being marked as sensitive. But what about sensitive columns where one of the key features of the application is to perform order checks? For example in a medical system used at an emergency room, the doctors want to sort their patients based on the severity of their injuries and treat them accordingly. For this situation to work out in practice, the column has to be encrypted with \gls{ope_onion}, and therefore is vulnerable to the attacks presented above. After all, the main idea of such systems as CryptDB is not to perform operations on non-sensitive data.

@@ -5,6 +5,41 @@ This chapter will cover the cryptographic background of the necessary components
 
 ...More. Symmetric/Asymmetric/ has no references. Is this trivial enough to go without?
 
+
+% Generelt om databaser.
+
+\section{Databases and Database Systems}
+
+Databases are central building blocks in most computer systems, allowing data to be stored, shared, and read by users. When we want to save our data, we need a place to store it. Formally, databases can be described as a set of related data that us organized in such a way that data can easily be accessed, managed, and updated. As the amount of data stored does not decrease over time, database systems experience an exponential growth and are becoming more and more complex.
+
+Databases are often constructed of one or more \emph{tables} which consists of multiple \emph{fields} or columns as seen in Figure \ref{fig:db_table}. These columns are usually defined to store values of some predetermined \emph{data type}, for example integers, dates, strings or decimals. 
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.7]{db_table.png}
+	\caption{A table within a database consists of multiple columns, when inserting values into a table, a new row will be created storing the data}
+	\label{fig:db_table}
+\end{figure}
+
+\gls{dbms} are software used to enable clients and applications to interact with a database. These systems are often classified based on the database model they support, which is a logical structure describing the database as well as determining the permitted ways of storing information. The, possibly, most popular model is the relational database, mostly because of it being the main model for large \gls{dbms} such as MySQL, PostgreSQL, Oracle and Microsoft SQL Server.
+
+Now we got a \gls{dbms} with a database storing some tables with our data. How do we put data in our database, and how do we extract data from it? In order for databases do anything useful other than just storing the data, they need a query language. A query language is used by \gls{dbms} to insert and extract data from databases. \gls{sql} is the standard language for performing queries on relational databases, which enables system to insert, update and delete data, as well as extracting 
+
+\subsection{Database Security}
+\label{chp:database_Security}
+
+Databases are central building blocks in most computer systems, allowing data to be stored, shared, and read by users. As the amount of data stored does not decrease over time, database systems experience an exponential growth. There are companies that stores banking information, health records, and other sensitive information, which makes them a target for criminals and hackers. In order to cope with such attacks, systems that are relying on some sort of database structure, are in need of defence mechanisms. 
+
+
+Most database systems are stored behind different network security measures such as firewalls and intrusion detection systems. A database firewall will, for example, monitor all traffic to and from a database system in order to detect situations that deflects from the predetermined database policy. Such measures does however only provide security for the outside of the system, but a system is in need of security on the inside as well. Most database systems provide different security measures for handling situations that can occur on the inside.
+
+Access control is used for granting different privileges for a user or user groups to a certain object in the database, such as a table, view or procedure. Authentication is used to ensure that only trusted entities are able to reach the database, and to grant the correct privileges based on the identity of the user. For applications where certain user groups are handling sensitive information, a person in charge of the system may have the need to monitor who accessed a given table at a certain time in case of information leaks and similar circumstances. Auditing is a database security technique which does not directly prevent security protocols from being broken, but allows the system administrator to backtrack and discover breaches in the security.
+
+Another vital part of keeping a database secure, is of course the use of database encryption. Both symmetric and asymmetric encryption is possible to perform on database systems, and there exists different ways of layering the encryption based on the application.
+
+
+Hmm. Not sure about how good this section is. What to add, remove, etc?
+
 \section{Symmetric Encryption}
 
 Symmetric key encryption is, perhaps, the most intuitive type of encryption, where the sender encrypts the data with a secret key that the sender and receiver has agreed upon in advance. When receiving data, the receiver uses the pre-shared secret key in order to decrypt the data. In a more formal matter, symmetric key encryption is usually used either with a block cipher(which encrypts messages in chunks of data) or a stream cipher (which encrypts data bit-by-bit). The scheme usually consist of three algorithms, $KeyGen$, $Enc$ and $Dec$.
@@ -88,17 +123,3 @@ When allowing the encryption function to handle its own decryption function at t
 Another practical cryptosystem providing a similar property, is the ElGamal cryptosystem \cite{elgamal}. Along with being an asymmetric cryptosystem , it has the cryptographic property shown below, which enables it to perform homomorphic multiplications.  \[ENC_k(x) * ENC_k(y) = ENC(x * y)\]
 
 
-\section{Database Security}
-\label{chp:database_Security}
-
-Databases are central building blocks in most computer systems, allowing data to be stored, shared, and read by users. As the amount of data stored does not decrease over time, database systems experience an exponential growth. There are companies that stores banking information, health records, and other sensitive information, which makes them a target for criminals and hackers. In order to cope with such attacks, systems that are relying on some sort of database structure, are in need of defence mechanisms. 
-
-
-Most database systems are stored behind different network security measures such as firewalls and intrusion detection systems. A database firewall will, for example, monitor all traffic to and from a database system in order to detect situations that deflects from the predetermined database policy. Such measures does however only provide security for the outside of the system, but a system is in need of security on the inside as well. Most database systems provide different security measures for handling situations that can occur on the inside.
-
-Access control is used for granting different privileges for a user or user groups to a certain object in the database, such as a table, view or procedure. Authentication is used to ensure that only trusted entities are able to reach the database, and to grant the correct privileges based on the identity of the user. For applications where certain user groups are handling sensitive information, a person in charge of the system may have the need to monitor who accessed a given table at a certain time in case of information leaks and similar circumstances. Auditing is a database security technique which does not directly prevent security protocols from being broken, but allows the system administrator to backtrack and discover breaches in the security.
-
-Another vital part of keeping a database secure, is of course the use of database encryption. Both symmetric and asymmetric encryption is possible to perform on database systems, and there exists different ways of layering the encryption based on the application.
-
-
-Hmm. Not sure about how good this section is. What to add, remove, etc?

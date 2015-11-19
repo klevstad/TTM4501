@@ -7,47 +7,49 @@
 \BOOKMARK [1][-]{section.1.3}{Scope}{chapter.1}% 7
 \BOOKMARK [1][-]{section.1.4}{Related Work}{chapter.1}% 8
 \BOOKMARK [0][-]{chapter.2}{Background}{}% 9
-\BOOKMARK [1][-]{section.2.1}{Symmetric Encryption}{chapter.2}% 10
-\BOOKMARK [1][-]{section.2.2}{Asymmetric Encryption}{chapter.2}% 11
-\BOOKMARK [1][-]{section.2.3}{Homomorphic Encryption}{chapter.2}% 12
-\BOOKMARK [1][-]{section.2.4}{Fully Homomorphic Encryption}{chapter.2}% 13
-\BOOKMARK [1][-]{section.2.5}{Database Security}{chapter.2}% 14
-\BOOKMARK [0][-]{chapter.3}{Overview of CryptDB}{}% 15
-\BOOKMARK [1][-]{section.3.1}{System Architecture}{chapter.3}% 16
-\BOOKMARK [1][-]{section.3.2}{SQL-Aware Encryption and the Onion Scheme}{chapter.3}% 17
-\BOOKMARK [2][-]{subsection.3.2.1}{Random}{section.3.2}% 18
-\BOOKMARK [2][-]{subsection.3.2.2}{Homomorphic Encryption}{section.3.2}% 19
-\BOOKMARK [2][-]{subsection.3.2.3}{Search}{section.3.2}% 20
-\BOOKMARK [2][-]{subsection.3.2.4}{Deterministic}{section.3.2}% 21
-\BOOKMARK [2][-]{subsection.3.2.5}{Order-Preserving Encoding}{section.3.2}% 22
-\BOOKMARK [2][-]{subsection.3.2.6}{Equality Join and Order-Preserving Join}{section.3.2}% 23
-\BOOKMARK [2][-]{subsection.3.2.7}{Wrapping the Layers}{section.3.2}% 24
-\BOOKMARK [1][-]{section.3.3}{Adjusting the Encryption Level Based on the Query}{chapter.3}% 25
-\BOOKMARK [1][-]{section.3.4}{Security}{chapter.3}% 26
-\BOOKMARK [2][-]{subsection.3.4.1}{Single-user Mode}{section.3.4}% 27
-\BOOKMARK [2][-]{subsection.3.4.2}{Multi-user Mode}{section.3.4}% 28
-\BOOKMARK [2][-]{subsection.3.4.3}{Securing Applications When Using CryptDB}{section.3.4}% 29
-\BOOKMARK [1][-]{section.3.5}{Limitations}{chapter.3}% 30
-\BOOKMARK [0][-]{chapter.4}{Attacking CryptDB}{}% 31
-\BOOKMARK [1][-]{section.4.1}{Microsoft Research and their Frequency Analysis}{chapter.4}% 32
-\BOOKMARK [2][-]{subsection.4.1.1}{Frequency Analysis on DET-encrypted Columns}{section.4.1}% 33
-\BOOKMARK [2][-]{subsection.4.1.2}{Sorting Attack on OPE-encrypted Columns}{section.4.1}% 34
-\BOOKMARK [2][-]{subsection.4.1.3}{CryptDB Developers Answer Microsoft Research}{section.4.1}% 35
-\BOOKMARK [0][-]{chapter.5}{CryptDB as a Software}{}% 36
-\BOOKMARK [1][-]{section.5.1}{Installation of CryptDB's Software}{chapter.5}% 37
-\BOOKMARK [2][-]{subsection.5.1.1}{Docker to the Rescue}{section.5.1}% 38
-\BOOKMARK [2][-]{subsection.5.1.2}{Installing CryptDB using Docker}{section.5.1}% 39
-\BOOKMARK [1][-]{section.5.2}{A Small Demo Application}{chapter.5}% 40
-\BOOKMARK [1][-]{section.5.3}{Ninja hacks}{chapter.5}% 41
-\BOOKMARK [1][-]{section.5.4}{Discussion of CryptDB as a Software}{chapter.5}% 42
-\BOOKMARK [0][-]{chapter.6}{Conclusion}{}% 43
-\BOOKMARK [1][-]{section.6.1}{Impact of CryptDB}{chapter.6}% 44
-\BOOKMARK [1][-]{section.6.2}{Useful applications}{chapter.6}% 45
-\BOOKMARK [1][-]{section.6.3}{Conclusion}{chapter.6}% 46
-\BOOKMARK [0][-]{section*.6}{References}{}% 47
-\BOOKMARK [0][-]{appendix.A}{Appendix}{}% 48
-\BOOKMARK [1][-]{section.A.1}{Setup CryptDB Using Docker}{appendix.A}% 49
-\BOOKMARK [1][-]{section.A.2}{Play Around With CryptDB}{appendix.A}% 50
-\BOOKMARK [2][-]{subsection.A.2.1}{Terminal 1: The Proxy Server}{section.A.2}% 51
-\BOOKMARK [2][-]{subsection.A.2.2}{Terminal 2: The CryptDB Client}{section.A.2}% 52
-\BOOKMARK [2][-]{subsection.A.2.3}{Terminal 3: The Snooping Database Administrator}{section.A.2}% 53
+\BOOKMARK [1][-]{section.2.1}{Databases and Database Systems}{chapter.2}% 10
+\BOOKMARK [2][-]{subsection.2.1.1}{Database Security}{section.2.1}% 11
+\BOOKMARK [1][-]{section.2.2}{Symmetric Encryption}{chapter.2}% 12
+\BOOKMARK [1][-]{section.2.3}{Asymmetric Encryption}{chapter.2}% 13
+\BOOKMARK [1][-]{section.2.4}{Homomorphic Encryption}{chapter.2}% 14
+\BOOKMARK [1][-]{section.2.5}{Fully Homomorphic Encryption}{chapter.2}% 15
+\BOOKMARK [0][-]{chapter.3}{Overview of CryptDB}{}% 16
+\BOOKMARK [1][-]{section.3.1}{System Architecture}{chapter.3}% 17
+\BOOKMARK [1][-]{section.3.2}{SQL-Aware Encryption and the Onion Scheme}{chapter.3}% 18
+\BOOKMARK [2][-]{subsection.3.2.1}{Random}{section.3.2}% 19
+\BOOKMARK [2][-]{subsection.3.2.2}{Homomorphic Encryption}{section.3.2}% 20
+\BOOKMARK [2][-]{subsection.3.2.3}{Search}{section.3.2}% 21
+\BOOKMARK [2][-]{subsection.3.2.4}{Deterministic}{section.3.2}% 22
+\BOOKMARK [2][-]{subsection.3.2.5}{Order-Preserving Encoding}{section.3.2}% 23
+\BOOKMARK [2][-]{subsection.3.2.6}{Equality Join and Order-Preserving Join}{section.3.2}% 24
+\BOOKMARK [2][-]{subsection.3.2.7}{Wrapping the Layers}{section.3.2}% 25
+\BOOKMARK [1][-]{section.3.3}{Adjusting the Encryption Level Based on the Query}{chapter.3}% 26
+\BOOKMARK [1][-]{section.3.4}{Security}{chapter.3}% 27
+\BOOKMARK [2][-]{subsection.3.4.1}{Single-user Mode}{section.3.4}% 28
+\BOOKMARK [2][-]{subsection.3.4.2}{Multi-user Mode}{section.3.4}% 29
+\BOOKMARK [2][-]{subsection.3.4.3}{Securing Applications When Using CryptDB}{section.3.4}% 30
+\BOOKMARK [1][-]{section.3.5}{Limitations}{chapter.3}% 31
+\BOOKMARK [0][-]{chapter.4}{Attacking CryptDB}{}% 32
+\BOOKMARK [1][-]{section.4.1}{Tampering with CryptDB}{chapter.4}% 33
+\BOOKMARK [1][-]{section.4.2}{Microsoft Research and their Frequency Analysis}{chapter.4}% 34
+\BOOKMARK [2][-]{subsection.4.2.1}{Frequency Analysis on DET-encrypted Columns}{section.4.2}% 35
+\BOOKMARK [2][-]{subsection.4.2.2}{Sorting Attack on OPE-encrypted Columns}{section.4.2}% 36
+\BOOKMARK [2][-]{subsection.4.2.3}{CryptDB Developers Answer Microsoft Research}{section.4.2}% 37
+\BOOKMARK [0][-]{chapter.5}{CryptDB as a Software}{}% 38
+\BOOKMARK [1][-]{section.5.1}{Installation of CryptDB's Software}{chapter.5}% 39
+\BOOKMARK [2][-]{subsection.5.1.1}{Docker to the Rescue}{section.5.1}% 40
+\BOOKMARK [2][-]{subsection.5.1.2}{Installing CryptDB using Docker}{section.5.1}% 41
+\BOOKMARK [1][-]{section.5.2}{A Small Demo Application}{chapter.5}% 42
+\BOOKMARK [1][-]{section.5.3}{Ninja hacks}{chapter.5}% 43
+\BOOKMARK [1][-]{section.5.4}{Discussion of CryptDB as a Software}{chapter.5}% 44
+\BOOKMARK [0][-]{chapter.6}{Conclusion}{}% 45
+\BOOKMARK [1][-]{section.6.1}{Impact of CryptDB}{chapter.6}% 46
+\BOOKMARK [1][-]{section.6.2}{Useful applications}{chapter.6}% 47
+\BOOKMARK [1][-]{section.6.3}{Conclusion}{chapter.6}% 48
+\BOOKMARK [0][-]{section*.6}{References}{}% 49
+\BOOKMARK [0][-]{appendix.A}{Appendix}{}% 50
+\BOOKMARK [1][-]{section.A.1}{Setup CryptDB Using Docker}{appendix.A}% 51
+\BOOKMARK [1][-]{section.A.2}{Play Around With CryptDB}{appendix.A}% 52
+\BOOKMARK [2][-]{subsection.A.2.1}{Terminal 1: The Proxy Server}{section.A.2}% 53
+\BOOKMARK [2][-]{subsection.A.2.2}{Terminal 2: The CryptDB Client}{section.A.2}% 54
+\BOOKMARK [2][-]{subsection.A.2.3}{Terminal 3: The Snooping Database Administrator}{section.A.2}% 55
