@@ -82,7 +82,7 @@ DELETE FROM employee_table;
 
 \subsection{Homomorphic Encryption}
 
-Another vital part of \Gls{sql} is the ability to perform addition and multiplication. For CryptDB to be able to perform these operations, it utilizes a \Gls{hom_onion} scheme. As previously described, homomorphic encryption is a technique that enables computation on encrypted data without decrypting it first. CryptDB uses Pailler multiplication \cite{Paillier} for enabling summation operations such as \verb!SUM!, \verb!ADD!, \verb!INCREMENT! and \verb!AVERAGE!. If our application is in need for finding out the total sum of the salaries within the firm, we do something like this
+Another vital part of \Gls{sql} is the ability to perform addition and multiplication. For CryptDB to be able to perform these operations, it utilizes a \Gls{hom_onion} scheme. As previously described, homomorphic encryption is a technique that enables computation on encrypted data without decrypting it first. CryptDB uses Pailler multiplication \cite{Paillier} for enabling additive operations such as \verb!SUM! and \verb!AVERAGE!. If our application is in need for finding out the total sum of the salaries within the firm, we do something like this
 
 \begin{verbatim}
 SELECT SUM(Salary)
@@ -355,5 +355,3 @@ WHERE EmplNum IN (temp_result);
 
 
 Along with complicating tables and adding overhead to the database, such limitations also puts the responsibility of the developer to add software code on the application server or client side. For larger applications and complex operations, such actions are not necessary feasible and hence an limitation to the use of CryptDB as a database system.\\
-
-Should I mention the fact that multi-user is no longer supported as a limitation?

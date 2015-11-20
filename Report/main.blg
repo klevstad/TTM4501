@@ -17,48 +17,52 @@ Warning--to sort, need author or key in microsoft_health
 Warning--to sort, need author or key in mylar_homepage
 Warning--to sort, need author or key in phpBB
 Warning--to sort, need author or key in docker_homepage
+Warning--to sort, need author or key in python
+Warning--to sort, need author or key in mysqldb
+Warning--to sort, need author or key in mysql_workbench
+Warning--to sort, need author or key in cryptdb_homepage
 Warning--empty publisher in ope_cryptdb
 Warning--empty publisher in damgaard2012secure
 Warning--empty school in Gentry_thesis
-You've used 20 entries,
+You've used 24 entries,
             2253 wiz_defined-function locations,
-            641 strings with 7208 characters,
-and the built_in function-call counts, 6780 in all, are:
-= -- 685
-> -- 205
+            654 strings with 7502 characters,
+and the built_in function-call counts, 7452 in all, are:
+= -- 753
+> -- 209
 < -- 0
-+ -- 91
++ -- 95
 - -- 68
-* -- 410
-:= -- 964
-add.period$ -- 62
-call.type$ -- 20
-change.case$ -- 92
+* -- 430
+:= -- 1040
+add.period$ -- 74
+call.type$ -- 24
+change.case$ -- 104
 chr.to.int$ -- 0
-cite$ -- 28
-duplicate$ -- 315
-empty$ -- 642
+cite$ -- 36
+duplicate$ -- 343
+empty$ -- 734
 format.name$ -- 68
-if$ -- 1535
+if$ -- 1703
 int.to.chr$ -- 0
-int.to.str$ -- 20
+int.to.str$ -- 24
 missing$ -- 12
-newline$ -- 103
+newline$ -- 123
 num.names$ -- 30
-pop$ -- 168
+pop$ -- 208
 preamble$ -- 1
-purify$ -- 74
+purify$ -- 82
 quote$ -- 0
-skip$ -- 236
+skip$ -- 256
 stack$ -- 0
-substring$ -- 469
-swap$ -- 109
+substring$ -- 489
+swap$ -- 113
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 80
-warning$ -- 8
+type$ -- 96
+warning$ -- 12
 while$ -- 63
-width$ -- 22
-write$ -- 200
-(There were 8 warnings)
+width$ -- 26
+write$ -- 236
+(There were 12 warnings)

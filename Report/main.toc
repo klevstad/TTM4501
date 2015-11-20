@@ -33,28 +33,29 @@
 \contentsline {subsection}{\numberline {3.4.2}Multi-user Mode}{20}{subsection.3.4.2}
 \contentsline {subsection}{\numberline {3.4.3}Securing Applications When Using CryptDB}{22}{subsection.3.4.3}
 \contentsline {section}{\numberline {3.5}Limitations}{22}{section.3.5}
-\contentsline {chapter}{\chapternumberline {4}Attacking CryptDB}{27}{chapter.4}
-\contentsline {section}{\numberline {4.1}Tampering with CryptDB}{27}{section.4.1}
-\contentsline {section}{\numberline {4.2}Microsoft Research and their Frequency Analysis}{28}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Frequency Analysis on DET-encrypted Columns}{29}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Sorting Attack on OPE-encrypted Columns}{29}{subsection.4.2.2}
-\contentsline {subsection}{\numberline {4.2.3}CryptDB Developers Answer Microsoft Research}{30}{subsection.4.2.3}
-\contentsline {chapter}{\chapternumberline {5}CryptDB as a Software}{31}{chapter.5}
-\contentsline {section}{\numberline {5.1}Installation of CryptDB's Software}{31}{section.5.1}
-\contentsline {subsection}{\numberline {5.1.1}Docker to the Rescue}{31}{subsection.5.1.1}
-\contentsline {subsection}{\numberline {5.1.2}Installing CryptDB using Docker}{32}{subsection.5.1.2}
-\contentsline {section}{\numberline {5.2}A Small Demo Application}{32}{section.5.2}
-\contentsline {section}{\numberline {5.3}Ninja hacks}{32}{section.5.3}
-\contentsline {section}{\numberline {5.4}Discussion of CryptDB as a Software}{32}{section.5.4}
-\contentsline {chapter}{\chapternumberline {6}Conclusion}{33}{chapter.6}
-\contentsline {section}{\numberline {6.1}Impact of CryptDB}{33}{section.6.1}
-\contentsline {section}{\numberline {6.2}Useful applications}{33}{section.6.2}
-\contentsline {section}{\numberline {6.3}Conclusion}{33}{section.6.3}
-\contentsline {chapter}{References}{35}{section*.6}
+\contentsline {chapter}{\chapternumberline {4}Attacking CryptDB}{25}{chapter.4}
+\contentsline {section}{\numberline {4.1}Tampering with CryptDB}{25}{section.4.1}
+\contentsline {section}{\numberline {4.2}Microsoft Research and their Frequency Analysis}{26}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Frequency Analysis on DET-encrypted Columns}{27}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Sorting Attack on OPE-encrypted Columns}{27}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}CryptDB Developers Answer Microsoft Research}{28}{subsection.4.2.3}
+\contentsline {chapter}{\chapternumberline {5}CryptDB as a Software}{29}{chapter.5}
+\contentsline {section}{\numberline {5.1}Installation of CryptDB's Software}{29}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}Docker to the Rescue}{29}{subsection.5.1.1}
+\contentsline {section}{\numberline {5.2}A Small Demo Application}{30}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Database Server and Proxy Server}{30}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Application for Storing Employee Records}{30}{subsection.5.2.2}
+\contentsline {subsection}{\numberline {5.2.3}Confirming the Encrypted Administrator View}{32}{subsection.5.2.3}
+\contentsline {subsection}{\numberline {5.2.4}Inspecting CryptDB Using DBMS Tools}{34}{subsection.5.2.4}
+\contentsline {section}{\numberline {5.3}Discussion on CryptDB as a Software}{35}{section.5.3}
+\contentsline {chapter}{\chapternumberline {6}Conclusion}{37}{chapter.6}
+\contentsline {section}{\numberline {6.1}Impact of CryptDB}{37}{section.6.1}
+\contentsline {section}{\numberline {6.2}Conclusion}{37}{section.6.2}
+\contentsline {chapter}{References}{39}{section*.6}
 \vspace {1em}\noindent \bfseries Appendices\par \vspace {-.5em}
-\contentsline {appendix}{\chapternumberline {A}Appendix}{37}{appendix.A}
-\contentsline {section}{\numberline {A.1}Setup CryptDB Using Docker}{37}{section.A.1}
-\contentsline {section}{\numberline {A.2}Play Around With CryptDB}{38}{section.A.2}
-\contentsline {subsection}{\numberline {A.2.1}Terminal 1: The Proxy Server}{38}{subsection.A.2.1}
-\contentsline {subsection}{\numberline {A.2.2}Terminal 2: The CryptDB Client}{39}{subsection.A.2.2}
-\contentsline {subsection}{\numberline {A.2.3}Terminal 3: The Snooping Database Administrator}{39}{subsection.A.2.3}
+\contentsline {appendix}{\chapternumberline {A}Appendix}{41}{appendix.A}
+\contentsline {section}{\numberline {A.1}Setup CryptDB Using Docker}{41}{section.A.1}
+\contentsline {section}{\numberline {A.2}Play Around With CryptDB}{42}{section.A.2}
+\contentsline {subsection}{\numberline {A.2.1}Terminal 1: The Proxy Server}{42}{subsection.A.2.1}
+\contentsline {subsection}{\numberline {A.2.2}Terminal 2: The CryptDB Client}{43}{subsection.A.2.2}
+\contentsline {subsection}{\numberline {A.2.3}Terminal 3: The Snooping Database Administrator}{43}{subsection.A.2.3}
