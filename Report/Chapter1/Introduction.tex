@@ -3,33 +3,33 @@
 
 \section{Motivation}
 
-Cloud services are becoming larger and more complex. Users want their content available wherever they are, forcing applications to store content in the cloud. Companies such as Apple \cite{apple_health}, Microsoft \cite{microsoft_health} and other corporations are looking into health information and how your personal information can be integrated into their services. Medical research facilities stores tremendous amounts of personal data, and are currently looking into how to share their research material across facilities and borders. Along with these types of sensitive data, follows great responsibility and security measures. When developing applications and systems, data security and confidentiality are important topics.
+Cloud services are becoming larger and more complex. Users want their content available wherever they are, forcing applications to store content in the cloud. Companies such as Apple \cite{apple_health}, Microsoft \cite{microsoft_health} and other corporations are increasing their focus on health information and how your personal information can be integrated into their services. Medical research facilities stores tremendous amounts of personal data, and are currently looking into how to share their research material across facilities and borders. Competitions, such as iDASH \cite{iDASH} have been held in order to create the best suited methodology for how to securely store sensitive information. But in 2015, encrypting and storing sensitive information is not enough. Sensitive information is valuable, and even more valuable if we are able to utilize it in a secure manner. 
+%Along with these types of sensitive data, follows great responsibility and security measures. So when developing applications and systems, data security and confidentiality are important topics.
+ 
 
-% Bør reformulere setningen som starter med iDASH til å starte med noe annet.
-%  iDASH \cite{iDASH} leads on into combining biomedical research and technology. 
-
-As a developer, you are left with two choices. Option one is to build our own server farm or data center on a secure site, which is a rather expensive solution with costs related to both hardware, maintenance, electricity and rent. Option two is to out-source the storage to a cloud provider, where the developer stumbles into another problem. How can we guarantee that the data is stored securely, given that we cannot necessary trust the provider.
+As developers, we are left with two choices when creating applications utilizing some sort of data storage. Option one is to build our own server farm or data center on a secure site, which is a rather expensive solution with costs related to both hardware, maintenance, electricity and rent. Option two is to out-source the storage to a cloud provider, where the developer stumbles into another problem. How can we guarantee that the data is stored securely, given that we cannot necessary trust the provider?
 
 The first solution that comes to our mind is that the user could encrypt its data with a strong block cipher, and then decrypt the result at the client side. Sure, but this does not really solve anything. Problems arise when the application needs to perform operations that are too heavy for an ordinary client's machine. What if there existed a database system that could solve these problems for us? A system where the data is safely stored in the cloud without the possibility of having database administrators snooping around, or adversaries able to extract any information in the (un)likely case of a database breach. A system that could perform all kinds of operations on our data and send the encrypted result back, without leaking any sort of information about the query, the result, the data itself or any intermediate values. Homomorphic encryption schemes might be our rescue.
 
-In short terms, homomorphic encryption is a cryptographic property describing the ability to perform certain operations on encrypted data (ciphertexts) without decrypting it first. Fully homomorphic encryption is the enhanced version where the encryption scheme is capable of performing all efficient functions \cite{Gentry_thesis}. While still in research mode, fully homomorphic encryption schemes' biggest challenge is efficiency. As for practicality, fully homomorphic encryption schemes still have a long way to go \cite{naehrig2011can}.
+In short terms, homomorphic encryption is a cryptographic property describing the ability to perform certain operations on encrypted data (ciphertexts) without decrypting it first. Fully homomorphic encryption is the enhanced version where the encryption scheme is capable of performing all efficient functions \cite{Gentry_thesis}. While still in research mode, fully homomorphic encryption schemes' biggest challenge is efficiency. As for practicality, fully homomorphic encryption schemes still have a long way to go \cite{naehrig2011can}. However, if the practical systems ever reaches the theoretic potentiality, such schemes and systems could be a possible game changer for cloud based services in the future.
 
-Something more specific about CryptDB and why it is interesting. Its key ideas.
-
-Maybe we can achieve FHE in another way?
-
-For now: What is practically possible?
-
+\noindent
+???\\
+Maybe we can achieve FHE in another way?\\
+For now: What is practically possible?\\
+???
 \section{Problem}
 
-Describe the problem/objective.\\
-The aim of the project.
-Short explanation of results
+%Describe the problem/objective.\\
+CryptDB was presented by a research team at MIT in 2011. It is the first, \gls{phe} scheme,  allowing users to interact with the encrypted database by the use of \gls{sql}. %The aim of the project.
+The objective of this project has been to explore CryptDB in means of functionality and how it works. 
 
-\section{Scope}
-
-Any differences from the project description goes here. Redefine. Explain.
+%Short explanation of results
+This project has resulted in a overview of the CryptDB system, a guide on how to install and run CryptDB regardless of operating system, and finally a small sample application.
 
 \section{Related Work}
 
-To be continued. 
+There has been an increase in the attention given to research on homomorphic encryption over the last years, much because of the pioneering work of Craig Gentry \citep{Gentry_thesis} \cite{Gentry_first_lattices} \cite{Gentry_computing_arb_func_enc_data}.
+
+
+What to include here?

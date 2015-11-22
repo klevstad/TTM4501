@@ -11,7 +11,7 @@ CryptDB comes as a software available through MIT, and can be downloaded using t
 
 
 Because of the presented reasons, some of the work related to this project has been to detach CryptDB from such requirements and providing a workable environment regardless of operating system which is easy to restore if one were to corrupt the state if the system. Docker \cite{docker_homepage} is an open-source software allowing programs to be wrapped up in \emph{containers}. Containers are complete file systems containing every piece of code, 
-library and dependency the program need to run properly, which runs directly on the host OS without the need of a \gls{vmm} and Guest OSs. After a container is built, it can be shipped and run in other environments such as Windows, OS X and Linux without issues or adjustments.
+library and dependency the program need to run properly, which runs directly on the host OS without the need of a \gls{vmm} and Guest OSs. A \emph{Dockerfile} specifies the environment of the container, where the developer can add instructions on software to be installed, commands to should be run, as well as external volumes that can be accessible by the container. After the container is built, it can be shipped and run in other environments such as Windows, OS X and Linux without issues or adjustments.
 
 A guide on how to install and set up CryptDB's database and proxy server can be found in Appendix \ref{app:setup} along with a small introduction on how to play with the software as presented in Appendix \ref{app:playaround}.
 
@@ -60,7 +60,7 @@ To illustrate the case of the curious database administrator, which is the most 
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.55]{terminal/app_admin_mainmenu.png}}
+	\includegraphics[scale=0.55]{terminal/app_admin_mainmenu.png}
 	\caption{Main menu for administrators, i.e. connecting directly to the database server.}
 	\label{fig:app_mm_admin}
 \end{figure}
@@ -117,7 +117,7 @@ As observed, the data is not displayed as random symbols as from the demo applic
 
 Should I just skip the discussion, perhaps? \\
 
-While being a bit challenging to install and successfully connect to a database system, CryptDB seems to work as intended when operating on encrypted data. This project has not investigated the overhead when using CryptDB compared to a regular \gls{dmbs}, but the developers states that the throughput of CryptDB is 21-26\% lower than running on a regular MySQL server \citep{CryptDB_Main_Paper}. 
+While being a bit challenging to install and successfully connect to a database system, CryptDB seems to work as intended when operating on encrypted data. This project has not investigated the overhead when using CryptDB compared to a regular \gls{dbms}, but the developers states that the throughput of CryptDB is 21-26\% lower than running on a regular MySQL server \citep{CryptDB_Main_Paper}. 
 
 Something more...
 
