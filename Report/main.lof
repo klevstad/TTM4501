@@ -8,21 +8,21 @@
 \contentsline {figure}{\numberline {2.2}{\ignorespaces Illustration of a homomorphic system where data is encrypted at the client, sent to the server which performs computation on the encrypted data and returns an encrypted result which is decrypted by the client.}}{7}{figure.2.2}
 \addvspace {10pt}
 \contentsline {figure}{\numberline {3.1}{\ignorespaces System architecture of CryptDB interacting with a client application}}{11}{figure.3.1}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Ordering of the different encryption layers based on their security}}{12}{figure.3.2}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Ordering of the different encryption layers based on the security they provide}}{12}{figure.3.2}
 \contentsline {figure}{\numberline {3.3}{\ignorespaces Order-preserving encryption of a set of integer values}}{16}{figure.3.3}
 \contentsline {figure}{\numberline {3.4}{\ignorespaces Overview of the structure of the SQL-aware Encryption Scheme. From left: The EQ-onion, ORD-onion, SEARCH-onion and ADD-onion}}{18}{figure.3.4}
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Encryption layer adjustment performed by proxy server upon receiving a query. (Is the figure too small/hard to read?. Adjust colors?)}}{19}{figure.3.5}
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Rewritten query to be sent to server after encryption level adjustment. (Is the figure too small/hard to read?. Adjust colors?)}}{20}{figure.3.6}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Encryption layer adjustment performed by proxy server upon receiving a query.}}{19}{figure.3.5}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Rewritten query to be sent to server after encryption level adjustment.}}{19}{figure.3.6}
 \addvspace {10pt}
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Bar chart of the letter frequency observed in the English language}}{28}{figure.4.1}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Bar chart of the letter frequency observed in the English language}}{26}{figure.4.1}
 \addvspace {10pt}
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Main menu for users logged in as CryptDB users, i.e. connecting through the proxy server.}}{33}{figure.5.1}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces The observed processing at the proxy server when querying information about all employees.}}{33}{figure.5.2}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces The result displayed at the CryptDB user when querying for information regarding all employees.}}{34}{figure.5.3}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Main menu for administrators, i.e. connecting directly to the database server.}}{34}{figure.5.4}
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Encrypted tables in CryptDB from a database administrator's perspective}}{35}{figure.5.5}
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Encrypted data observed by the database administrator.}}{36}{figure.5.6}
-\contentsline {figure}{\numberline {5.7}{\ignorespaces The resulting rows from performing a SELECT query on the encrypted table. Only the encrypted values of the two first columns is shown. \textbf {Should I show just one column instead so it is easier to see?}}}{36}{figure.5.7}
-\contentsline {figure}{\numberline {5.8}{\ignorespaces Overview of the fields in the encrypted table table\_ZUZFDCSXGE when inspecting the database using MySQL Workbench.}}{37}{figure.5.8}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Main menu for users logged in as CryptDB users, i.e. connecting through the proxy server.}}{31}{figure.5.1}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces The observed processing at the proxy server when querying information about all employees.}}{32}{figure.5.2}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces The result displayed at the CryptDB user when querying for information regarding all employees.}}{32}{figure.5.3}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Main menu for administrators, i.e. connecting directly to the database server.}}{33}{figure.5.4}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Encrypted tables in CryptDB from a database administrator's perspective}}{33}{figure.5.5}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Encrypted data observed by the database administrator.}}{34}{figure.5.6}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces The resulting rows from performing a SELECT query on the encrypted table. Only the encrypted values of the employee number is shown. Observe that the values are encrypted three times under the different onions Eq, Ord and ADD.}}{35}{figure.5.7}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Overview of the fields in the encrypted table table\_ZUZFDCSXGE when inspecting the database using MySQL Workbench.}}{36}{figure.5.8}
 \addvspace {10pt}
 \addvspace {10pt}

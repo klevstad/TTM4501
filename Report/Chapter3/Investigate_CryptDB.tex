@@ -1,12 +1,12 @@
 \chapter{Overview of CryptDB}
 \label{chp:overview_cryptDB}
 
-This chapter covers the overview of CryptDB, starting with the system architecture, followed by its different encryption mechanisms and encryption layer adjustments. Along with the investigation, a small application will be introduced and used as an example to help the reader in understanding the practical and impractical usages of CryptDB.
+This chapter covers the overview of CryptDB, starting with the system architecture, followed by its different encryption mechanisms and encryption layer adjustments. Along with the assessment, a small application will be introduced and used as an example to help the reader in understanding the practical and impractical usages of CryptDB.
 
 \section{System Architecture}
 \label{sec:sysarc}
 
-CryptDB's architecture is divided into two pieces, a proxy server and a database server as seen in Figure \ref{cryptdb_plain}. The proxy server is an intermediate server placed between the application server (used by the application to manage key set-up and interacting with clients) and the database server. The proxy server's purpose is to intercept queries going from the application to the database and anonymize the information of the query, as well as decrypting results going from the database server to the user's application. By doing so, it eliminates the possibility of eavesdropping attackers to obtain any sensible information. %Kommentere at Microsoft hevder å ha brukt freq attack her.
+CryptDB's architecture is divided into two pieces, a proxy server and a database server as seen in Figure \ref{cryptdb_plain}. The proxy server is an intermediate server placed between the application server (used by the application to manage key set-up and interacting with clients) and the database server. Its purpose is to intercept queries going from the application to the database and anonymize the information of the query, as well as decrypting results going from the database server to the user's application. By doing so, it eliminates the possibility of eavesdropping attackers to obtain any sensible information on the server side. %Kommentere at Microsoft hevder å ha brukt freq attack her.
 
 \begin{figure}[H]
 	\includegraphics[scale=0.58]{CryptDB_Plain.png}
@@ -28,7 +28,7 @@ CryptDB has two operational modes, or principals. One for applications consistin
 \begin{wrapfigure}[17]{r}[1pt]{4cm}
 \centering
 \includegraphics[width=\linewidth]{encstack/enc_stack_ope.png}
-\caption{Ordering of the different encryption layers based on their security}
+\caption{Ordering of the different encryption layers based on the security they provide}
 \label{fig:enc_stack}
 \end{wrapfigure}
 
@@ -72,9 +72,7 @@ which adds a record in the database containing Eric's information. When it comes
 
 \begin{verbatim}
 SELECT * FROM employee_table;
-
 UPDATE employee_table SET salary = 0;
-
 DELETE FROM employee_table;
 \end{verbatim}
 
@@ -87,15 +85,6 @@ Another vital part of \Gls{sql} is the ability to perform addition and multiplic
 \begin{verbatim}
 SELECT SUM(Salary)
 FROM employee_table;
-\end{verbatim}
-
-\noindent
-Or extracting the total salary for each division by using the \verb!GROUP BY! clause
-
-\begin{verbatim}
-SELECT Division, SUM(Salary)
-FROM employee_table
-GROUP BY Division;
 \end{verbatim}
 
 \noindent
@@ -128,6 +117,16 @@ FROM employee_table
 WHERE Division = 'Management';
 \end{verbatim}
 
+\noindent
+We could also extract the total salary for each division by using the \verb!GROUP BY! clause along with the \verb!SUM! operation introduced previously
+
+\begin{verbatim}
+SELECT Division, SUM(Salary)
+FROM employee_table
+GROUP BY Division;
+\end{verbatim}
+
+\noindent
 For the encryption, DET uses a strong block ciphers, and either with 64-bit or 128-bit block size. If a value is larger than 128-bits, it leaks  prefix equality when used with AES \citep{CryptDB_Main_Paper}. In order to cope with leaking prefix equality, the authors have designed their own version of the CMC mode.
 
 
@@ -221,7 +220,7 @@ Have in mind that all data items at this point is encrypted with \gls{random_oni
 
 \begin{figure}[h]
 	\includegraphics[scale=0.7]{terminal/adjustOnionLayer.jpg}
-	\caption{Encryption layer adjustment performed by proxy server upon receiving a query. (Is the figure too small/hard to read?. Adjust colors?)}
+	\caption{Encryption layer adjustment performed by proxy server upon receiving a query.}
 	\label{ope_layer_adjustment}
 \end{figure}
 
@@ -229,7 +228,7 @@ After performing the encryption layer adjustment, the proxy rewrites the query a
 
 \begin{figure}[h]
 	\includegraphics[scale=0.7]{terminal/executeQuery.jpg}
-	\caption{Rewritten query to be sent to server after encryption level adjustment. (Is the figure too small/hard to read?. Adjust colors?)}
+	\caption{Rewritten query to be sent to server after encryption level adjustment.}
 	\label{rewritten_query}
 \end{figure}
 
@@ -285,6 +284,7 @@ Another importance related to annotations is the use of the \verb!SENSITIVE! ann
 %When encrypted under these schemes, the available set of operations are limited compared to CryptDB's full set of operations. However,
 
 \section{Limitations}
+\label{sec:limits}
 
 \gls{fhe} is nowhere near being practical yet, but CryptDB tries it best to be a somewhat practical \gls{he} scheme allowing a set of operations that they claim to be enough to support 99.5\% of all queries observed in a \gls{sql} trace from a production MySQL server \citep{CryptDB_Main_Paper}. Although, there are multiple fairly trivial data types that CryptDB does not support.
 
@@ -293,6 +293,7 @@ For example, all fixed-point types and floating-point types are not supported, m
 More data types that are not supported are those related to date and time, namely Timestamp, Date, Time, DateTime, Year and NewDate. In other terms, if your application needs to encrypt dates and at the same time be able to compute on them, you are in bad luck. The authors suggestion is to encrypt each part of a data in separate columns, and perform the computations on those columns instead of a composite date column. While being a rather complicated approach, it works surprisingly well for our demo application. Assume that we add some more columns to Table \ref{demoapp_table} with the precise date of birth in stead of age as seen in Table \ref{tab:empl_tab_mod}.
 
 \begin{table}[H]
+\label{tab:empl_tab_mod}
 \centering
 \begin{tabular}{| c | r | r | r | c |}
 \hline
@@ -304,12 +305,12 @@ More data types that are not supported are those related to date and time, namel
  ... & 31 & 12 & 1991 & ... \\
  ... & 11 & 11 & 1979  & ... \\
  \hline
+
 \end{tabular}
 \caption{Additional columns to the employee table with date properties stored in separate columns}
-\label{tab:empl_tab_mod}
 \end{table}
 
-Consider 17th of May 1980 as our test date, and that we want all employees born after the test date. In a regular database system supporting date related data types, our query would be something like this on a concatenated date of birth column
+Consider 17th of May 1980 as our test date, and that we want all employees born after this point in time. In a regular database system supporting date related data types, our query would be something like this on a concatenated date of birth column
 
 \begin{verbatim}
 SELECT Name, date_of_birth
@@ -318,7 +319,7 @@ WHERE date_of_birth > '17/5/1980'
 ORDER BY date_of_birth ASC;
 \end{verbatim}
 
-As for CryptDB where such queries do not return anything meaningful, we need to modify our approach as seen below
+As for CryptDB, where such queries do not return anything meaningful, we need to modify our approach as seen below
 
 \begin{verbatim}
 SELECT Name, Day, Month, Year

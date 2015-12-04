@@ -5,20 +5,20 @@ Although CryptDB is mainly a proof of concept rather than a commercial software,
 
 \section{Installation of CryptDB's Software}
 
-CryptDB comes as a software available through MIT, and can be downloaded using the version control system Git. As the creators has moved on to other projects, the source code has not been maintained since 2014, and is currently only tested on Ubuntu 12.04 and Ubuntu 13.04. During the installation of CryptDB, some issues has been encountered. Since CryptDB is only tested with said Ubuntu versions, the natural approach would be to install the software on one of the two Ubuntu versions. This often involves running some sort of \gls{vm} in some \gls{vmm}, which is very inconvenient when developing applications that should be able to run regardless of operating system and environment. When working inside a \gls{vm} installing and working with software that is at best ready for alpha testing, you better watch your steps. 
+CryptDB comes as a software available through \gls{mit}, and can be downloaded using the version control system Git. As the creators has moved on to other projects, the source code has not been maintained since 2014, and is currently only tested on Ubuntu 12.04 and Ubuntu 13.04. During the installation of CryptDB, some issues have been encountered. Since CryptDB is only tested with said Ubuntu versions, the natural approach would be to install the software on one of the two Ubuntu versions. This often involves running some sort of \gls{vm} in some \gls{vmm}, which is very inconvenient when developing applications that should be able to run regardless of operating system and environment. When working inside a \gls{vm} installing and working with software that is at best ready for alpha testing, you better watch your steps. 
 
 \subsection{Docker to the Rescue}
 
 
 Because of the presented reasons, some of the work related to this project has been to detach CryptDB from such requirements and providing a workable environment regardless of operating system which is easy to restore if one were to corrupt the state if the system. Docker \cite{docker_homepage} is an open-source software allowing programs to be wrapped up in \emph{containers}. Containers are complete file systems containing every piece of code, 
-library and dependency the program need to run properly, which runs directly on the host OS without the need of a \gls{vmm} and Guest OSs. A \emph{Dockerfile} specifies the environment of the container, where the developer can add instructions on software to be installed, commands to should be run, as well as external volumes that can be accessible by the container. After the container is built, it can be shipped and run in other environments such as Windows, OS X and Linux without issues or adjustments.
+library and dependency the program need to run properly, which runs directly on the host OS without the need of a \gls{vmm} and Guest OSs. A \emph{Dockerfile} specifies the environment of the container, where the developer can add instructions on software to be installed, commands to should be run, as well as external volumes that can be accessible by the container. After the container is built, it can be shipped and run in other environments such as Windows, OS X and Linux without issues or adjustments related to the contents of the container.
 
-A guide on how to install and set up CryptDB's database and proxy server can be found in Appendix \ref{app:setup} along with a small introduction on how to play with the software as presented in Appendix \ref{app:playaround}.
+A guide on how to install and set up CryptDB with both database and proxy server can be found in Appendix \ref{app:setup} along with a small introduction on how to play with the software as presented in Appendix \ref{app:playaround}.
 
 
 \section{A Small Demo Application}
 
-Along with the exploring of CryptDB, a tiny sample application has been developed in order to understand the sytem. The application allows a single user to maintain employee information for a fictive firm. As the software itself only supports applications running in the single-user mode, there has not been made any attempts in creating an application consisting of multiple users. The application is written in Python, which is a high-level programming language with a lot of functionality \cite{python}. In order to add database functionality to the application, MySQLdb is used as an interface to provide the MySQL API for Python \cite{mysqldb}.
+Along with the exploring of CryptDB, a tiny sample application has been developed in order to understand the sytem. The application allows a single user to maintain employee information for a fictive firm. As the software itself only supports applications running in the single-user mode, there has not been made any attempts in creating an application consisting of multiple users. The application is written in Python, which is a high-level programming language with a lot of functionality \cite{python}. In order to add database functionality to the application, MySQLdb is used as an interface to provide the MySQL API for Python \cite{mysqldb}. The application consists of roughly 500 lines of code, and can be found at \url{https://github.com/klevstad/TTM4501-Demo-Application}.
 
 \subsection{Database Server and Proxy Server}
 
@@ -27,10 +27,10 @@ CryptDB needs to have a database running in the background for the proxy server 
 \subsection{Application for Storing Employee Records}
 
 Figure \ref{fig:app_mm_user} shows the main menu when logging into the application. There are not many features implemented in the application, as the whole process of just getting CryptDB's software up and running was somewhat time consuming. It allows the user to display the list of employees along with their personal records, adding new employees, as well as updating them. It is mainly developed to test out functionality, therefore it also supports "free queries" where the user can perform queries directly to the proxy (or database). For navigating in the application, the user specifies commands by typing in their corresponding number.
-\newpage
+
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.45]{terminal/app_user_mainmenu.png}
+	\includegraphics[scale=0.65]{terminal/app_user_mainmenu.png}
 	\caption{Main menu for users logged in as CryptDB users, i.e. connecting through the proxy server.}
 	\label{fig:app_mm_user}
 \end{figure}
@@ -39,7 +39,7 @@ When the user selects option 1 in order to show information regarding the employ
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.45]{terminal/proxy_enc_res.png}
+	\includegraphics[scale=0.55]{terminal/proxy_enc_res.png}
 	\caption{The observed processing at the proxy server when querying information about all employees.}
 	\label{fig:proxy_enc_res}
 \end{figure}
@@ -47,7 +47,7 @@ When the user selects option 1 in order to show information regarding the employ
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.7]{terminal/app_user_emp.png}
+	\includegraphics[scale=0.75]{terminal/app_user_emp.png}
 	\caption{The result displayed at the CryptDB user when querying for information regarding all employees.}
 	\label{fig:app_user_emp}
 \end{figure}
@@ -60,7 +60,7 @@ To illustrate the case of the curious database administrator, which is the most 
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.55]{terminal/app_admin_mainmenu.png}
+	\includegraphics[scale=0.70]{terminal/app_admin_mainmenu.png}
 	\caption{Main menu for administrators, i.e. connecting directly to the database server.}
 	\label{fig:app_mm_admin}
 \end{figure}
@@ -84,7 +84,7 @@ But, the resulting data is of course encrypted, and shows nothing more than obsc
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.30]{terminal/app_admin_enc_res2.png}
+	\includegraphics[scale=0.50]{terminal/app_admin_enc_res2.png}
 	\caption{Encrypted data observed by the database administrator.}
 	\label{fig:admin_enc_res2}
 \end{figure}
@@ -99,12 +99,12 @@ monitoring the database. By simply logging in, the administrator is able to view
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.285]{terminal/admin_query_result.png}
-	\caption{The resulting rows from performing a SELECT query on the encrypted table. Only the encrypted values of the two first columns is shown. \textbf{Should I show just one column instead so it is easier to see?}}
+	\includegraphics[scale=0.57]{terminal/admin_query_result.png}
+	\caption{The resulting rows from performing a SELECT query on the encrypted table. Only the encrypted values of the employee number is shown. Observe that the values are encrypted three times under the different onions Eq, Ord and ADD.}
 	\label{fig:admin_query_result}
 \end{figure}
 
-As observed, the data is not displayed as random symbols as from the demo application, but rather represented as large integers. It also possible to observe the different onion encryptions of each attribute as they are encrypted as separate columns. By looking very closely at the figure above, it is possible to spot the name of the columns, where the EQ-onion ends with \emph{eq}, the ORD-onion with \emph{Order} and the ADD-onion with \emph{ADD}. Figure \ref{fig:admin_fields_view} shows a clearer picture of the available information when inspecting tables. The database administrator is able to see the number of columns, and what type of onions the column is encrypted under.
+As observed, the data is not displayed as random symbols as from the demo application, but rather represented as large integers. It also possible to observe the different onion encryptions of each attribute as they are encrypted as separate columns. By looking very closely at the figure above, it is possible to spot the name of the columns, where the EQ-onion ends with \emph{Eq}, the ORD-onion with \emph{Order} and the ADD-onion with \emph{ADD}. Figure \ref{fig:admin_fields_view} shows a clearer picture of the available information when inspecting tables. The database administrator is able to see the number of columns, and what type of onions the column is encrypted under, as well as their raw types.
 
 \begin{figure}[h]
 	\centering

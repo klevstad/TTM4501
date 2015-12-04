@@ -19,9 +19,9 @@ It is clearly stated that CryptDB does not provide any other security guarantees
 
 In September 2015, a Microsoft Research team released a paper stating that they had successfully broken the \gls{ope_onion} and the \gls{deterministic_onion} encryption schemes of CryptDB \cite{microsoft_cryptdb}. They did so by using one of the oldest trick in a crypt analyst's book; frequency analysis.
 
-\begin{wrapfigure}[13]{r}[1pt]{5.2cm}
+\begin{wrapfigure}[14]{r}[1pt]{7.2cm}
 \centering
-\includegraphics[scale=0.4]{letterfreq.jpg}
+\includegraphics[scale=0.55]{letterfreq.jpg}
 \caption{Bar chart of the letter frequency observed in the English language}
 \label{fig:letter_freq}
 \end{wrapfigure}
@@ -51,4 +51,4 @@ Cumulative attack for low-density columns is an approach where the attacker does
 
 In response to Microsoft Research's paper, the developers of CryptDB has presented a paper containing guidelines \cite{cryptdb_guidelines} on how to safely use CryptDB and remarks on where they claim Microsoft Research has used CryptDB in an unsafe way. One of the alleged flaws in the paper published by Microsoft Research was there inaccurate usage of the \gls{deterministic_onion} and \gls{ope_onion} schemes. As stated in section \ref{sec:sensitive}, sensitive data should be annotated using \verb!SENSITIVE! which ensures that the column is encrypted under a semantically secure encryption scheme such as \gls{random_onion}, \gls{hom_onion}, SEARCH or \gls{deterministic_onion} if the column has the unique constraint \cite{popa_thesis}. 
 
-While Microsoft Research may have used CryptDB in an insecure way, it still addresses an interesting issue. Social security numbers, bank accounts, and such columns may be well suited for being marked as sensitive. But what about sensitive columns where one of the key features of the application is to perform order checks? For example in a medical system used at an emergency room, the doctors want to sort their patients based on the severity of their injuries and treat them accordingly. For this situation to work out in practice, the column has to be encrypted with \gls{ope_onion}, and therefore is vulnerable to the attacks presented above. After all, the main idea of such systems as CryptDB is not to perform operations on non-sensitive data.
+While Microsoft Research may have used CryptDB in an insecure way, it still addresses an interesting issue. Social security numbers, bank accounts, and such columns may be well suited for being marked as sensitive. But what about sensitive columns where one of the key features of the application is to perform order checks? For example in a medical system used at an emergency room, the doctors want to sort their patients based on the severity of their injuries and treat them accordingly. For this situation to work out in practice, the column has to be encrypted with \gls{ope_onion}, and therefore is vulnerable to the attacks presented above. This clearly breaks one of CryptDB's requirements for safe usage, but this type of situation may force us to break these security requirements in order to produce a somewhat useful system. After all, the main idea of such systems as CryptDB is not to perform operations on non-sensitive data.

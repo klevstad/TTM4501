@@ -11,25 +11,19 @@ As developers, we are left with two choices when creating applications utilizing
 
 The first solution that comes to our mind is that the user could encrypt its data with a strong block cipher, and then decrypt the result at the client side. Sure, but this does not really solve anything. Problems arise when the application needs to perform operations that are too heavy for an ordinary client's machine. What if there existed a database system that could solve these problems for us? A system where the data is safely stored in the cloud without the possibility of having database administrators snooping around, or adversaries able to extract any information in the (un)likely case of a database breach. A system that could perform all kinds of operations on our data and send the encrypted result back, without leaking any sort of information about the query, the result, the data itself or any intermediate values. Homomorphic encryption schemes might be our rescue.
 
-In short terms, homomorphic encryption is a cryptographic property describing the ability to perform certain operations on encrypted data (ciphertexts) without decrypting it first. Fully homomorphic encryption is the enhanced version where the encryption scheme is capable of performing all efficient functions \cite{Gentry_thesis}. While still in research mode, fully homomorphic encryption schemes' biggest challenge is efficiency. As for practicality, fully homomorphic encryption schemes still have a long way to go \cite{naehrig2011can}. However, if the practical systems ever reaches the theoretic potentiality, such schemes and systems could be a possible game changer for cloud based services in the future.
+In short terms, \gls{he} is a cryptographic property describing the ability to perform certain operations on encrypted data (ciphertexts) without decrypting it first. \gls{fhe} is the enhanced version where the encryption scheme is capable of performing all functions efficiently \cite{Gentry_thesis}. While still in research mode, today's fully homomorphic encryption schemes' biggest challenge is the fact that they are highly inefficient. While being a hot research topic, we may assume that \gls{fhe} schemes still have a long way to go before being deployed in commercial systems \cite{naehrig2011can}. However, if the practical systems ever reaches the theoretic potentiality of \gls{fhe}, such schemes and systems could be a possible game changer for cloud based services in the future.
 
-\noindent
-???\\
-Maybe we can achieve FHE in another way?\\
-For now: What is practically possible?\\
-???
+In 2011, a research team at the \gls{mit} presented CryptDB, which is an encrypted database system providing practical and provable confidentiality \cite{CryptDB_Main_Paper}. CryptDB allows its users to interact with the system by issuing \gls{sql} queries over the encrypted data in an efficient manner. While being a proof of concept, its pioneering design is being used by large companies such as Google and Microsoft \cite{cryptdb_homepage}.
+
+%\noindent
+%???\\
+%Maybe we can achieve FHE in another way?\\
+%For now: What is practically possible?\\
+%???
 \section{Problem}
 
-%Describe the problem/objective.\\
-CryptDB was presented by a research team at MIT in 2011. It is the first, \gls{phe} scheme,  allowing users to interact with the encrypted database by the use of \gls{sql}. %The aim of the project.
-The objective of this project has been to explore CryptDB in means of functionality and how it works. 
+The objective of this project is to critical assess CryptDB in terms of functionality and security, along with developing a small demonstration application to better understand its possible use cases. This project has resulted in an overview of the CryptDB system, a guide on how to install and run CryptDB regardless of operating system, and finally a small sample application for demonstration purposes.
 
-%Short explanation of results
-This project has resulted in a overview of the CryptDB system, a guide on how to install and run CryptDB regardless of operating system, and finally a small sample application.
+\section{Overview of the Report}
 
-\section{Related Work}
-
-There has been an increase in the attention given to research on homomorphic encryption over the last years, much because of the pioneering work of Craig Gentry \citep{Gentry_thesis} \cite{Gentry_first_lattices} \cite{Gentry_computing_arb_func_enc_data}.
-
-
-What to include here?
+In Chapter \ref{chp:background}, a general background on databases and homomorphic encryption will be presented. Chapter \ref{chp:overview_cryptDB} consists of an analysis of CryptDB in terms of functionality and security, while Chapter \ref{chp:attacks} covers some of the different attacks on CryptDB that has been proposed in the past years. The demonstration application and its results are presented in Chapter \ref{chp:software}. Finally, Chapter \ref{chp:conclusion} contains a comparison of CryptDB to a \gls{fhe} scheme, as well as a discussion on the future of CryptDB as a possible solution for \gls{he} schemes.

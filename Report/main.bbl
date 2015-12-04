@@ -54,8 +54,8 @@ Python.
 {\sc Akin, I.~H., and Sunar, B.}
 \newblock {O}n the {D}ifficulty of {S}ecuring {W}eb {A}pplications using
   {C}rypt{DB}.
-\newblock In {\em Big Data and Cloud Computing (BdCloud), 2014 IEEE Fourth
-  International Conference on\/} (2014), pp.~745--752.
+\newblock In {\em The Fourth IEEE International Conference on Big Data and
+  Cloud Computing (BdCloud), 2014\/} (2014), pp.~745--752.
 
 \bibitem{ope_cryptdb}
 {\sc Boldyreva, A., Chenette, N., Lee, Y., and O’Neill, A.}
@@ -86,7 +86,7 @@ Python.
 
 \bibitem{Gentry_computing_arb_func_enc_data}
 {\sc Gentry, C.}
-\newblock Computing arbitrary functions of encrypted data.
+\newblock Computing {A}rbitrary {F}unctions of {E}ncrypted {D}ata.
 \newblock {\em Commun. ACM\/} (2010), pp. 97--105.
 
 \bibitem{naehrig2011can}
@@ -97,7 +97,8 @@ Python.
 
 \bibitem{microsoft_cryptdb}
 {\sc Naveed, M., Kamara, S., and Wright, C.~V.}
-\newblock Inference attacks on property-preserving encrypted databases.
+\newblock Inference {A}ttacks on {P}roperty-{P}reserving {E}ncrypted
+  {D}atabases.
 \newblock In {\em Proceedings of the 22Nd ACM SIGSAC Conference on Computer and
   Communications Security\/} (2015), pp.~644--655.
 
@@ -115,7 +116,7 @@ Python.
 
 \bibitem{CryptDB_OPE_Encoding}
 {\sc Popa, R.~A., Li, F.~H., and Zeldovich, N.}
-\newblock An ideal-security protocol for order-preserving encoding.
+\newblock An {I}deal-{S}ecurity {P}rotocol for {O}rder-{P}reserving {E}ncoding.
 \newblock In {\em Proceedings of the 2013 IEEE Symposium on Security and
   Privacy\/} (2013), pp.~463--477.
 
@@ -131,9 +132,21 @@ Python.
 \newblock Guidelines for {U}sing the {C}rypt{DB} {S}ystem {S}ecurely.
 \newblock Cryptology ePrint Archive, Report 2015/979, 2015.
 
+\bibitem{lwe}
+{\sc Regev, O.}
+\newblock On {L}attices, {L}earning with {E}rrors, {R}andom {L}inear {C}odes,
+  and {C}ryptography.
+\newblock In {\em Proceedings of the Thirty-seventh Annual ACM Symposium on
+  Theory of Computing\/} (2005), ACM, pp.~84--93.
+
 \bibitem{rivest1978data}
 {\sc Rivest, R.~L., Adleman, L., and Dertouzos, M.~L.}
 \newblock On {D}ata {B}anks and {P}rivacy {H}omomorphisms.
 \newblock {\em Foundations of Secure Computation\/} (1978), pp. 169--180.
+
+\bibitem{app_gcd}
+{\sc Sch{\"{o}}nhage, A.}
+\newblock Quasi-{GCD} {C}omputations.
+\newblock {\em J. Complexity\/} (1985), 118--137.
 
 \end{thebibliography}

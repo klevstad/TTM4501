@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.9.7)  22 NOV 2015 18:48
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.9.7)  4 DEC 2015 17:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1553,7 +1553,7 @@ Package glossaries Info: Writing glossary file main.glo on input line 26.
 
 Package glossaries Info: Writing glossary file main.acn on input line 26.
  (./main.aux (./abstract_english.aux)
-(./Chapter1/Introduction.aux) (./Chapter2/Background.aux)
+(./preface.aux) (./Chapter1/Introduction.aux) (./Chapter2/Background.aux)
 (./Chapter3/Investigate_CryptDB.aux) (./Chapter4/Attacks.aux)
 (./Chapter5/Demo.aux) (./Chapter6/Conclusion.aux) (./Appendix/Setupcryptdb.aux)
 )
@@ -1646,7 +1646,7 @@ e
 ))
 \c@lstlisting=\count314
 
-<./figs/ntnu-logo.pdf, id=225, 241.4922pt x 52.79724pt>
+<./figs/ntnu-logo.pdf, id=241, 241.4922pt x 52.79724pt>
 File: ./figs/ntnu-logo.pdf Graphic file (type pdf)
 
 <use ./figs/ntnu-logo.pdf>
@@ -1689,22 +1689,29 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 ] [4
 
 
-] (./main.toc [5]) [6] (./main.lof)
-Underfull \vbox (badness 10000) has occurred while \output is active []
+]
+\openout2 = `preface.aux'.
 
- [7
+ (./preface.tex) [5
+
+] [6
+
+
+] (./main.toc [7])
+[8] (./main.lof)
+Underfull \vbox (badness 1092) has occurred while \output is active []
+
+ [9
 
 ]
-[8] (./main.lot) [9
-
-] [10
-
-] (./main.acr) [11
-
+[10] (./main.lot) [11
 
 ] [12
 
-]
+] (./main.acr [13
+
+
+]) [14]
 \openout2 = `Chapter1/Introduction.aux'.
 
  (./Chapter1/Introduction.tex
@@ -1713,12 +1720,13 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [1
 
 
+
 ])
 [2]
 \openout2 = `Chapter2/Background.aux'.
 
  (./Chapter2/Background.tex
-<./figs/db_table.png, id=449, 445.665pt x 113.42375pt>
+<./figs/db_table.png, id=492, 445.665pt x 113.42375pt>
 File: ./figs/db_table.png Graphic file (type png)
 
 <use ./figs/db_table.png>
@@ -1735,7 +1743,7 @@ has been already used, duplicate ignored
                                                   \fi \fi 
 l.20 
       <./figs/db_table.png>] [4] [5] [6]
-<./figs/he.png, id=483, 694.595pt x 268.00125pt>
+<./figs/he.png, id=525, 694.595pt x 268.00125pt>
 File: ./figs/he.png Graphic file (type png)
  <use ./figs/he.png>
 Package pdftex.def Info: ./figs/he.png used on input line 86.
@@ -1754,17 +1762,15 @@ Package microtype Info: Loading generic settings for font family
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.96 \section
-             {Fully Homomorphic Encryption} <./figs/he.png (PNG copy)>]
-[8]) [9]
+l.100 
+       <./figs/he.png (PNG copy)>] [8]) [9]
 \openout2 = `Chapter3/Investigate_CryptDB.aux'.
 
  (./Chapter3/Investigate_CryptDB.tex [10
 
 
 
-]
-<./figs/CryptDB_Plain.png, id=535, 618.31pt x 157.58875pt>
+] <./figs/CryptDB_Plain.png, id=578, 618.31pt x 157.58875pt>
 File: ./figs/CryptDB_Plain.png Graphic file (type png)
 
 <use ./figs/CryptDB_Plain.png>
@@ -1777,7 +1783,7 @@ Package pdftex.def Info: ./figs/CryptDB_Plain.png used on input line 12.
                                                   \fi \fi 
 l.18 
       <./figs/CryptDB_Plain.png>]
-<./figs/encstack/enc_stack_ope.png, id=545, 179.67125pt x 252.945pt>
+<./figs/encstack/enc_stack_ope.png, id=589, 179.67125pt x 252.945pt>
 File: ./figs/encstack/enc_stack_ope.png Graphic file (type png)
 
 <use ./figs/encstack/enc_stack_ope.png>
@@ -1802,180 +1808,184 @@ gnored
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.72 
-     ] [14] [15] <./figs/one-to-one.png, id=597, 447.6725pt x 164.615pt>
+     ] [14] [15] <./figs/one-to-one.png, id=639, 447.6725pt x 164.615pt>
 File: ./figs/one-to-one.png Graphic file (type png)
 
 <use ./figs/one-to-one.png>
-Package pdftex.def Info: ./figs/one-to-one.png used on input line 146.
+Package pdftex.def Info: ./figs/one-to-one.png used on input line 145.
 (pdftex.def)             Requested size: 313.3686pt x 115.2297pt.
  [16pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
 3}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.160 
+l.165 
        <./figs/one-to-one.png>] [17pdfTeX warning (ext4): destination with the 
 same identifier (name{table.3.2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.189 
-      ] <./figs/Onions.png, id=616, 861.2175pt x 204.765pt>
+l.190 SELECT Name, Division, University, Graduated
+                                                  ]
+<./figs/Onions.png, id=659, 861.2175pt x 204.765pt>
 File: ./figs/Onions.png Graphic file (type png)
-
-<use ./figs/Onions.png>
-Package pdftex.def Info: ./figs/Onions.png used on input line 202.
+ <use ./figs/Onions.png>
+Package pdftex.def Info: ./figs/Onions.png used on input line 201.
 (pdftex.def)             Requested size: 361.70888pt x 86.0007pt.
- [18pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
-4}) has been already used, duplicate ignored
+
+[18pdfTeX warning (ext4): destination with the same identifier (name{figure.3.4
+}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.215 SELECT *
-               <./figs/Onions.png>]
-<./figs/terminal/adjustOnionLayer.jpg, id=626, 523.9575pt x 131.49126pt>
+l.220 
+       <./figs/Onions.png>]
+<./figs/terminal/adjustOnionLayer.jpg, id=669, 523.9575pt x 131.49126pt>
 File: ./figs/terminal/adjustOnionLayer.jpg Graphic file (type jpg)
 
 <use ./figs/terminal/adjustOnionLayer.jpg>
 Package pdftex.def Info: ./figs/terminal/adjustOnionLayer.jpg used on input lin
-e 223.
+e 222.
 (pdftex.def)             Requested size: 366.76775pt x 92.04324pt.
 
-Overfull \hbox (2.76775pt too wide) in paragraph at lines 223--224
+Overfull \hbox (2.76775pt too wide) in paragraph at lines 222--223
 [][]
  []
 
-<./figs/terminal/executeQuery.jpg, id=628, 519.9425pt x 158.5925pt>
+<./figs/terminal/executeQuery.jpg, id=671, 519.9425pt x 158.5925pt>
 File: ./figs/terminal/executeQuery.jpg Graphic file (type jpg)
 
 <use ./figs/terminal/executeQuery.jpg>
 Package pdftex.def Info: ./figs/terminal/executeQuery.jpg used on input line 23
-1.
+0.
 (pdftex.def)             Requested size: 363.95728pt x 111.01396pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 231--232
+Underfull \hbox (badness 10000) in paragraph at lines 230--231
 [][]
  []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
 
 [19pdfTeX warning (ext4): destination with the same identifier (name{figure.3.5
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.240 \section
-              {Security} <./figs/terminal/adjustOnionLayer.jpg>] [20pdfTeX warn
-ing (ext4): destination with the same identifier (name{figure.3.6}) has been al
-ready used, duplicate ignored
+l.236 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.
+3.6}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.249 
-       <./figs/terminal/executeQuery.jpg>] [21pdfTeX warning (ext4): destinatio
-n with the same identifier (name{table.3.3}) has been already used, duplicate i
-gnored
+l.236 
+       <./figs/terminal/adjustOnionLayer.jpg> <./figs/terminal/executeQuery.jpg
+>] [20] [21pdfTeX warning (ext4): destination with the same identifier (name{ta
+ble.3.3}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.276 
+l.277 
       ] [22] [23pdfTeX warning (ext4): destination with the same identifier (na
 me{table.3.4}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.325 FROM employee_table
-                         ])
-Underfull \hbox (badness 10000) in paragraph at lines 357--91
+l.334 
+      ])
+Underfull \hbox (badness 10000) in paragraph at lines 358--91
 
  []
 
-[24] [25]
+[24]
 \openout2 = `Chapter4/Attacks.aux'.
 
- (./Chapter4/Attacks.tex [26
+ (./Chapter4/Attacks.tex [25
 
 
 
-] [27]
-<./figs/letterfreq.jpg, id=702, 362.85562pt x 217.5628pt>
+]
+<./figs/letterfreq.jpg, id=736, 362.85562pt x 217.5628pt>
 File: ./figs/letterfreq.jpg Graphic file (type jpg)
 
 <use ./figs/letterfreq.jpg>
 Package pdftex.def Info: ./figs/letterfreq.jpg used on input line 24.
-(pdftex.def)             Requested size: 145.13968pt x 87.02357pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [28pdfTeX warning (ext4): destination with the same identifier (name{figure.4.
+(pdftex.def)             Requested size: 199.5712pt x 119.65991pt.
+ [26pdfTeX warning (ext4): destination with the same identifier (name{figure.4.
 1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.41 
-      <./figs/letterfreq.jpg>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [29])
-[30]
+l.38 \subsection
+                {Frequency Analysis on DET-encrypted Columns} <./figs/letterfre
+q.jpg>] [27]) [28]
 \openout2 = `Chapter5/Demo.aux'.
 
- (./Chapter5/Demo.tex [31
+ (./Chapter5/Demo.tex [29
 
 
 
-] [32]
-<./figs/terminal/app_user_mainmenu.png, id=760, 489.83pt x 352.31625pt>
+]
+<./figs/terminal/app_user_mainmenu.png, id=790, 489.83pt x 352.31625pt>
 File: ./figs/terminal/app_user_mainmenu.png Graphic file (type png)
 
 <use ./figs/terminal/app_user_mainmenu.png>
 Package pdftex.def Info: ./figs/terminal/app_user_mainmenu.png used on input li
 ne 33.
-(pdftex.def)             Requested size: 220.42146pt x 158.54083pt.
-
-<./figs/terminal/proxy_enc_res.png, id=763, 703.62875pt x 395.4775pt>
+(pdftex.def)             Requested size: 318.38573pt x 229.00284pt.
+ [30]
+<./figs/terminal/proxy_enc_res.png, id=799, 703.62875pt x 395.4775pt>
 File: ./figs/terminal/proxy_enc_res.png Graphic file (type png)
 
 <use ./figs/terminal/proxy_enc_res.png>
 Package pdftex.def Info: ./figs/terminal/proxy_enc_res.png used on input line 4
 2.
-(pdftex.def)             Requested size: 316.63pt x 177.96323pt.
+(pdftex.def)             Requested size: 386.99701pt x 217.51329pt.
 
-<./figs/terminal/app_user_emp.png, id=764, 378.41376pt x 160.6pt>
+Overfull \hbox (22.99701pt too wide) in paragraph at lines 42--43
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<./figs/terminal/app_user_emp.png, id=800, 378.41376pt x 160.6pt>
 File: ./figs/terminal/app_user_emp.png Graphic file (type png)
 
 <use ./figs/terminal/app_user_emp.png>
 Package pdftex.def Info: ./figs/terminal/app_user_emp.png used on input line 50
 .
-(pdftex.def)             Requested size: 264.88782pt x 112.41922pt.
+(pdftex.def)             Requested size: 283.80962pt x 120.44969pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[33pdfTeX warning (ext4): destination with the same identifier (name{figure.5.1
+[31pdfTeX warning (ext4): destination with the same identifier (name{figure.5.1
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.55 \newpage
-             pdfTeX warning (ext4): destination with the same identifier (name{
-figure.5.2}) has been already used, duplicate ignored
+              <./figs/terminal/app_user_mainmenu.png>] [32pdfTeX warning (ext4)
+: destination with the same identifier (name{figure.5.2}) has been already used
+, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.55 \newpage
-              <./figs/terminal/app_user_mainmenu.png> <./figs/terminal/proxy_en
-c_res.png>]
-<./figs/terminal/app_admin_mainmenu.png, id=773, 490.83376pt x 335.2525pt>
+l.60 
+     pdfTeX warning (ext4): destination with the same identifier (name{figure.5
+.3}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.60 
+      <./figs/terminal/proxy_enc_res.png> <./figs/terminal/app_user_emp.png>]
+<./figs/terminal/app_admin_mainmenu.png, id=815, 490.83376pt x 335.2525pt>
 File: ./figs/terminal/app_admin_mainmenu.png Graphic file (type png)
 
 <use ./figs/terminal/app_admin_mainmenu.png>
 Package pdftex.def Info: ./figs/terminal/app_admin_mainmenu.png used on input l
 ine 63.
-(pdftex.def)             Requested size: 269.9594pt x 184.38943pt.
+(pdftex.def)             Requested size: 343.58128pt x 234.67514pt.
 
-<./figs/terminal/app_admin_enc_res1.png, id=774, 264.99pt x 186.6975pt>
+<./figs/terminal/app_admin_enc_res1.png, id=816, 264.99pt x 186.6975pt>
 File: ./figs/terminal/app_admin_enc_res1.png Graphic file (type png)
 
 <use ./figs/terminal/app_admin_enc_res1.png>
@@ -1983,23 +1993,6 @@ Package pdftex.def Info: ./figs/terminal/app_admin_enc_res1.png used on input l
 ine 70.
 (pdftex.def)             Requested size: 198.742pt x 140.02277pt.
 
-Underfull \vbox (badness 2961) has occurred while \output is active []
-
- [34pdfTeX warning (ext4): destination with the same identifier (name{figure.5.
-3}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.74 F
-      or curious database administrators, in addition to performing "free qu...
-pdfTeX warning (ext4): destination with the same identifier (name{figure.5.4}) 
-has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.74 F
-      or curious database administrators, in addition to performing "free qu...
- <./figs/terminal/app_user_emp.png> <./figs/terminal/app_admin_mainmenu.png>]
 Overfull \hbox (1.15262pt too wide) in paragraph at lines 74--75
 \T1/lmr/m/n/10 (-20) per-form-ing "free queries", they
  []
@@ -2009,51 +2002,52 @@ Underfull \hbox (badness 2913) in paragraph at lines 76--77
 \T1/lmr/m/n/10 (+20) re-sult when query-ing the
  []
 
-<./figs/terminal/app_admin_enc_res2.png, id=783, 737.75626pt x 838.13126pt>
+[33pdfTeX warning (ext4): destination with the same identifier (name{figure.5.4
+}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.77 
+     pdfTeX warning (ext4): destination with the same identifier (name{figure.5
+.5}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.77 
+      <./figs/terminal/app_admin_mainmenu.png> <./figs/terminal/app_admin_enc_r
+es1.png>]
+<./figs/terminal/app_admin_enc_res2.png, id=825, 736.7525pt x 341.275pt>
 File: ./figs/terminal/app_admin_enc_res2.png Graphic file (type png)
 
 <use ./figs/terminal/app_admin_enc_res2.png>
 Package pdftex.def Info: ./figs/terminal/app_admin_enc_res2.png used on input l
 ine 87.
-(pdftex.def)             Requested size: 221.32858pt x 251.44131pt.
+(pdftex.def)             Requested size: 368.37535pt x 170.63707pt.
 
+Overfull \hbox (4.37535pt too wide) in paragraph at lines 87--88
+ [][] 
+ []
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[35pdfTeX warning (ext4): destination with the same identifier (name{figure.5.5
+[34pdfTeX warning (ext4): destination with the same identifier (name{figure.5.6
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.94 \newpage
-              <./figs/terminal/app_admin_enc_res1.png>]
-<./figs/terminal/admin_query_result.png, id=791, 1281.78876pt x 90.3375pt>
+              <./figs/terminal/app_admin_enc_res2.png>]
+<./figs/terminal/admin_query_result.png, id=833, 644.4075pt x 90.3375pt>
 File: ./figs/terminal/admin_query_result.png Graphic file (type png)
 
 <use ./figs/terminal/admin_query_result.png>
 Package pdftex.def Info: ./figs/terminal/admin_query_result.png used on input l
 ine 102.
-(pdftex.def)             Requested size: 365.31358pt x 25.74644pt.
+(pdftex.def)             Requested size: 367.31609pt x 51.49289pt.
 
-Overfull \hbox (1.31358pt too wide) in paragraph at lines 102--103
+Overfull \hbox (3.31609pt too wide) in paragraph at lines 102--103
  [][] 
  []
 
-[36pdfTeX warning (ext4): destination with the same identifier (name{figure.5.6
-}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.108 
-      pdfTeX warning (ext4): destination with the same identifier (name{figure.
-5.7}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.108 
-       <./figs/terminal/app_admin_enc_res2.png> <./figs/terminal/admin_query_re
-sult.png>]
-<./figs/terminal/admin_fields_view.png, id=800, 820.06375pt x 419.5675pt>
+<./figs/terminal/admin_fields_view.png, id=835, 820.06375pt x 419.5675pt>
 File: ./figs/terminal/admin_fields_view.png Graphic file (type png)
 
 <use ./figs/terminal/admin_fields_view.png>
@@ -2061,12 +2055,23 @@ Package pdftex.def Info: ./figs/terminal/admin_fields_view.png used on input li
 ne 111.
 (pdftex.def)             Requested size: 328.01968pt x 167.82402pt.
 
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 118--119
 
  []
 
-) [37pdfTeX warning (ext4): destination with the same identifier (name{figure.5
-.8}) has been already used, duplicate ignored
+) [35pdfTeX warning (ext4): destination with the same identifier (name{figure.5
+.7}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.95 \include{Chapter5/Demo}
+                             <./figs/terminal/admin_query_result.png>] [36pdfTe
+X warning (ext4): destination with the same identifier (name{figure.5.8}) has b
+een already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
@@ -2075,11 +2080,18 @@ l.95 \include{Chapter5/Demo}
 \openout2 = `Chapter6/Conclusion.aux'.
 
 
-(./Chapter6/Conclusion.tex [38
+(./Chapter6/Conclusion.tex
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [37
 
 
 
-]) [39] (./main.bbl [40
+]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [38])
+[39] (./main.bbl [40
 
 
 ]
@@ -2111,44 +2123,41 @@ Package microtype Info: Character `029' is missing
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 117.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 117.
  (./main.aux
-(./abstract_english.aux) (./Chapter1/Introduction.aux)
+(./abstract_english.aux) (./preface.aux) (./Chapter1/Introduction.aux)
 (./Chapter2/Background.aux) (./Chapter3/Investigate_CryptDB.aux)
 (./Chapter4/Attacks.aux) (./Chapter5/Demo.aux) (./Chapter6/Conclusion.aux)
 (./Appendix/Setupcryptdb.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 117.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 117.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 9A00D3C08AC69A1A881A9C4A512C49EE;3898.
+(rerunfilecheck)             Checksum: 81361F2CB0C4C44629F353BB96E89373;4222.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 117.
  ) 
 Here is how much of TeX's memory you used:
- 22772 strings out of 495028
- 335852 string characters out of 6181498
- 582856 words of memory out of 5000000
- 25120 multiletter control sequences out of 15000+600000
- 87070 words of font info for 134 fonts, out of 8000000 for 9000
+ 22898 strings out of 495028
+ 337581 string characters out of 6181498
+ 584937 words of memory out of 5000000
+ 25224 multiletter control sequences out of 15000+600000
+ 87406 words of font info for 136 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  58i,13n,48p,1753b,608s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{glo:dbms} has been referenced but does not exist,
- replaced by a fixed one
-
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvip
-s/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/t
-exmf/fonts/enc/dvips/lm/lm-mathit.enc}</usr/share/texmf/fonts/type1/public/lm/l
-mbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/
-fonts/type1/public/lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi1
-0.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb></usr/share/texmf/fonts
-/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></u
-sr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/pub
-lic/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb></usr/shar
-e/texmf/fonts/type1/public/lm/lmss17.pfb></usr/share/texmf/fonts/type1/public/l
-m/lmssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/t
-exmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texmf/fonts/type1/public/lm/lm
-tt10.pfb>
-Output written on main.pdf (57 pages, 823310 bytes).
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dv
+ips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share
+/texmf/fonts/enc/dvips/lm/lm-mathit.enc}</usr/share/texmf/fonts/type1/public/lm
+/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/lm/lmm
+i10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb></usr/share/texmf/fon
+ts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb><
+/usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/p
+ublic/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb></usr/sh
+are/texmf/fonts/type1/public/lm/lmss17.pfb></usr/share/texmf/fonts/type1/public
+/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share
+/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texmf/fonts/type1/public/lm/
+lmtt10.pfb>
+Output written on main.pdf (59 pages, 801846 bytes).
 PDF statistics:
- 972 PDF objects out of 1000 (max. 8388607)
- 857 compressed objects within 9 object streams
- 196 named destinations out of 1000 (max. 500000)
- 22035 words of extra memory for PDF output out of 24883 (max. 10000000)
+ 1042 PDF objects out of 1200 (max. 8388607)
+ 924 compressed objects within 10 object streams
+ 207 named destinations out of 1000 (max. 500000)
+ 22067 words of extra memory for PDF output out of 24883 (max. 10000000)
 
