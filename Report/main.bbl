@@ -76,7 +76,7 @@ Python.
 \bibitem{Gentry_thesis}
 {\sc Gentry, C.}
 \newblock {\em A Fully Homomorphic Encryption Scheme}.
-\newblock PhD thesis, 2009.
+\newblock PhD thesis, Stanford University, 2009.
 
 \bibitem{Gentry_first_lattices}
 {\sc Gentry, C.}
@@ -148,5 +148,12 @@ Python.
 {\sc Sch{\"{o}}nhage, A.}
 \newblock Quasi-{GCD} {C}omputations.
 \newblock {\em J. Complexity\/} (1985), 118--137.
+
+\bibitem{vaikun}
+{\sc Vaikuntanathan, V.}
+\newblock Computing {B}lindfolded: {N}ew {D}evelopments in {F}ully
+  {H}omomorphic {E}ncryption.
+\newblock In {\em Foundations of Computer Science (FOCS), 2011 IEEE 52nd Annual
+  Symposium on\/} (2011), pp.~5--16.
 
 \end{thebibliography}

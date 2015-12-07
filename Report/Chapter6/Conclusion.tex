@@ -7,26 +7,20 @@ CryptDB is the first practical implementation of a somewhat homomorphic encrypti
 
 However, CryptDB seems to be a well-suited approach for creating diaries, contact lists, and other applications targeted for a single user to use. One might argue that it may be more convenient for the developer of such applications to use strong encryption, decrypt the queried data at the client side and perform operations on the plaintext. However, leaving sensitive information in plaintext for just a second, gives an attacker a possible window for stealing it. The single-user mode may also be a solution for developers not being able to provide their own servers. By outsourcing the hosting of the application to a cloud service, the developer is able to easily communicate with his application in a confidential and secure manner.
 
-\section{Comparing CryptDB to a Fully Homomorphic Encryption Scheme}
+%\newpage
 
-Comparison the properties of CryptDB to with a fully homomorphic encrypt scheme.
+\section{Comparing CryptDB to a Fully Homomorphic Encryption Scheme}
 
 \subsection{Functionality}
 As discussed in Section \ref{sec:limits}, CryptDB is subject to some limitations when it comes to functionality. While most of these limitations are possible to avoid by using non-standard approaches or "tweaking" standard queries, it is not necessary true that CryptDB supports all types of operations. Because of these limitations, we can state that CryptDB does not provide functionality of a \gls{fhe} scheme, where we recall that all possible operations on the encrypted data are supported.
 
 \subsection{Security}
 
-CryptDB is based on well-known encryption schemes where the security is tied to well-studied problems being \emph{hard}. This assumption is called the computational hardness assumption, where we assume that cryptosystems built on these problem are considered to be difficult for an attacker to break given that they utilize the current state-of-the-art computational power. Examples on such problems are the Discrete Logarithm problem and the Integer Factorization problem.
-
-\gls{fhe} schemes, however, are based on \emph{newer} hard problems that are not as well-studied as the previously described problems. For example the \gls{lwe} problem (introduced in 2005 \cite{lwe}), which is based on a problem in machine learning, and the Approximate \gls{gcd} problem (introduced in 1985 \cite{app_gcd}) taking advantage of the difficulty of finding the \gls{gcd} of a number given a bunch of near multiples of the number.
-
-One can argue if this makes the security of the encryption schemes used in CryptDB stronger than a \gls{fhe} scheme, but the cryptography used in CryptDB is more studied than the cryptography used in today's \gls{fhe} schemes.
+CryptDB is based on well-known encryption schemes where the security is tied to well-studied problems being \emph{hard}. \gls{fhe} schemes, however, are based on \emph{newer} hard problems that are not as well-studied as the problems described in Chapter \ref{chp:background}. For example the \gls{lwe} problem (introduced in 2005 \cite{lwe}), which is based on a problem in machine learning, and the Approximate \gls{gcd} problem (introduced in 1985 \cite{app_gcd}) taking advantage of the difficulty of finding the \gls{gcd} of a number given a bunch of near multiples of the number. One can argue if this makes the security of the encryption schemes used in CryptDB stronger than a \gls{fhe} scheme, but the cryptography used in CryptDB is more studied than the cryptography used in today's \gls{fhe} schemes.
 
 \subsection{Performance}
 
-As previously described, one of the biggest weaknesses of \gls{fhe} schemes in today's world, is their impracticality. Especially performance-wise, a \gls{fhe} system spends a tremendous amount of time when processing data in a secure manner. In this category, CryptDB is naturally way ahead of a \gls{fhe} system, as it can prove a reasonable 21-26\% decrease in throughput compared to regular servers running MySQL \cite{CryptDB_Main_Paper}. The demo application presented has not been exposed to large dataset, it has not been possible to verify the claims presented in the original paper on CryptDB \citep{CryptDB_Main_Paper}.
-
-Benchmarks? Or just... "But things seem to run smoothly"?
+As previously described, one of the biggest weaknesses of \gls{fhe} schemes in today's world, is their impracticality. Especially performance-wise, a \gls{fhe} system spends a tremendous amount of time when processing data in a secure manner. In this category, CryptDB is naturally way ahead of a \gls{fhe} system, as it can prove a reasonable 21-26\% decrease in throughput compared to regular servers running MySQL \cite{CryptDB_Main_Paper}. As the demo application presented has not been exposed to large dataset, it has not been possible to verify the claims presented in the original paper on CryptDB \citep{CryptDB_Main_Paper}.
 
 \section{Conclusion}
 

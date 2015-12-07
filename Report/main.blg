@@ -15,55 +15,54 @@ Database file #1: main.bib.bib
 Warning--to sort, need author or key in apple_health
 Warning--to sort, need author or key in microsoft_health
 Warning--to sort, need author or key in iDASH
+Warning--to sort, need author or key in cryptdb_homepage
 Warning--to sort, need author or key in mylar_homepage
 Warning--to sort, need author or key in phpBB
 Warning--to sort, need author or key in docker_homepage
 Warning--to sort, need author or key in python
 Warning--to sort, need author or key in mysqldb
 Warning--to sort, need author or key in mysql_workbench
-Warning--to sort, need author or key in cryptdb_homepage
 Warning--empty publisher in ope_cryptdb
 Warning--empty publisher in damgaard2012secure
-Warning--empty school in Gentry_thesis
-You've used 27 entries,
+You've used 28 entries,
             2253 wiz_defined-function locations,
-            671 strings with 7935 characters,
-and the built_in function-call counts, 8286 in all, are:
-= -- 840
-> -- 224
+            676 strings with 8124 characters,
+and the built_in function-call counts, 8630 in all, are:
+= -- 875
+> -- 231
 < -- 0
-+ -- 102
-- -- 72
-* -- 478
-:= -- 1156
-add.period$ -- 83
-call.type$ -- 27
-change.case$ -- 115
++ -- 105
+- -- 74
+* -- 496
+:= -- 1205
+add.period$ -- 86
+call.type$ -- 28
+change.case$ -- 119
 chr.to.int$ -- 0
 cite$ -- 40
-duplicate$ -- 381
-empty$ -- 823
-format.name$ -- 72
-if$ -- 1894
+duplicate$ -- 401
+empty$ -- 860
+format.name$ -- 74
+if$ -- 1975
 int.to.chr$ -- 0
-int.to.str$ -- 27
-missing$ -- 14
-newline$ -- 138
-num.names$ -- 34
-pop$ -- 227
+int.to.str$ -- 28
+missing$ -- 15
+newline$ -- 143
+num.names$ -- 36
+pop$ -- 234
 preamble$ -- 1
-purify$ -- 90
+purify$ -- 93
 quote$ -- 0
-skip$ -- 283
+skip$ -- 296
 stack$ -- 0
-substring$ -- 553
-swap$ -- 124
+substring$ -- 577
+swap$ -- 130
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 108
-warning$ -- 13
-while$ -- 72
-width$ -- 29
-write$ -- 266
-(There were 13 warnings)
+type$ -- 112
+warning$ -- 12
+while$ -- 77
+width$ -- 30
+write$ -- 277
+(There were 12 warnings)

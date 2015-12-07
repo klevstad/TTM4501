@@ -27,12 +27,12 @@
 \BOOKMARK [2][-]{subsection.3.4.1}{Single-user Mode}{section.3.4}% 27
 \BOOKMARK [2][-]{subsection.3.4.2}{Multi-user Mode}{section.3.4}% 28
 \BOOKMARK [2][-]{subsection.3.4.3}{Securing Applications When Using CryptDB}{section.3.4}% 29
-\BOOKMARK [1][-]{section.3.5}{Limitations}{chapter.3}% 30
+\BOOKMARK [1][-]{section.3.5}{Functional Limitations}{chapter.3}% 30
 \BOOKMARK [0][-]{chapter.4}{Attacking CryptDB}{}% 31
 \BOOKMARK [1][-]{section.4.1}{Tampering with CryptDB}{chapter.4}% 32
 \BOOKMARK [1][-]{section.4.2}{Microsoft Research and their Frequency Analysis}{chapter.4}% 33
-\BOOKMARK [2][-]{subsection.4.2.1}{Frequency Analysis on DET-encrypted Columns}{section.4.2}% 34
-\BOOKMARK [2][-]{subsection.4.2.2}{Sorting Attack on OPE-encrypted Columns}{section.4.2}% 35
+\BOOKMARK [2][-]{subsection.4.2.1}{Frequency Analysis on DET-Encrypted Columns}{section.4.2}% 34
+\BOOKMARK [2][-]{subsection.4.2.2}{Sorting Attack on OPE-Encrypted Columns}{section.4.2}% 35
 \BOOKMARK [2][-]{subsection.4.2.3}{CryptDB Developers Answer Microsoft Research}{section.4.2}% 36
 \BOOKMARK [0][-]{chapter.5}{CryptDB as a Software}{}% 37
 \BOOKMARK [1][-]{section.5.1}{Installation of CryptDB's Software}{chapter.5}% 38

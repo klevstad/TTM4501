@@ -1,18 +1,18 @@
 \chapter{Background}
 \label{chp:background}
 
-This chapter will cover the cryptographic background of the necessary components of databases in order to understand CryptDB, along with some of the basic cryptographic principals and homomorphic encryption.
+This chapter covers the cryptographic background of the necessary components of a database in order to understand CryptDB, along with some of the basic cryptographic principals and homomorphic encryption.
 
 \section{Databases and Database Systems}
 
-Databases are central building blocks in most computer systems, allowing data to be stored, shared, and read by users. When we want to save our data, we need a place to store it. Formally, databases can be described as a set of related data that us organized in such a way that data can easily be accessed, managed, and updated. As the amount of data stored does not decrease over time, database systems experience an exponential growth and are becoming more and more complex.
+Databases are central building blocks in most computer systems, allowing data to be stored, shared, and read by users. When we want to save our data, we need a place to store it. More formally, databases can be described as a set of related data that is organized in such a way that data can easily be accessed, managed, and updated. As the amount of data stored does not decrease over time, database systems experience an exponential growth and are becoming more and more complex.
 
 Databases are often constructed of one or more \emph{tables} which consists of multiple fields or \emph{columns} as seen in Figure \ref{fig:db_table}. These columns are usually defined to store values of some predetermined \emph{data type}, for example integers, dates, strings or decimals. 
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.7]{db_table.png}
-	\caption{A table within a database consists of multiple columns, when inserting values into a table, a new row will be created storing the data}
+	\caption{A table within a database consists of multiple columns. When inserting values into a table, a new row will be created storing the values.}
 	\label{fig:db_table}
 \end{figure}
 
@@ -23,14 +23,7 @@ Let us assume a \gls{dbms} with a database storing some tables with our data. Ho
 \section{Database Security}
 \label{chp:database_Security}
 
-In today's world, companies stores banking information, health records, and other sensitive information in their databases, which makes them a target for criminals and hackers. In order to cope with such attacks, systems that are relying on some sort of database structure, are in need of defence mechanisms and protection.
-
-%Usually, database systems are stored behind different network security measures such as firewalls and intrusion detection systems. A database firewall will, for example, monitor all traffic to and from a database system in order to detect situations that deflects from the predetermined database policy. Such measures does however only provide security for the outside of the system, but a system is in need of security on the inside as well. Most database systems provide different security measures for handling situations that can occur on the inside.
-%
-%Access control is used for granting different privileges for a user or user groups to a certain object in the database, such as a table, view or procedure. Authentication is used to ensure that only trusted entities are able to reach the database, and to grant the correct privileges based on the identity of the user. For applications where certain user groups are handling sensitive information, a person in charge of the system may have the need to monitor who accessed a given table at a certain time in case of information leaks and similar circumstances. Auditing is a database security technique which does not directly prevent security protocols from being broken, but allows the system administrator to backtrack and discover breaches in the security.
-%
-%Another vital part of keeping a database secure, is of course the use of database encryption. Both symmetric and asymmetric encryption is possible to perform on database systems, and there exists different ways of layering the encryption based on the application.
-
+In today's world, companies store banking information, health records, and other sensitive information in their databases, which makes them a target for criminals and hackers. In order to cope with such attacks, systems that are relying on some sort of database structure are in need of defence mechanisms and protection.
 
 \paragraph{Network Security}
 
@@ -43,48 +36,48 @@ Usually, database systems are stored behind different network security measures 
 
 When storing data in a database, it is not always desirable for all users to be able to access all parts of the database. If the database is left open for anyone to connect to, one of the risks is that strangers gain access to the database and possibly sensitive information. But granting access in a database is more than just keeping strangers out.
 
-In order to prevent such incidents most databases utilizes access control, which is used for granting different privileges to a user or group of users. In a physical setting, this would be to hand out id cards for users which should be able to access the data. For database systems, the id cards are replaced by login credentials, where the user identifies itself with a user name and password. This can also be leveraged into granting different types of users or groups of users access to different types of data. A normal user should for example only be able to access relevant data for its role, while an administrator should be able to access all data.
+In order to prevent such incidents most databases utilize access control, which is used for granting different privileges to a user or group of users. In a physical setting, this would be to hand out id cards for users which should be able to access the data. For database systems, the id cards are replaced by login credentials, where the user identifies itself with a user name and password. This can also be leveraged into granting different types of users or groups of users access to different types of data. A normal user should for example only be able to access relevant data for its role, while an administrator should be able to access all data.
 
 \paragraph{Auditing}
 
-With a high security clearance and access to sensitive data, great responsibility follows. For applications where trusted users has access to very sensitive information, problems may arise. Sometimes sensitive information in a special table is leaked from a firm or an investigation, and the people in charge is left with a possible mole in their ranks.
+With a high security clearance and access to sensitive data, great responsibility follows. For applications where trusted users have access to very sensitive information, problems may arise. Sometimes sensitive information in a special table is leaked from a firm or a criminal investigation, and the people in charge are left with a possible mole in their ranks.
 
 Auditing is used by a system administrator to log which users access which data, as well as the time the data was accessed. Such security measures do not directly prevent the security from being breached, but allows the system administrators to locate the possible mole in such incidents. 
 
 
 \paragraph{Data Encryption}
 
-People with physical access to a database may be able to bypass the security measurements that is suppose to protect the database and make a hard copy of it. If the data is stored in plaintext at the database, access control and auditing does not offer much protection against an on-site attacker. 
+People with physical access to a database may be able to bypass the security measurements that are supposed to protect the database and make a hard copy of it. If the data is stored in plaintext on the database, access control and auditing do not offer much protection against an on-site attacker. 
 
-Encryption is used to preserve confidentiality of the data stored in the database. By encrypting sensitive data under some secret key, it increases the difficulty for an attacker to obtain sensitive information, given that the secret key is securely hidden. This means that a curios database administrator is able to view all of the data, given that the secret keys are stored somewhere of the database and the administrator has root privileges. 
+Encryption is used to preserve confidentiality of the data stored in the database. By encrypting sensitive data under some secret key, it increases the difficulty for an attacker to obtain sensitive information, given that the secret key is securely hidden. This means that a curious database administrator is able to view all of the data, given that the secret keys are stored somewhere of the database and the administrator has root privileges. 
 
 \section{Symmetric Encryption}
 
-Symmetric key encryption is, perhaps, the most intuitive type of encryption, where the sender encrypts the data with a secret key that the sender and receiver has agreed upon in advance. When receiving data, the receiver uses the pre-shared secret key in order to decrypt the data. In a more formal matter, symmetric key encryption is usually used either with a block cipher(which encrypts messages in chunks of data) or a stream cipher (which encrypts data bit-by-bit). The scheme usually consist of three algorithms, $KeyGen$, $Enc$ and $Dec$.
+Symmetric key encryption is, perhaps, the most intuitive type of encryption, where the sender encrypts the data with a secret key that the sender and receiver has agreed upon in advance. When receiving data, the receiver uses the pre-shared secret key in order to decrypt the data. In a more formal matter, symmetric key encryption is usually used either with a block cipher (which encrypts messages in chunks of data) or a stream cipher (which encrypts data piece-by-piece). The scheme usually consist of three algorithms, $KeyGen$, $Enc$ and $Dec$.
 
 $KeyGen$ is the algorithm that generates the secret key $sk$ used for encryption and decryption, $Enc_{sk}$ encrypts the data with the secret key, and $Dec_{sk}$ decrypts it using the same secret key. One of the major drawbacks with symmetric key cryptography is that the secret key needs to be shared between the parties that are communicating. If an adversary obtains the secret key, say that one of the parties stored it on a piece of paper that was misplaced and lost, the whole communication channel would be compromised as the adversary could easily decrypt the data.
 
-In database systems, symmetric encryption is often used encrypting data under some secret key $sk$ that is kept in the database. Given that the information in the database is stored using the same key, this approach provides little security against unauthorized users that gain access to the secret key. On the plus side, the process of encrypting data using a symmetric encryption scheme is usually fast compared to other approaches that uses multiple keys.
+In database systems, symmetric encryption is often used encrypting data under some secret key $sk$ that is kept in the database. Given that the information in the database is stored using the same key, this approach provides little security against unauthorized users that gain access to the secret key. On the plus side, the process of encrypting data using a symmetric encryption scheme is usually fast and straight-forward.
 
 
 \section{Asymmetric Encryption}
 
-In contrast to symmetric key encryption, asymmetric key encryption does not depend on a pre-shared secret key. Asymmetric key encryption, or Public-Key Encryption, is based upon the fact that some mathematical problems are considered \emph{hard}, such as the integer factorization, discrete logarithms and elliptic curves. By computing a key-pair consisting of a public key and a private key, two users are able to exchange keys over a public channel without worrying about their secret keys being compromised.
+In contrast to symmetric key encryption, asymmetric key encryption does not depend on a pre-shared secret key. Asymmetric key encryption, or Public-Key Encryption, is based upon the fact that some mathematical problems are considered \emph{hard}. This assumption is called the computational hardness assumption, where we assume that cryptosystems built on these problems are considered to be difficult for an attacker to break, given that the attacker utilizes the current state-of-the-art computational power. Examples on such problems are integer factorization, finding discrete logarithms and finding points on elliptic curves. By computing a key-pair consisting of a public key and a private key, two users are able to exchange keys over a public channel without worrying about their secret keys being compromised.
 
-The public key is used for encrypting data sent to the user, and the private key is used to decrypt received data that is encrypted with said public key. Two of the most recognized public-key cryptosystems are \gls{rsa}, which relies of the integer factorization problem, and ElGamal, which relies on the discrete logarithms problem. In addition to secure communication between multiple parties, public key cryptography is also applied to create digital signatures, which provides authentication and data integrity.
+% Legge inn hard-greiene fra konklusjonen her
+
+The public key is used for encrypting data sent to the user, and the private key is used to decrypt received data that is encrypted with said public key. Two of the most recognized public-key cryptosystems are \gls{rsa}, which relies on a problem similar to the integer factorization problem \cite{rivest1978data}, and ElGamal, which relies on the discrete logarithms problem \cite{elgamal}. In addition to secure communication between multiple parties, public key cryptography is also applied to create digital signatures, which provides authentication and data integrity.
 
 For applications using databases that are storing information for different users, asymmetric encryption would be a natural encryption scheme. Information sent from one user to another could be encrypted under the receivers public key and vice-versa, and decrypted by applying their secret keys.
 
-% Why are we talking about asymmetric encryption?
-
 \section{Homomorphic Encryption}
 
-We love to describe encryption as safes where we store our data, then secures it with one or more locks, and hide the secret key. Without the secret key, the data is securely stored inside the safe. Whenever we need our data, we take the hidden key out from its hideout and opens all the locks of the safe, where the data is as intact as we left it. The, perhaps, holiest of all the holy grails in cryptography is called \emph{homomorphic encryption}. This is a special case of encryption where operations on the encrypted data are possible without decrypting it first, or in the perspective of our locked safe: Modify the data on the inside of the safe without ever unlocking it. Figure \ref{fig:he_ill} illustrates the main concept of homomorphic encryption used in a cloud service scenario.
+We love to describe encryption as safes where we store our data, then secure it with one or more locks, and hide the secret key. Without the secret key, the data is securely stored inside the safe. Whenever we need our data, we take the hidden key out from its hideout and open all the locks of the safe, where the data is as intact as we left it. The, perhaps, holiest of all the holy grails in cryptography is called \emph{homomorphic encryption}. This is a special case of encryption where operations on encrypted data are possible without decrypting it first, or in the perspective of our locked safe: Modify the data on the inside of the safe without ever unlocking it.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.5]{he.png}
-	\caption{Illustration of a homomorphic system where data is encrypted at the client, sent to the server which performs computation on the encrypted data and returns an encrypted result which is decrypted by the client.}
+	\caption{Illustration of a homomorphic system where data is encrypted at the client side, sent to the server, which performs computation on the encrypted data, and returns an encrypted result which is decrypted by the client.}
 	\label{fig:he_ill}
 \end{figure}
 
@@ -95,12 +88,12 @@ For \gls{phe} schemes, $Eval$ will be associated to a set of permitted functions
 
 \section{Fully Homomorphic Encryption}
 
-\Gls{fhe}, which has no restrictions to what types of operations that can be performed on the encrypted data, was first suggested in 1978 by Rivest, Adleman, and Dertouzos \cite{rivest1978data}. At this point in time, researchers did not have any secure scheme for using these ideas. More importantly, there were not many use cases driving the need of such schemes. It has therefore been a slightly displaced and forgotten grail until 2009,
-when Gentry presented the first \gls{fhe} scheme based on lattices \cite{Gentry_first_lattices}, and a year later another scheme using a \emph{bootstrappable} approach \citep{Gentry_computing_arb_func_enc_data}. Nearly all modern \gls{fhe} schemes are based on this bootstrappable concept using Gentry's blueprints. 
+\Gls{fhe}, which has no restrictions on what types of operations can be performed on the encrypted data, was first suggested in 1978 by Rivest, Adleman, and Dertouzos \cite{rivest1978data}. At this point in time, researchers did not have any secure scheme for using these ideas. More importantly, there were not many use cases driving the need of such schemes. It has therefore been a slightly displaced and forgotten grail until 2009,
+when Gentry presented the first \gls{fhe} scheme based on lattices \cite{Gentry_first_lattices}, and a year later another scheme using a \emph{bootstrappable} approach \citep{Gentry_computing_arb_func_enc_data}. Nearly all modern \gls{fhe} schemes are based on this bootstrappable concept using Gentry's blueprints \cite{vaikun}. 
 
-As mentioned in the section above, a homomorphic operation creates noise when executed. Multiple operations adds more noise which may change the decrypted result beyond the recognizable. But what if we had a scheme that was able to reduce the noise generated by such operations? Boostrapping involves encrypting the secret key $sk$ under its corresponding public key $pk$ and added to a modified encryption algorithm, $Recrypt(pk_{i+1}, D_{\epsilon}, \overline{sk_i}, c_i)$. This basically enables the algorithm to decrypt the ciphertext $c_i$ taken as input internally while being encrypted under the new public key $pk_{i+1}$. $Recrypt$ returns a \emph{freshly} created ciphertext $c_{i+1}$ which is less noisy than the original $c_1$ ciphertext to continue to perform homomorphic operations on.
+As mentioned in the section above, a homomorphic operation creates noise when executed. Multiple operations add more noise which may change the decrypted result beyond the recognizable. But what if we had a scheme that was able to reduce the noise generated by such operations? Boostrapping involves encrypting the secret key $sk$ under its corresponding public key $pk$ and adding it to a modified encryption algorithm, $Recrypt(pk_{i+1}, D_{\epsilon}, \overline{sk_i}, c_i)$. This basically enables the algorithm to decrypt the ciphertext $c_i$ taken as input internally while being encrypted under the new public key $pk_{i+1}$. $Recrypt$ returns a \emph{freshly} created ciphertext $c_{i+1}$, which is less noisy than the original $c_1$ ciphertext, to continue performing homomorphic operations on.
 
-Equation \ref{enc_m} encrypts the message $m$ under the public key $pk_1$ as most asymmetric encryption schemes does, in order to obtain the ciphertext $c_1$. So far, nothing we have not seen before. Now, the secret key $sk_1$ from the public-key-pair $(pk_1,sk_1)$ is encrypted using a new, fresh public-key pair $(pk_2, sk_2)$ as seen in Equation \ref{enc_sk}. By doing so, the algorithm enables $Eval$ to later on decrypt $c_1$ using $sk_1$ while under the encryption of $pk_2$.
+Equation \ref{enc_m} encrypts the message $m$ under the public key $pk_1$ as most asymmetric encryption schemes do, in order to obtain the ciphertext $c_1$. So far, nothing we have not seen before. Now, the secret key $sk_1$ from the public-key-pair $(pk_1,sk_1)$ is encrypted using a new, fresh public-key pair $(pk_2, sk_2)$ as seen in Equation \ref{enc_sk}. By doing so, the algorithm enables $Eval$ to later on decrypt $c_1$ using $sk_1$ while under the encryption of $pk_2$.
 
 \begin{equation}
 \label{enc_m}
@@ -111,7 +104,7 @@ c_1 = Enc(pk_1, m)
 \overline{sk_1} = Enc(pk_2, sk_1)
 \end{equation}
 
-Bootstrapping works recursively, so for the algorithm to be able to decrypt the $c_1$ in the next iteration, it needs to be encrypted under the new public key $pk_2$ as seen in Equation \ref{enc_c_1}. In Equation \ref{eval_c1_pk2}, a new and fresh ciphertext is produced by the $Eval$ algorithm, which uses $pk_2$ to encrypt the noisy ciphertext $c_1$, and D to decrypt it $c_1$ using its corresponding $sk_1$ inside $Eval$. By doing this, the noise of the ciphertext is reduced, while still being encrypted - Now under the public key $pk_2$. 
+Bootstrapping works recursively, so for the algorithm to be able to decrypt the $c_1$ in the next iteration, it needs to be encrypted under the new public key $pk_2$ as seen in Equation \ref{enc_c_1}. In Equation \ref{eval_c1_pk2}, a new and fresh ciphertext is produced by the $Eval$ algorithm, which uses $pk_2$ to encrypt the noisy ciphertext $c_1$, and D to decrypt $c_1$ using its corresponding $sk_1$ inside $Eval$. By doing this, the noise of the ciphertext is reduced, while still being encrypted - Now under the public key $pk_2$. 
 
 \begin{equation}
 \label{enc_c_1}
@@ -122,7 +115,7 @@ Bootstrapping works recursively, so for the algorithm to be able to decrypt the 
 c_1' = Eval(pk_2, D_{\epsilon}, \overline{sk_1}, \overline{c_1})
 \end{equation}
 
-When allowing the encryption function to handle its own decryption function at the same time, Gentry showed that the noise added by the homomorphic operations was less than the noise removed by the additional decryption \cite{Gentry_computing_arb_func_enc_data}, and the breakthrough was made in hunt for a fully homomorphic encryption scheme. While Gentry's system is great in theory, it has been shown that creating \gls{fhe} schemes is hard in practice. However, some other cryptographic schemes holds different types of homomorphic properties which when combined can provide different homomorphic operations. Addition is, for example, a homomorphic property of the Pailler cryptosystem \citep{Paillier}. Pailler is originally a trapdoor mechanism based on the Composite Residuosity Class Problem which conveniently has the cryptographic property such that \[ENC_k(x) * ENC_k(y) = ENC_k(x + y)\]
+When allowing the encryption function to handle its own decryption function at the same time, Gentry showed that the noise added by the homomorphic operations was less than the noise removed by the additional decryption \cite{Gentry_computing_arb_func_enc_data}, and the breakthrough was made in the hunt for a fully homomorphic encryption scheme. While Gentry's system is great in theory, it has been shown that creating \gls{fhe} schemes is difficult in practice. However, some other cryptographic schemes hold different types of properties which when combined provide different homomorphic operations. Addition is, for example, a homomorphic property of the Pailler cryptosystem \citep{Paillier}. Pailler is originally a trapdoor mechanism based on the Composite Residuosity Class Problem which conveniently has the cryptographic property such that \[ENC_k(x) * ENC_k(y) = ENC_k(x + y)\]
 
 Another practical cryptosystem providing a similar property, is the ElGamal cryptosystem \cite{elgamal}. Along with being an asymmetric cryptosystem , it has the cryptographic property shown below, which enables it to perform homomorphic multiplications.  \[ENC_k(x) * ENC_k(y) = ENC(x * y)\]
 
