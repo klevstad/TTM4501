@@ -28,7 +28,7 @@ CryptDB has two operational modes, or principals. One for applications consistin
 \begin{wrapfigure}[17]{r}[1pt]{4cm}
 \centering
 \includegraphics[width=\linewidth]{encstack/enc_stack_ope.png}
-\caption{Ordering of the different encryption layers based on the security they provide}
+\caption{Ordering of the different encryption layers based on the security they provide.}
 \label{fig:enc_stack}
 \end{wrapfigure}
 
@@ -242,31 +242,31 @@ In section \ref{sec:sysarc}, two different modes for using CryptDB were mentione
 If an application is created with a single user in mind, then it should be running in the single-user mode where the encryption keys are derived from one secret master key rooted in the user's password. By running in this particular mode, the user has access to all data encrypted through the proxy server. In this mode, the proxy server and the application are considered to be trusted. The database server however, is considered to be untrusted and subject to the snooping of a curious database administrator owning the server system hosting the database. As of the most recent versions of the CryptDB software, only the single-user mode is supported, which has been used to create a small demo application described in Chapter \ref{chp:software}.
 
 \subsection{Multi-user Mode}
-Picture a simple online discussion forum, where users can interact by posting messages to discussion boards or sending each other private messages. As described in Section \ref{chp:database_Security}, database applications are in need of access control in order to restrict access to certain tables based on the user's credentials, hence the need for declaring user entities as well as different groups. But how can a user read messages on the discussion board if they are encrypted by another user's key? What about private messages, which suffer from the same case, as they will be encrypted with the sender's key? CryptDB solves these cases by letting developers use annotations in their schemas.
+Picture a simple online discussion forum, where users can interact by posting messages to discussion boards or sending each other private messages. As described in Section \ref{chp:database_Security}, database applications are in need of access control in order to restrict access to certain tables based on the user's credentials, hence the need for declaring user entities as well as different groups. But how can a user read messages on the discussion board if they are encrypted by another user's key? What about private messages, which suffer from the same case, as they will be encrypted with the sender's key? Cr
+yptDB solves these cases by letting developers use annotations in their schemas.
 
 % Explain annotations.
 
-
-Table \ref{annotations} shows a basic use of such annotations. \verb!PRINCTYPE! is used to annotate external users, which are authenticated through the access control by providing their password, and internal users, which are entities inside the database. \verb!ENC_FOR! is used to indicate which columns that contain sensitive data, and in the next column CryptDB needs to store which principals that should have access to the sensitive column. Okay, so we have access to the column, but how can we decrypt something encrypted with someone else's keys?
+Annotations are in most languages and frameworks used for describing code and attributes, as well as inducing different behaviours, and are usually parsed at compile time. In CryptDB, the annotations is used when creating database schemas, and then used by the software to perform different types on encryptions based on the annotated attributes. Table \ref{annotations} shows a basic use of such annotations. \verb!PRINCTYPE! is used to annotate external users, which are authenticated through the access control by providing their password, and internal users, which are entities inside the database. \verb!ENC_FOR! is used to indicate which columns that contain sensitive data, and in the next column CryptDB needs to store which principals that should have access to the sensitive column. Okay, so we have access to the column, but how can we decrypt something encrypted with someone else's keys?
 
 \begin{table}
 \begin{Verbatim}[frame=single]
-PRINCTYPE physical_user EXTERNAL;
-PRINCTYPE user, msg;
+\textcolor{red}{PRINCTYPE} physical_user \textcolor{red}{EXTERNAL};
+\textcolor{red}{PRINCTYPE} user, msg;
 
 CREATE TABLE privmsgs (
 	msgid integer,
-	subject varchar(255)	ENC_FOR (msgid msg),
-	msgtext text		ENC_FOR (msgid msg) );
+	subject varchar(255)	\textcolor{red}{ENC_FOR} (msgid msg),
+	msgtext text		\textcolor{red}{ENC_FOR} (msgid msg) );
 
 CREATE TABLE privmsgs_to (
 	msgid integer,
 	recvid integer,
 	sendid integer,
-	(sendid user) SPEAKS_FOR (msgid msg),
-	(recvid user) SPEAKS_FOR (msgid msg) ); 
+	(sendid user) \textcolor{red}{SPEAKS_FOR} (msgid msg),
+	(recvid user) \textcolor{red}{SPEAKS_FOR} (msgid msg) ); 
 \end{Verbatim}
-\caption{Use of policy annotations when creating multi-user applications}
+\caption{Use of policy annotations in database schemas when creating multi-user applications. Annotations are highlighted in red.}
 \label{annotations}
 \end{table}
 
@@ -348,7 +348,7 @@ WHERE EmplNum IN
     WHERE graduated > 1980);
 \end{verbatim}
 
-In CryptDB, such queries are infeasible, which leaves us with two options. Option one is to perform a join instead using subqueries. While this may solve our problem in this particular situation, it does not necessary work in all situations and may create duplicated rows in the result. Option two is to let the application execute the operation as two separate queries and store the result of the first query as an intermediate value used in the second query.
+In CryptDB, such queries are infeasible, which leaves us with two options. Option one is to perform a join instead of using subqueries. While this may solve our problem in this particular situation, it does not necessary work in all situations and may create duplicated rows in the result. Option two is to let the application execute the operation as two separate queries and store the result of the first query as an intermediate value used in the second query.
 
 \begin{verbatim}
 temp_result :=

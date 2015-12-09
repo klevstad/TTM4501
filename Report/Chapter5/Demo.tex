@@ -3,17 +3,27 @@
 
 Although CryptDB is mainly a proof of concept rather than a commercial software, the source code is available along with instructions on how to install it. This chapter will cover the installation and setup of CryptDB's proxy server, how to connect the proxy server to a regular database system, and finally a small demo application will be presented.
 
-\section{Installation of CryptDB's Software}
+\section{Installation and setup of CryptDB's Software}
 
-CryptDB comes as a software available through \gls{mit}, and can be downloaded using the version control system Git. As the creators has moved on to other projects, the source code has not been maintained since 2014, and is currently only tested on Ubuntu 12.04 and Ubuntu 13.04. During the installation of CryptDB, some issues have been encountered. Since CryptDB is only tested with said Ubuntu versions, the natural approach would be to install the software on one of the two Ubuntu versions. This often involves running some sort of \gls{vm} in some \gls{vmm}, which is very inconvenient when developing applications that should be able to run regardless of operating system and environment. When working inside a \gls{vm} installing and working with software that is at best ready for alpha testing, you better watch your steps. 
+CryptDB comes as a software available through \gls{mit}, and can be downloaded using the version control system Git. As the creators has moved on to other projects, the source code has not been maintained since 2014, and is currently only tested on Ubuntu 12.04 and Ubuntu 13.04. During the installation of CryptDB, some issues have been encountered. Since CryptDB is only tested with said Ubuntu versions, the natural approach would be to install the software on one of the two Ubuntu versions. This often involves running some sort of \gls{vm} in some \gls{vmm}, which is very inconvenient when developing applications that should be able to run regardless of operating system and environment. When working inside a \gls{vm} installing and working with software that is at best ready for alpha testing, you better watch your steps. The CryptDB software seems a bit unstable when installing, sometimes failing and sometimes not. 
+
 
 \subsection{Docker to the Rescue}
 
 
 Because of the presented reasons, some of the work related to this project has been to detach CryptDB from such requirements and providing a workable environment regardless of operating system which is easy to restore if one were to corrupt the state if the system. Docker \cite{docker_homepage} is an open-source software allowing programs to be wrapped up in \emph{containers}. Containers are complete file systems containing every piece of code, 
-library and dependency the program need to run properly, and runs directly on the host OS without the need of a \gls{vmm} and Guest OSs. A \emph{Dockerfile} specifies the environment of the container, where the developer can add instructions on software to be installed, commands to should be run, as well as external volumes that can be accessible by the container. After the container is built, it can be shipped and run in other environments such as Windows, OS X and Linux without issues or adjustments related to the contents of the container.
+library and dependency the program need to run properly, and runs directly on the host OS without the need of a \gls{vmm} and Guest OSs. A \emph{Dockerfile} specifies the environment of the container, where the developer can add instructions on software to be installed, commands to run, as well as external volumes that should be accessible to the container. After the container is built, it can be shipped and run in other environments such as Windows, OS X and Linux without issues or adjustments related to the contents of the container.
 
-A guide on how to install and set up CryptDB with both database and proxy server can be found in Appendix \ref{app:setup} along with a small introduction on how to play with the software as presented in Appendix \ref{app:playaround}.
+In order for Docker to be able to install CryptDB seamlessly, a small change was added to CryptDB's installation script. The \texttt{-y} flag was added to the \texttt{sudo apt-get install} command which installs dependencies and other necessary libraries for compiling CryptDB. A guide on how to install and set up CryptDB with both database and proxy server can be found in Appendix \ref{app:setup} along with a small introduction on how to play with the software as presented in Appendix \ref{app:playaround}.
+
+
+\subsection{Problems Related to Connecting the Proxy Server to the MySQL Server}
+
+The CryptDB proxy server listens on port \verb!3307!, intercepts and modifies traffic it receives, and relays it to port \verb!3306! at the proxy backend. One of the issues experienced when setting up CryptDB was related to the hardness of getting the proxy server and the MySQL server connected. For some reason, CryptDB and the build of Ubuntu 12.04 that was used in the beginning of the project, were not that excited in talking to each other using \verb!localhost!.
+
+\texttt{Localhost} was, however, suggested by the developers to use in their guide on how to run CryptDB on a singular machine. As the proxy server and the MySQL server were running as independent servers (but not connected), it was quite hard to debug because of the lack of error messages. The system seemed to run properly, but no queries were intercepted by the proxy server. After a lot of fiddling with the configuration settings for both the proxy and the MySQL server, a breakthrough was made when substituting \texttt{localhost} with \texttt{127.0.0.1}.
+
+Apparently, it seems that specifying \texttt{localhost} as host name when using MySQL on Unix systems tells the client to connect to the server using sockets \cite{mysql_doc}. However, sockets do not seem to work that well with CryptDB, without being able to verify whether or not this is tied to CryptDB itself or the most recent versions of MySQL. By switching to a specific host address such as \verb!127.0.0.1!, the MySQL client is instructed to connect to the port using a TCP/IP connection. When using this approach, the proxy server and the MySQL server finally started to communicate.
 
 
 \section{A Small Demo Application}
@@ -28,7 +38,7 @@ CryptDB needs to have a database running in the background for the proxy server 
 
 Figure \ref{fig:app_mm_user} shows the main menu when logging into the application. There are not many features implemented in the application, as the whole process of just getting CryptDB's software up and running was somewhat time consuming. It allows the user to display the list of employees along with their personal records, adding new employees, as well as updating them. It is mainly developed to test out functionality, therefore it also supports "free queries" where the user can perform queries directly to the proxy (or database). For navigating in the application, the user specifies commands by typing in their corresponding number.
 
-\begin{figure}[h]
+\begin{figure}
 	\centering
 	\includegraphics[scale=0.65]{terminal/app_user_mainmenu.png}
 	\caption{Main menu for users logged in as CryptDB users, i.e. connecting through the proxy server.}
@@ -37,7 +47,7 @@ Figure \ref{fig:app_mm_user} shows the main menu when logging into the applicati
 
 When the user selects option 1 in order to show information regarding the employees of the firm, the application sends a \verb!SELECT * FROM employees;! query to the proxy server. As previously explained, the proxy server intercepts the query and anonymizes it. This can be seen in Figure \ref{fig:proxy_enc_res}, which also shows the encrypted result that is returned from the database server. The result is then decrypted and sent to the application, where it is displayed to the user as seen in Figure \ref{fig:app_user_emp}.
 
-\begin{figure}[h]
+\begin{figure}
 	\centering
 	\includegraphics[scale=0.55]{terminal/proxy_enc_res.png}
 	\caption{The observed processing at the proxy server when querying information about all employees.}
@@ -45,32 +55,37 @@ When the user selects option 1 in order to show information regarding the employ
 \end{figure}
 
 
-\begin{figure}[h]
+\begin{figure}
 	\centering
-	\includegraphics[scale=0.75]{terminal/app_user_emp.png}
+	\includegraphics[scale=0.68]{terminal/app_user_emp.png}
 	\caption{The result displayed at the CryptDB user when querying for information regarding all employees.}
 	\label{fig:app_user_emp}
 \end{figure}
 
-\newpage
+%\newpage
 
 \subsection{Confirming the Encrypted Administrator View}
 
 To illustrate the case of the curious database administrator, which is the most easy-to-demonstrate threat, the application has two views. These are the CryptDB user view, and the database administrator view, which can easily be switched between in the application. Depending on whether the application is connected through the proxy or not, the menu items also changes as shown in Figure \ref{fig:app_mm_user} and Figure \ref{fig:app_mm_admin}. Such a switch is performed by simply disconnecting from the application and perform a new log-in on either port 3306 or 3307 based on the previous view. The available menu items depends on the current user's role.
 
-\begin{figure}[h]
+
+\begin{figure}
 	\centering
-	\includegraphics[scale=0.70]{terminal/app_admin_mainmenu.png}
+	\includegraphics[scale=0.62]{terminal/app_admin_mainmenu.png}
 	\caption{Main menu for administrators, i.e. connecting directly to the database server.}
 	\label{fig:app_mm_admin}
 \end{figure}
 
-\begin{wrapfigure}[14]{r}{8cm}
+
+\newpage
+
+\begin{wrapfigure}[13]{r}{8cm}
 	\centering
     \includegraphics[scale = 0.75]{terminal/app_admin_enc_res1.png}
-    \caption{Encrypted tables in CryptDB from a database administrator's perspective}
+    \caption{Encrypted tables in CryptDB from a database administrator's perspective.}
     \label{fig:app_admin_enc_res1}
 \end{wrapfigure}
+
 For curious database administrators, in addition to performing "free queries", they are also able to view the tables stored in the database, as well as displaying the contents of a table. Remember that one of the key features of CryptDB is that it protects against such curious administrators by encrypting all data inserted in the database.
 
 Figure \ref{fig:app_admin_enc_res1} displays the result when querying the database with the \verb!SHOW TABLES;! statement. All table names are encrypted making it difficult for the administrator to achieve any knowledge about the database. One of the features in the administrator's view is to view the contents of a table, which is done by specifying the name of the table. While the data is encrypted, this does not prevent a curious to perform queries on the encrypted data. For example, there is no obstacles for him to perform a query such as
@@ -80,7 +95,7 @@ SELECT *
 FROM table_ZUZFDCSXGE;
 \end{verbatim}
 
-But, the resulting data is of course encrypted, and shows nothing more than obscure symbols. Figure \ref{fig:admin_enc_res2} shows the resulting data to the query above. Note that the only property not to be encrypted is the row id, hence the database administrator is able to find out the number of rows in a table.
+But, the resulting data is of course encrypted, and nothing more than obscure symbols are returned. Figure \ref{fig:admin_enc_res2} shows the resulting data to the query above. Note that the only property not to be encrypted is the row id, hence the database administrator is able to find out the number of rows in a table.
 
 \begin{figure}[h]
 	\centering
@@ -115,10 +130,8 @@ As observed, the data is not displayed as random symbols as from the demo applic
 
 \section{Discussion on CryptDB as a Software}
 
-Should I just skip the discussion, perhaps? \\
+While being a bit challenging to install and successfully connect to a database system, CryptDB seems to work as intended when operating on encrypted data. What makes CryptDB especially easy to work with is that it is compatible with MySQL, which is a very established and heavily documented \gls{dbms}. This makes it easy and fast to connect CryptDB to existing applications or creating new applications without much knowledge about it. However, the developer should have some insight in what types of operations that are feasible, and how to securely integrate CryptDB without breaking the assumptions and restrictions presented in the recently proposed guidelines \cite{cryptdb_guidelines}. It is clear that CryptDB is not meant for commercial use, both indicated by the lack of documentation and clear guides on implementing applications.
 
-While being a bit challenging to install and successfully connect to a database system, CryptDB seems to work as intended when operating on encrypted data. This project has not investigated the overhead when using CryptDB compared to a regular \gls{dbms}, but the developers states that the throughput of CryptDB is 21-26\% lower than running on a regular MySQL server \citep{CryptDB_Main_Paper}. 
+This project has not investigated the overhead when using CryptDB compared to a regular \gls{dbms}, but the developers states that the throughput of CryptDB is 21-26\% lower than running on a regular MySQL server \citep{CryptDB_Main_Paper}, which seems modest. However, because of lack of time and access to a suitable dataset, this project has not assessed the benchmarks of CryptDB.
 
-Something more...
-
-The authors of CryptDB has taken the idea further with Mylar (\url{https://css.csail.mit.edu/mylar/}, which addresses the threat of attacks on multi-user mode. It is created with the experience from CryptDB in mind, but with focus on running web applications, which is one of the reasons that the multi-user mode has been deprecated from the latest versions of CryptDB.
+The developers have taken the idea further with Mylar \cite{mylar_homepage}, which addresses the threats of attacks on multi-user mode. It is created with the experience from CryptDB in mind, but with focus on running multi-user web applications using the building blocks suggested in CryptDB.

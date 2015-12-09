@@ -21,7 +21,7 @@ In September 2015, a Microsoft Research team released a paper stating that they 
 \begin{wrapfigure}[14]{r}[1pt]{7.2cm}
 \centering
 \includegraphics[scale=0.55]{letterfreq.jpg}
-\caption{Bar chart of the letter frequency observed in the English language}
+\caption{Bar chart of the letter frequency observed in the English language.}
 \label{fig:letter_freq}
 \end{wrapfigure}
 Frequency analysis is to exploit the fact that in most written languages, some characters and combinations of characters are more common than others. In the English alphabet, E, T, A and O are the most regular characters, while J, Z, Q and X are considered to be rare. As described in \ref{sec:det} and \ref{sec:ope}, the DET and OPE schemes are deterministic and therefore encrypts the same plaintext to the same ciphertext. \gls{ope_onion} also reveals the order between the ciphertexts. Because of this, an attacker with access to the ciphertexts is able to compute a histogram of the observed frequencies in the encrypted data. By comparing the histogram to a similar histogram of frequencies computed from closely related plaintext data, the attacker is able to determine which ciphertext characters corresponds to which plaintext characters with fairly large advantage.

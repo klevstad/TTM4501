@@ -1,18 +1,12 @@
-\chapter{Conclusion}
+\chapter{Comparison and Conclusion}
 \label{chp:conclusion}
 
-\section{Impact and Future Use of CryptDB}
-
-CryptDB is the first practical implementation of a somewhat homomorphic encryption scheme using \gls{sql}, and has shown a possible approach for creating encrypted databases. A lot of well-known companies such as Google, Microsoft and SAP, as well as a lot of start-ups, are using CrytpDB's building blocks and putting its ideas into their commercial software \cite{cryptdb_homepage}. As CryptDB is enabled exclusively for single-user applications in the nearest future, it is difficult to point out useful applications involving highly sensitive data. The possible weaknesses of CryptDB presented in Chapter \ref{chp:attacks} may indicate that the authors have made the right call when removing the multi-user possibility from CryptDB and recreated its ideas under the new project Mylar \cite{mylar_homepage}.  
-
-However, CryptDB seems to be a well-suited approach for creating diaries, contact lists, and other applications targeted for a single user to use. One might argue that it may be more convenient for the developer of such applications to use strong encryption, decrypt the queried data at the client side and perform operations on the plaintext. However, leaving sensitive information in plaintext for just a second, gives an attacker a possible window for stealing it. The single-user mode may also be a solution for developers not being able to provide their own servers. By outsourcing the hosting of the application to a cloud service, the developer is able to easily communicate with his application in a confidential and secure manner.
-
-%\newpage
+This chapter will cover a comparison of CryptDB with a general \gls{fhe} scheme, as well as the conclusion of this project. Finally, the impact and future use cases of CryptDB will be pointed out, along with the possibly future work of this project.
 
 \section{Comparing CryptDB to a Fully Homomorphic Encryption Scheme}
 
 \subsection{Functionality}
-As discussed in Section \ref{sec:limits}, CryptDB is subject to some limitations when it comes to functionality. While most of these limitations are possible to avoid by using non-standard approaches or "tweaking" standard queries, it is not necessary true that CryptDB supports all types of operations. Because of these limitations, we can state that CryptDB does not provide functionality of a \gls{fhe} scheme, where we recall that all possible operations on the encrypted data are supported.
+As discussed in Section \ref{sec:limits}, CryptDB is subject to some limitations when it comes to functionality. While most of these limitations are possible to avoid by using non-standard approaches or "tweaking" standard queries, it is not true that CryptDB supports all types of operations. Because of these limitations, we can state that CryptDB does not provide functionality of a \gls{fhe} scheme, where we recall that all possible operations on the encrypted data are supported.
 
 \subsection{Security}
 
@@ -20,7 +14,7 @@ CryptDB is based on well-known encryption schemes where the security is tied to 
 
 \subsection{Performance}
 
-As previously described, one of the biggest weaknesses of \gls{fhe} schemes in today's world, is their impracticality. Especially performance-wise, a \gls{fhe} system spends a tremendous amount of time when processing data in a secure manner. In this category, CryptDB is naturally way ahead of a \gls{fhe} system, as it can prove a reasonable 21-26\% decrease in throughput compared to regular servers running MySQL \cite{CryptDB_Main_Paper}. As the demo application presented has not been exposed to large dataset, it has not been possible to verify the claims presented in the original paper on CryptDB \citep{CryptDB_Main_Paper}.
+As previously described, one of the biggest weaknesses of \gls{fhe} schemes in today's world, is their impracticality. Especially performance-wise, a \gls{fhe} system spends a tremendous amount of time when processing data in a secure manner. In this category, CryptDB is naturally way ahead of a \gls{fhe} system, as it costs only a reasonable 21-26\% decrease in throughput compared to regular servers running MySQL \cite{CryptDB_Main_Paper}. As the demo application presented has not been exposed to large dataset, it has not been possible to verify the claims presented in the original paper on CryptDB \citep{CryptDB_Main_Paper}.
 
 \section{Conclusion}
 
@@ -28,5 +22,13 @@ This project has been about assessing CryptDB, its main features, and how it wor
 
 
 CryptDB certainly provides an interesting approach for practical homomorphic encryption schemes utilizing \gls{sql}. It supports a large set of possible \gls{sql} operations to be performed while both providing confidentiality of the data and being efficient at the same time. However, when seen in connection with the attacks presented in Chapter \ref{chp:attacks}, using CryptDB's approaches may not be the best direction for future implementations of \gls{he} schemes. Especially applications intended for multiple users have been proven to either leak information about data encrypted with weaker encryption scheme, or put possibly destructive restrictions on the developer with respect to usefulness. 
+
+\section{Impact and Future Use of CryptDB}
+
+CryptDB is the first practical implementation of a somewhat homomorphic encryption scheme using \gls{sql}, and has shown a possible approach for creating encrypted databases. A lot of well-known companies such as Google, Microsoft and SAP, as well as a lot of start-ups, are using CrytpDB's building blocks and putting its ideas into their commercial software \cite{cryptdb_homepage}. As CryptDB is enabled exclusively for single-user applications in the nearest future, it is difficult to point out useful applications involving highly sensitive data. The possible weaknesses of CryptDB presented in Chapter \ref{chp:attacks} may indicate that the authors have made the right call when removing the multi-user possibility from CryptDB and recreated its ideas under the new project Mylar \cite{mylar_homepage}.  
+
+However, CryptDB seems to be a well-suited approach for creating diaries, contact lists, and other applications targeted for a single user. One might argue that it may be more convenient for the developer of such applications to use strong encryption, decrypt the queried data at the client side and perform operations on the plaintext. However, leaving sensitive information in plaintext for just a second, gives an attacker a possible window for stealing it. The single-user mode may also be a solution for developers not being able to provide their own servers. By outsourcing the hosting of the application to a cloud service, the developer is able to easily communicate with his application in a confidential and secure manner.
+
+It would have been interesting to create a more comprehensive system and run tests with a large dataset to verify exactly how efficient CryptDB is. Unfortunately, because of the limited amount of time, this is yet to be done. It would also have been interesting to try to recreate the attack proposed by Microsoft Research, if not on a multi-user mode application, then perhaps on a single-user application.
 
 

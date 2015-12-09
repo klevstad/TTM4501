@@ -8,12 +8,12 @@ Apple {H}ealth.
 \bibitem{cryptdb_homepage}
 Crypt{DB} - {MIT}.
 \newblock \url{https://css.csail.mit.edu/cryptdb/}.
-\newblock Accessed: 2015-10-23.
+\newblock Accessed: 2015-12-11.
 
 \bibitem{docker_homepage}
 Docker.
 \newblock \url{https://docker.com/}.
-\newblock Accessed: 2015-11-12.
+\newblock Accessed: 2015-12-10.
 
 \bibitem{iDASH}
 Integrated {D}ata for {A}nalysis, {A}nonymization, and {SH}aring (i{DASH}).
@@ -30,25 +30,31 @@ Mylar -{ MIT}.
 \newblock \url{https://css.csail.mit.edu/mylar/}.
 \newblock Accessed: 2015-11-11.
 
+\bibitem{mysql_doc}
+My{SQL} 5.7 {R}eference {M}anual.
+\newblock
+  \url{http://dev.mysql.com/doc/refman/5.7/en/can-not-connect-to-server.html}.
+\newblock Accessed: 2015-12-10.
+
 \bibitem{mysql_workbench}
 My{SQL} {W}orkbench.
 \newblock \url{https://dev.mysql.com/downloads/workbench/5.2.html}.
-\newblock Accessed: 2015-11-20.
+\newblock Accessed: 2015-12-10.
 
 \bibitem{mysqldb}
 My{SQL}db.
 \newblock \url{http://mysql-python.sourceforge.net/MySQLdb.html}.
-\newblock Accessed: 2015-11-20.
+\newblock Accessed: 2015-12-10.
 
 \bibitem{phpBB}
 php{BB}.
 \newblock \url{https://phpbb.com/}.
-\newblock Accessed: 2015-11-19.
+\newblock Accessed: 2015-12-10.
 
 \bibitem{python}
 Python.
 \newblock \url{https://www.python.org/}.
-\newblock Accessed: 2015-11-20.
+\newblock Accessed: 2015-12-20.
 
 \bibitem{akin_2014}
 {\sc Akin, I.~H., and Sunar, B.}
