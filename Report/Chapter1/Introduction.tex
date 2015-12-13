@@ -4,8 +4,6 @@
 \section{Motivation}
 
 Cloud services are becoming larger and more complex. Users want their content available wherever they are, forcing applications to store content in the cloud. Companies such as Apple \cite{apple_health}, Microsoft \cite{microsoft_health} and other corporations are increasing their focus on health information and how your personal information can be integrated into their services. Medical research facilities stores tremendous amounts of personal data, and are currently looking into how to share their research material across facilities and borders. Competitions, such as iDASH \cite{iDASH} have been held in order to create the best suited methodology for how to securely process and store sensitive information. But in 2015, encrypting and storing sensitive information is not enough. Sensitive information is valuable, and even more valuable if we are able to utilize it in a secure manner. 
-%Along with these types of sensitive data, follows great responsibility and security measures. So when developing applications and systems, data security and confidentiality are important topics.
- 
 
 As developers, we are left with two choices when creating applications utilizing some sort of data storage. Option one is to build our own server farm or data center on a secure site, which is a rather expensive solution with costs related to both hardware, maintenance, electricity and rent. Option two is to out-source the storage to a cloud provider, where the developer stumbles into another problem. How can we guarantee that the data is stored securely, given that we cannot necessary trust the provider?
 
@@ -13,7 +11,7 @@ The first solution that comes to our mind is that the user could encrypt its dat
 
 In short terms, \gls{he} is a cryptographic property describing the ability to perform certain operations on encrypted data (ciphertexts) without decrypting it first. \gls{fhe} is the enhanced version where the encryption scheme is capable of performing all functions efficiently \cite{Gentry_thesis}. While still in research mode, today's fully homomorphic encryption schemes' biggest challenge is the fact that they are highly inefficient. While being a hot research topic, we may assume that \gls{fhe} schemes still have a long way to go before being deployed in commercial systems \cite{naehrig2011can}. However, if the practical systems ever reaches the theoretic potentiality of \gls{fhe}, such schemes and systems could be a possible game changer for cloud based services in the future.
 
-In 2011, a research team at the \gls{mit} presented CryptDB, which is an encrypted database system providing practical and provable confidentiality by utilizing a restricted form of homomorphic encryption\cite{CryptDB_Main_Paper}. CryptDB allows its users to interact with the system by issuing \gls{sql} queries over the encrypted data in an efficient manner. While being a proof of concept, its pioneering design is being used by large companies such as Google\ and Microsoft \cite{cryptdb_homepage}.
+In 2011, a research team at the \gls{mit} presented CryptDB, which is an encrypted database system providing practical and provable confidentiality by utilizing a restricted form of homomorphic encryption \cite{CryptDB_Main_Paper}. CryptDB allows its users to interact with the system by issuing \gls{sql} queries over the encrypted data in an efficient manner. While being a proof of concept, its pioneering design is being used by large companies such as Google and Microsoft \cite{cryptdb_homepage}.
 
 %\noindent
 %???\\

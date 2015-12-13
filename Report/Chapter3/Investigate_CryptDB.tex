@@ -60,7 +60,7 @@ In order to describe the different operations in CryptDB  assume, as a scenario,
 
 \Gls{random_onion} is the highest security level in CryptDB and provides the maximum security found in the encryption scheme. It uses a strong block cipher such as Blowfish or \Gls{aes} in \Gls{cbc_mode} mode and a random \gls{iv} to ensure that the block cipher is probabilistic \citep{CryptDB_Main_Paper}. \Gls{random_onion}, being the maximum security level provided, does not allow any computation to be done on the encrypted data. In other terms, this level is a natural choice for sensitive data that is only meant to be read. When encrypting the same message $m_1$ multiple times with a block cipher that is probabilistic, the resulting ciphertexts $c_1$, $...$, $c_n$ are unequal. 
 
-For example, given two encryptions of the same plaintext $m_1$: $c_1 = Enc_{sk}(m_1)$ and $c_2 = Enc_{sk}(m_1)$ under the same secret key $sk$, the resulting ciphertexts are $c_1$ and $c_2$ such that $c_1 \neq c_2$. \gls{sql} operations supported by this scheme are \verb!SELECT!, \verb!UPDATE!, \verb!DELETE! and \verb!INSERT!. It also supports altering an existing table by removing or adding columns using the \verb!ALTER! statement. In our sample application, the \gls{ssn} would be the most natural thing to stay encrypted under \gls{random_onion} at all times, as there are not many natural operation to perform on such numbers. However, the other columns are not likely to be encrypted under \gls{random_onion} as it is likely that the application would want to perform some operations which demands a lower encryption level. As for an example, take the perhaps most natural query at this encryption level, the \verb!INSERT! statement
+For example, given two encryptions of the same plaintext $m_1$; $c_1 = Enc_{sk}(m_1)$ and $c_2 = Enc_{sk}(m_1)$ under the same secret key $sk$, the resulting ciphertexts are $c_1$ and $c_2$ such that $c_1 \neq c_2$. \gls{sql} operations supported by this scheme are \verb!SELECT!, \verb!UPDATE!, \verb!DELETE! and \verb!INSERT!. It also supports altering an existing table by removing or adding columns using the \verb!ALTER! statement. In our sample application, the \gls{ssn} would be the most natural thing to stay encrypted under \gls{random_onion} at all times, as there are not many natural operation to perform on such numbers. However, the other columns are not likely to be encrypted under \gls{random_onion} as it is likely that the application would want to perform some operations which demands a lower encryption level. As for an example, take the perhaps most natural query at this encryption level, the \verb!INSERT! statement
 
 \begin{verbatim}
 INSERT INTO employee_table
@@ -68,7 +68,7 @@ VALUES('', 5, 'Eric', '29026056789', 55, 680000, 'Engineering');
 \end{verbatim}
 
 \noindent
-which adds a record in the database containing Eric's information. When it comes to \verb!SELECT!, \verb!DELETE! and \verb!UPDATE!, it only supports regular queries without the \verb!WHERE! clauses and similar statements:
+which adds a record in the employee table containing Eric's information. When it comes to \verb!SELECT!, \verb!DELETE! and \verb!UPDATE!, it only supports regular queries without the \verb!WHERE! clauses and similar statements:
 
 \begin{verbatim}
 SELECT * FROM employee_table;
@@ -80,7 +80,7 @@ DELETE FROM employee_table;
 
 \subsection{Homomorphic Encryption}
 
-Another vital part of \Gls{sql} is the ability to perform addition and multiplication. For CryptDB to be able to perform these operations, it utilizes a \Gls{hom_onion} scheme. As previously described, homomorphic encryption is a technique that enables computation on encrypted data without decrypting it first. CryptDB uses Pailler multiplication \cite{Paillier} for enabling additive operations such as \verb!SUM! and \verb!AVERAGE!. If our application is in need for finding out the total sum of the salaries within the firm, we do something like this
+Another vital part of \Gls{sql} is the ability to perform addition and multiplication. For CryptDB to be able to perform these operations, it utilizes a \Gls{hom_onion} scheme. As previously described, homomorphic encryption is a technique that enables computation on encrypted data without decrypting it first. CryptDB uses Pailler multiplication for enabling additive operations such as \verb!SUM! and \verb!AVERAGE! \cite{Paillier}. If our application is in need of finding out the total sum of the salaries within the firm, we would do something like this
 
 \begin{verbatim}
 SELECT SUM(Salary)
@@ -100,14 +100,14 @@ In order to perform a search for words in the encrypted texts, CryptDB has a sch
 \subsection{Deterministic}
 \label{sec:det}
 
-As \Gls{random_onion} allows no computation to be done on the encrypted data and \gls{hom_onion} only allows addition, the next layer brings some more functionality to the toolbox. \Gls{deterministic_onion} is an encryption scheme enabling the application to perform standard \gls{sql} operations such as equality checks, distinct, group by and count. By allowing these sorts of computation, the application leaks information to an adversary. In particular, it leaks which ciphertexts that decrypts to the same plaintext value. Following the previous example; if the scheme encrypted the message $m_1$ two times, the resulting ciphertexts $c_1$ and $c_2$ are such that $c_1 = c_2$. For our sample application, \Gls{deterministic_onion} would be the scheme used when allowing operations such as \verb!GROUP BY!, \verb!DISTINCT! and \verb!COUNT!. Continuing with our sample application, we now want to find out what types of departments that exists in our table
+As \Gls{random_onion} allows no computation to be done on the encrypted data and \gls{hom_onion} only allows addition, the next layer brings some more functionality to the toolbox. \Gls{deterministic_onion} is an encryption scheme enabling the application to perform standard \gls{sql} operations such as equality checks, distinct, group by and count. By allowing these sorts of computations, the application leaks information to an adversary. In particular, it leaks which ciphertexts that decrypts to the same plaintext value. Following the previous example; if the scheme encrypted the message $m_1$ two times, the resulting ciphertexts $c_1$ and $c_2$ are such that $c_1 = c_2$. For our sample application, \Gls{deterministic_onion} would be the scheme used when allowing operations such as \verb!GROUP BY!, \verb!DISTINCT! and \verb!COUNT!. Continuing with our sample application, we now want to find out what types of departments that exists in our table:
 
 \begin{verbatim}
 SELECT DISTINCT Division
 FROM employee_table;
 \end{verbatim}
 \noindent
-which returns \verb!Engineering!, \verb!Marketing! and \verb!Management!. As described, a deterministic scheme encrypts the same plaintext to the same ciphertext every time. By taking advantage of this, CryptDB is capable of iterating over the encrypted data and returning a distinct selection of the different ciphertexts observed. At the \gls{deterministic_onion} layer the \verb!WHERE! clause is also supported when running equality checks. An example usage is the query below, where the name, age and salary of all employees from the management division are returned
+which returns \verb!Engineering!, \verb!Marketing! and \verb!Management!. As described, a deterministic scheme encrypts the same plaintext to the same ciphertext every time. By taking advantage of this, CryptDB is capable of iterating over the encrypted data and returning a distinct selection of the different ciphertexts observed. At the \gls{deterministic_onion} layer the \verb!WHERE! clause is also supported when running equality checks. An example usage is the query below, where the name, age and salary of all employees from the management division are returned:
 
 \begin{verbatim}
 SELECT Name, Age, Salary
@@ -116,7 +116,7 @@ WHERE Division = 'Management';
 \end{verbatim}
 
 \noindent
-We could also extract the total salary for each division by using the \verb!GROUP BY! clause along with the \verb!SUM! operation introduced previously
+We could also extract the total salary for each division by using the \verb!GROUP BY! clause along with the \verb!SUM! operation introduced previously:
 
 \begin{verbatim}
 SELECT Division, SUM(Salary)
@@ -134,7 +134,7 @@ For the encryption, \gls{deterministic_onion} uses a strong block ciphers, and e
 
 Since \Gls{sql} also allows the user to compute on order relations between items, CryptDB introduces an \Gls{ope_onion} scheme \citep{CryptDB_Main_Paper}. This scheme is based on a requirement where the sort order of the ciphertext matches the sort-order of the corresponding decrypted plaintexts. It also requires that the scheme reveals no other information about the plaintexts, other than the respective order. For example, if a value $x \ge y$ then the corresponding encryption would be such that $Enc(x) \ge Enc(y)$. In \Gls{sql}, such an operation is used for order comparison, which are range checks, ranking, sorting, and extracting minimum and maximum values. 
 
-CryptDB uses a modified version the scheme proposed by Boldyreva et. al \citep{ope_cryptdb} as their \gls{ope_onion} scheme, which is a random order-preserving injective function. An injective function is a one-to-one random mapping function that preserves the order of the elements. Since queries related to order consists of retrieving items between two values, or ranges related to one particular value, the encrypted values can be stored as binary trees at the server, ensuring logarithmic run-time \cite{ope_cryptdb}.
+CryptDB uses a modified version of the scheme proposed by Boldyreva et. al \citep{ope_cryptdb} as their \gls{ope_onion} scheme, which is a random order-preserving injective function. An injective function is a one-to-one random mapping function that preserves the order of the elements. Since queries related to order consists of retrieving items between two values, or ranges related to one particular value, the encrypted values can be stored as binary trees at the server, ensuring logarithmic run-time \cite{ope_cryptdb}.
 
 
 \begin{figure}[h]
@@ -172,7 +172,7 @@ The second case is the order-preserving join, which depends on the \gls{ope_onio
  \hline \hline
  1 & 42 & HiST & 1993 & B.Sc. & 319 \\
  2 & 1 & NTNU & 1971 & M.Sc. & 305 \\
- 3 & 1337 & UiO & 2015 & M.Sc & 287 \\
+ 3 & 1337 & UiO & 2015 & M.Sc. & 287 \\
  4 & 123 & NHH & 2009 & MBA & 392 \\
  \hline
 \end{tabular}
@@ -191,11 +191,11 @@ ON t1.EmplNum = t2.EmplNum;
 
 \subsection{Wrapping the Layers}
 
-These different layers are wrapped into four different classes or \emph{onions}, namely \texttt{EQ}(Equality checks), \texttt{ORD}(Order relations), \texttt{SEARCH}(Searching) and \texttt{ADD}(Addition) as shown in Figure \ref{cryptdb_onions}. Each onion has a special purpose in means of supporting certain operations, and every data item is encrypted each of the different onions using the different layers. However, the application does not necessary maintain all of the onions. There is, for example, no need for maintaining the ADD-onion if the data item is a string.
+These different layers are wrapped into four different classes or \emph{onions}, namely \texttt{EQ} (Equality checks), \texttt{ORD} (Order relations), \texttt{SEARCH} (Searching) and \texttt{ADD} (Addition) as shown in Figure \ref{cryptdb_onions}. Each onion has a special purpose in means of supporting certain operations, and every data item is encrypted each of the different onions using the different layers. However, the application does not necessary maintain all of the onions. There is, for example, no need for maintaining the ADD-onion if the data item is a string type.
 
 \begin{figure}[H]
 	\includegraphics[scale=0.42]{Onions.png}
-	\caption{Overview of the structure of the SQL-aware Encryption Scheme. From left: The EQ-onion, ORD-onion, SEARCH-onion and ADD-onion.}
+	\caption{Overview of the structure of the SQL-aware encryption scheme. From left: The EQ-onion, ORD-onion, SEARCH-onion and ADD-onion.}
 	\label{cryptdb_onions}
 \end{figure}
 
@@ -205,7 +205,7 @@ These different layers are wrapped into four different classes or \emph{onions},
 
 We have seen that there is an encapsulation of different encryptions for each data item, and our ideal scenario is that our data is encrypted at the highest, feasible level at all times.  But how is the system supposed to perform a range check if the utmost layer is the \gls{random_onion} which does not support any functionality at all?
 
-CryptDB solves this particular case gracefully by having the proxy server observe incoming queries in real-time. As previously mentioned, the CryptDB proxy server has an embedded table that stores the current encryption layer of all columns. After observing a query, it checks this table whether or not the current encryption level of the inflicted columns are supporting the query. For example in our sample application, the user has issued the query 
+CryptDB solves this particular case gracefully by having the proxy server observe incoming queries in real-time. As previously mentioned, the CryptDB proxy server has an embedded table that stores the current encryption layer of all columns. After observing a query, it checks this table whether or not the current encryption level of the inflicted columns are supporting the query. For example in our sample application, the user has issued the query:
 \begin{verbatim}
 SELECT *
 	FROM employee_table
@@ -228,16 +228,16 @@ After performing the encryption layer adjustment, the proxy rewrites the query a
 	\label{rewritten_query}
 \end{figure}
 
-When a layer has been stripped off, it does not automatically get re-encrypted unless the developer has specified such actions. For example, if an irregular query forces the encryption level lower than necessary. For applications running in single-mode, the encryption layers will over time be in a stable state supporting the relevant queries. But, for multi-mode applications, the developer decides the functionality, hence the types of queries that the application can produce. Therefore, it is possible to start application at the correct layers based on the wanted functionality, and the proxy does not perform any encryption level adjustment at all.
+When a layer has been stripped off, it does not automatically get re-encrypted unless the developer has specified such actions. For example, if an irregular query forces the encryption level lower than necessary. For applications running in single-mode, the encryption layers will over time be in a stable state supporting the relevant queries. But, for multi-mode applications, the developer decides the functionality, hence the types of queries that the application can produce. Therefore, it is possible to start application at the correct layers based on the desired functionality, and the proxy does not perform any encryption level adjustments at all.
 
 
 
 \section{Security}
 
-In section \ref{sec:sysarc}, two different modes for using CryptDB were mentioned. For applications built for one particular user, the single-user mode of CryptDB is used. Examples of applications where such a mode would be useful is when creating a personal diary application or a contact list application. When building applications consisting of users and interaction between users, the developer needs to use the multi-user mode.
+In section \ref{sec:sysarc}, two different modes for using CryptDB were mentioned. For applications built for one particular user, the single-user mode of CryptDB is used. Examples of applications where such a mode would be useful is when creating a personal diary application or a contact list application. When building applications consisting of multiple users with their own usernames and passwords, the developer needs to use the multi-user mode.
 
 \subsection{Single-user Mode}
-If an application is created with a single user in mind, then it should be running in the single-user mode where the encryption keys are derived from one secret master key rooted in the user's password. By running in this particular mode, the user has access to all data encrypted through the proxy server. In this mode, the proxy server and the application are considered to be trusted. The database server however, is considered to be untrusted and subject to the snooping of a curious database administrator owning the server system hosting the database. As of the most recent versions of the CryptDB software, only the single-user mode is supported, which has been used to create a small demo application described in Chapter \ref{chp:software}.
+If an application is created with a single user in mind, then it should be running in the single-user mode where the encryption keys are derived from one secret master key rooted in the application's password (the password to the database). By running in this particular mode, the user has access to all data encrypted through the proxy server. In this mode, both the proxy server and the application server are considered to be trusted. The database server, however, is considered to be untrusted and subject to the snooping of a curious database administrator owning the server system that is hosting the database. As of the most recent versions of the CryptDB software, only the single-user mode is supported, which has been used to create a small demo application presented in Chapter \ref{chp:software}.
 
 \subsection{Multi-user Mode}
 Picture a simple online discussion forum, where users can interact by posting messages to discussion boards or sending each other private messages. As described in Section \ref{chp:database_Security}, database applications are in need of access control in order to restrict access to certain tables based on the user's credentials, hence the need for declaring user entities as well as different groups. But how can a user read messages on the discussion board if they are encrypted by another user's key? What about private messages, which suffer from the same case, as they will be encrypted with the sender's key? CryptDB solves these cases by letting developers use annotations in their schemas.
@@ -245,7 +245,7 @@ Picture a simple online discussion forum, where users can interact by posting me
 
 Annotations are in most languages and frameworks used for describing code and attributes, as well as inducing different behaviours, and are usually parsed at compile time. In CryptDB, the annotations is used when creating database schemas, and then used by the software to perform different types on encryptions based on the annotated attributes. Table \ref{annotations} shows a basic use of such annotations. \verb!PRINCTYPE! is used to annotate external users, which are authenticated through the access control by providing their password, and internal users, which are entities inside the database. \verb!ENC_FOR! is used to indicate which columns that contain sensitive data, and in the next column CryptDB needs to store which principals that should have access to the sensitive column. We see that we have access to the column, but how can we decrypt something encrypted with someone else's keys?
 
-\begin{table}
+\begin{table}[h]
 \begin{Verbatim}[frame=single]
 \textcolor{red}{PRINCTYPE} physical_user \textcolor{red}{EXTERNAL};
 \textcolor{red}{PRINCTYPE} user, msg;
@@ -266,19 +266,17 @@ CREATE TABLE privmsgs_to (
 \label{annotations}
 \end{table}
 
-CryptDB chains encryption keys used to encrypt columns or data items to the root key, which is the user's password. The \verb!SPEAKS_FOR! annotation gives a principal access to all the keys that the principal it speaks for has access to. For example in Table \ref{annotations}, both the user sending the private message and the user receiving it, speaks for the principal type \verb!msg! and thereby has access to all the keys of the \verb!msg! entity. This basically means that the secret key of the message is encrypted two times, first with the sender's key and then with the receiver's key.
+CryptDB chains encryption keys used to encrypt columns or data items to the root key, which is the user's password. The \verb!SPEAKS_FOR! annotation gives a principal access to all the keys that the principal it speaks for has access to. For example in Table \ref{annotations}, both the user sending the private message and the user receiving it, speaks for the principal type \verb!msg! and thereby has access to all the keys of the \verb!msg! entity. This means that the secret key of the message is encrypted two times, first with the sender's key and then with the receiver's key.
 
-Consider this case: Alice wants to send a private message to Bob, which means that the private message needs to be encrypted two times using both Alice and Bob's secret keys. Keys of users who are logged in are kept in a table at the proxy server, but what happens when the proxy server needs to encrypt something with a key which at the time is inaccessible? The keys that are used by a principal to encrypt consists of both a symmetric key and a public-private-key pair. When both parties are logged in, the proxy uses their symmetric keys to encrypt the message. If Bob is currently logged out, the message is encrypted using his public key so that he can decrypt it using his corresponding private key when he logs in.
+Consider this case: Alice wants to send a private message to Bob, which means that the private message needs to be encrypted two times using both Alice and Bob's secret keys. Keys of users who are logged in are kept in a table at the proxy server, but what happens when the proxy server needs to encrypt something with a key which at the time is inaccessible? The keys that are used by a principal to encrypt data consists of both a symmetric key and an asymmetric key pair. When both parties are logged in, the proxy uses their symmetric keys to encrypt the message. If Bob is currently logged out, the message is encrypted using his public key so that he can decrypt it using his corresponding private key when he logs in.
 
-As previously mentioned, the current version of CryptDB has only the option of developing single-mode applications. One may react to the fact that the developers has stopped maintaining such a useful way of developing applications with multiple user's and interaction between users. However, Mylar \cite{mylar_homepage} is the creators of CryptDB's new project. Mylar addresses the threat of the insecure proxy server being compromised by an attacker, and how to protect the confidentiality of the users' data in such events. During an attack on the proxy server in CryptDB, the only parties that are compromised are those who are currently logged in, where their keys are stored at the proxy server.
+As previously mentioned, the current version of CryptDB has only the option of developing single-mode applications. One may react to the fact that the developers has stopped maintaining such a useful way of developing applications with multiple user's and interaction between users. However, Mylar \cite{mylar_homepage} is the creators of CryptDB's new project. Mylar addresses the threat of the insecure proxy server being compromised by an attacker, and how to protect the confidentiality of the users' data in such events. In the event of an attack on the proxy server in CryptDB, the only parties that are compromised are those who are currently logged in, as their keys are stored at the proxy server and accessible to the attacker.
 
 
 \subsection{Securing Applications When Using CryptDB}
 \label{sec:sensitive}
 
-Another importance related to annotations is the use of the \verb!SENSITIVE! annotation. By labelling columns as sensitive, CryptDB provides strong security guarantees of the data stored in the affected columns and also semantic security \cite{popa_thesis}. When a column is marked as sensitive, the only encryption schemes that are allowed are \gls{random_onion}, \gls{hom_onion}, SEARCH and, if the column has the \verb!UNIQUE! constraint from \gls{sql}, \gls{deterministic_onion}. The reason for enabling the \gls{deterministic_onion} scheme under a constraint of the data being unique, is as there are no equal plaintexts, there will be no equal ciphertexts, and the scheme leaks no information about the encrypted data.
-
-%When encrypted under these schemes, the available set of operations are limited compared to CryptDB's full set of operations. However,
+Another importance related to the use of annotations is the \verb!SENSITIVE! annotation. By labelling columns as \emph{sensitive}, CryptDB provides strong security guarantees of the data stored in the affected columns and also semantic security \cite{popa_thesis}. When a column is marked as sensitive, the only encryption schemes that are allowed are \gls{random_onion}, \gls{hom_onion}, SEARCH and, if the column has the \verb!UNIQUE! constraint from \gls{sql}, \gls{deterministic_onion}. The reason for enabling the \gls{deterministic_onion} scheme under a constraint of the data being unique, is as there are no equal plaintexts, there will be no equal ciphertexts, and the scheme leaks no information about the encrypted data.
 
 
 
@@ -287,16 +285,15 @@ Another importance related to annotations is the use of the \verb!SENSITIVE! ann
 
 \gls{fhe} is nowhere near being practical yet, but CryptDB tries its best to be a somewhat practical \gls{he} scheme allowing a set of operations that they claim to be enough to support 99.5\% of all queries observed in an \gls{sql} trace from a production MySQL server \citep{CryptDB_Main_Paper}. However, there are multiple fairly trivial data types that CryptDB does not support.
 
-For example, all fixed-point types and floating-point types are not supported, meaning that computing on decimal values are difficult for the application to perform. In Table \ref{tab:demoapp_education}, our GPA-column, where the most natural data type would be decimal, has been adjusted to an integer by the application. One way to cope with the limitations is to let the developer be responsible for transforming a data type that is not supported into a supported one, and handle the inverse transformation upon receiving an encrypted result. Another option is to let CryptDB exclusively store such values as text with \gls{random_onion} or \gls{deterministic_onion} encryption, and let the client perform operations on such data types. Obviously neither options are desirable, as it is quite the opposite of the goal when using such schemes as CryptDB. 
+For example, all fixed-point types and floating-point types are not supported, meaning that computing on decimal values are difficult for the application to perform. In Table \ref{tab:demoapp_education}, our GPA-column, where the most natural data type would be decimal, has been adjusted to an integer by the application. One way to cope with the limitations is to let the developer be responsible for transforming a data type that is not supported into a supported one, and handle the inverse transformation upon receiving an encrypted result. Another option is to let CryptDB exclusively store such values as text with \gls{random_onion} or \gls{deterministic_onion} encryption, and let the client perform operations on such data types. Obviously neither options are desirable, as it is quite the opposite of the goal when using schemes such as CryptDB. 
 
-More data types that are not supported are those related to date and time, namely Timestamp, Date, Time, DateTime, Year and NewDate. In other terms, if your application needs to encrypt dates and at the same time be able to compute on them, you are in bad luck. The authors suggestion is to encrypt each part of a data in separate columns, and perform the computations on those columns instead of a composite date column.
+Floating points are not the only unsupported data types. Data types related to date and time, namely Timestamp, Date, Time, DateTime, Year and NewDate are neither supported, giving us a bit of a headache. In other terms, if your application needs to encrypt dates and at the same time be able to compute on them, you are in bad luck. The authors suggestion is to encrypt each part of a date (day, month, year, second, minute, hour and so on) in separate columns, and perform the computations on those columns instead of a composite date column.
 
-Could we possibly used Unix timestamps, which are integers representing the number of seconds since 1st of Januar 1970? By representing dates as integer values, we lose a lot of functionality, as we are only able to order the dates. As soon as we want to retrieve dates within a specific year, we need to retrieve all data items and perform the operation on the client side. While the three-column approach is rather complicated, it works surprisingly well for our demo application. Assume that we add some more columns to Table \ref{demoapp_table} with the precise date of birth in stead of age as seen in Table \ref{tab:empl_tab_mod}.
+Could we possibly used Unix timestamps, which are integers representing the number of seconds since 1st of Januar 1970 (given that the application does not need any dates before the startpoint of Unix time)? By representing dates as integer values, we lose a lot of functionality, as we are only able to compute the order of the dates. As soon as we want to retrieve dates within a specific year, we need to retrieve all data items and perform the operation on the client side, or do a range query for dates between two values. When performing the range query, we need to compute the upper and lower Unix timestamps of our interval. The downside with this approach is that it forces the encryption layer down to \gls{ope_onion}, which is the most insecure encryption scheme in CryptDB. By storing the different parts of the date in separate columns, we are able to keep the encryption layer to \gls{deterministic_onion} for most date related queries. 
 
-\newpage
+While the three-column approach is rather complicated, it works surprisingly well for our demo application. Assume that we add some more columns to Table \ref{demoapp_table} with the precise date of birth in stead of age as seen in Table \ref{tab:empl_date}.
 
 \begin{table}[H]
-\label{tab:empl_tab_mod}
 \centering
 \begin{tabular}{| c | r | r | r | c |}
 \hline
@@ -310,7 +307,8 @@ Could we possibly used Unix timestamps, which are integers representing the numb
  \hline
 
 \end{tabular}
-\caption{Additional columns to the employee table with date properties stored in separate columns}
+\caption{Additional columns to the employee table with date properties stored in separate columns.}
+\label{tab:empl_date}
 \end{table}
 
 Consider 17th of May 1980 as our test date, and that we want all employees born after this point in time. In a regular database system supporting date related data types, our query would be something like this on a concatenated date of birth column

@@ -8,7 +8,7 @@
 \contentsline {table}{\numberline {3.1}{\ignorespaces Employee table for a simple employee application with example records.}}{13}{table.3.1}
 \contentsline {table}{\numberline {3.2}{\ignorespaces Educational table for the employee application. \emph {*Because of no support for floating values, the GPA is multiplied by 100 and rounded down.}}}{17}{table.3.2}
 \contentsline {table}{\numberline {3.3}{\ignorespaces Use of policy annotations in database schemas when creating multi-user applications. Annotations are highlighted in red.}}{21}{table.3.3}
-\contentsline {table}{\numberline {3.4}{\ignorespaces Additional columns to the employee table with date properties stored in separate columns}}{24}{table.3.4}
+\contentsline {table}{\numberline {3.4}{\ignorespaces Additional columns to the employee table with date properties stored in separate columns.}}{24}{table.3.4}
 \addvspace {10pt}
 \addvspace {10pt}
 \addvspace {10pt}

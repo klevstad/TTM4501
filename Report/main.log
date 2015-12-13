@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.9.7)  10 DEC 2015 18:34
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.9.7)  13 DEC 2015 17:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1748,15 +1748,6 @@ File: ./figs/he.png Graphic file (type png)
  <use ./figs/he.png>
 Package pdftex.def Info: ./figs/he.png used on input line 79.
 (pdftex.def)             Requested size: 347.29665pt x 134.00029pt.
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 84.
-
-(/usr/share/texmf/tex/latex/lm/t1lmtt.fd
-File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-Package microtype Info: Loading generic settings for font family
-(microtype)             `lmtt' (encoding: T1).
-(microtype)             For optimal results, create family-specific settings.
-(microtype)             See the microtype manual for details.
  [7pdfTeX warning (ext4): destination with the same identifier (name{figure.2.2
 }) has been already used, duplicate ignored
 
@@ -1771,7 +1762,7 @@ l.88
 
 
 
-] <./figs/CryptDB_Plain.png, id=596, 618.31pt x 157.58875pt>
+] <./figs/CryptDB_Plain.png, id=595, 618.31pt x 157.58875pt>
 File: ./figs/CryptDB_Plain.png Graphic file (type png)
 
 <use ./figs/CryptDB_Plain.png>
@@ -1784,7 +1775,7 @@ Package pdftex.def Info: ./figs/CryptDB_Plain.png used on input line 12.
                                                   \fi \fi 
 l.18 
       <./figs/CryptDB_Plain.png>]
-<./figs/encstack/enc_stack_ope.png, id=607, 179.67125pt x 252.945pt>
+<./figs/encstack/enc_stack_ope.png, id=606, 179.67125pt x 252.945pt>
 File: ./figs/encstack/enc_stack_ope.png Graphic file (type png)
 
 <use ./figs/encstack/enc_stack_ope.png>
@@ -1802,9 +1793,18 @@ Underfull \hbox (badness 1661) in paragraph at lines 31--31
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.38 
-      <./figs/encstack/enc_stack_ope.png>] [13pdfTeX warning (ext4): destinatio
-n with the same identifier (name{table.3.1}) has been already used, duplicate i
-gnored
+      <./figs/encstack/enc_stack_ope.png>]
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 63.
+
+(/usr/share/texmf/tex/latex/lm/t1lmtt.fd
+File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+Package microtype Info: Loading generic settings for font family
+(microtype)             `lmtt' (encoding: T1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+ [13pdfTeX warning (ext4): destination with the same identifier (name{table.3.1
+}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
@@ -1880,23 +1880,25 @@ ready used, duplicate ignored
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.244 
-       <./figs/terminal/executeQuery.jpg>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [21pdfTeX warning (ext4): destination with the same identifier (name{table.3.3
-}) has been already used, duplicate ignored
+       <./figs/terminal/executeQuery.jpg>] [21pdfTeX warning (ext4): destinatio
+n with the same identifier (name{table.3.3}) has been already used, duplicate i
+gnored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.270 
-      ] [22] [23] [24pdfTeX warning (ext4): destination with the same identifie
-r (name{table.3.4}) has been already used, duplicate ignored
+      ] [22]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [23]
+[24pdfTeX warning (ext4): destination with the same identifier (name{table.3.4}
+) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.341 WHERE EmplNum IN
+l.339 WHERE EmplNum IN
                       ])
-Underfull \hbox (badness 10000) in paragraph at lines 361--95
+Underfull \hbox (badness 10000) in paragraph at lines 359--95
 
  []
 
@@ -1907,8 +1909,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 361--95
 
 
 
-] [27]
-<./figs/letterfreq.jpg, id=779, 362.85562pt x 217.5628pt>
+]
+Underfull \vbox (badness 2573) has occurred while \output is active []
+
+ [27]
+<./figs/letterfreq.jpg, id=781, 362.85562pt x 217.5628pt>
 File: ./figs/letterfreq.jpg Graphic file (type jpg)
 
 <use ./figs/letterfreq.jpg>
@@ -1922,9 +1927,9 @@ Underfull \vbox (badness 3601) has occurred while \output is active []
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.35 
+l.31 
       <./figs/letterfreq.jpg>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 1184) has occurred while \output is active []
 
  [29])
 [30]
@@ -1938,7 +1943,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [32]
-<./figs/terminal/app_user_mainmenu.png, id=853, 489.83pt x 352.31625pt>
+<./figs/terminal/app_user_mainmenu.png, id=856, 489.83pt x 352.31625pt>
 File: ./figs/terminal/app_user_mainmenu.png Graphic file (type png)
 
 <use ./figs/terminal/app_user_mainmenu.png>
@@ -1946,7 +1951,7 @@ Package pdftex.def Info: ./figs/terminal/app_user_mainmenu.png used on input li
 ne 43.
 (pdftex.def)             Requested size: 318.38573pt x 229.00284pt.
 
-<./figs/terminal/proxy_enc_res.png, id=856, 703.62875pt x 395.4775pt>
+<./figs/terminal/proxy_enc_res.png, id=859, 703.62875pt x 395.4775pt>
 File: ./figs/terminal/proxy_enc_res.png Graphic file (type png)
 
 <use ./figs/terminal/proxy_enc_res.png>
@@ -1958,7 +1963,7 @@ Overfull \hbox (22.99701pt too wide) in paragraph at lines 52--53
  [][] 
  []
 
-<./figs/terminal/app_user_emp.png, id=857, 378.41376pt x 160.6pt>
+<./figs/terminal/app_user_emp.png, id=860, 378.41376pt x 160.6pt>
 File: ./figs/terminal/app_user_emp.png Graphic file (type png)
 
 <use ./figs/terminal/app_user_emp.png>
@@ -1978,7 +1983,7 @@ l.70
                                                   \fi \fi 
 l.70 
       <./figs/terminal/app_user_mainmenu.png> <./figs/terminal/proxy_enc_res.pn
-g>] <./figs/terminal/app_admin_mainmenu.png, id=872, 490.83376pt x 335.2525pt>
+g>] <./figs/terminal/app_admin_mainmenu.png, id=875, 490.83376pt x 335.2525pt>
 File: ./figs/terminal/app_admin_mainmenu.png Graphic file (type png)
 
 <use ./figs/terminal/app_admin_mainmenu.png>
@@ -1999,7 +2004,7 @@ figure.5.4}) has been already used, duplicate ignored
 l.80 \newpage
               <./figs/terminal/app_user_emp.png> <./figs/terminal/app_admin_mai
 nmenu.png>]
-<./figs/terminal/app_admin_enc_res1.png, id=880, 264.99pt x 186.6975pt>
+<./figs/terminal/app_admin_enc_res1.png, id=883, 264.99pt x 186.6975pt>
 File: ./figs/terminal/app_admin_enc_res1.png Graphic file (type png)
 
 <use ./figs/terminal/app_admin_enc_res1.png>
@@ -2011,7 +2016,7 @@ Overfull \hbox (1.15262pt too wide) in paragraph at lines 89--90
 \T1/lmr/m/n/10 (-20) per-form-ing "free queries", they
  []
 
-<./figs/terminal/app_admin_enc_res2.png, id=883, 736.7525pt x 341.275pt>
+<./figs/terminal/app_admin_enc_res2.png, id=886, 736.7525pt x 341.275pt>
 File: ./figs/terminal/app_admin_enc_res2.png Graphic file (type png)
 
 <use ./figs/terminal/app_admin_enc_res2.png>
@@ -2033,7 +2038,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
                                                   \fi \fi 
 l.109 \newpage
                <./figs/terminal/app_admin_enc_res1.png>]
-<./figs/terminal/admin_query_result.png, id=891, 644.4075pt x 90.3375pt>
+<./figs/terminal/admin_query_result.png, id=894, 644.4075pt x 90.3375pt>
 File: ./figs/terminal/admin_query_result.png Graphic file (type png)
 
 <use ./figs/terminal/admin_query_result.png>
@@ -2059,7 +2064,7 @@ l.123
 l.123 
        <./figs/terminal/app_admin_enc_res2.png> <./figs/terminal/admin_query_re
 sult.png>]
-<./figs/terminal/admin_fields_view.png, id=900, 820.06375pt x 419.5675pt>
+<./figs/terminal/admin_fields_view.png, id=904, 820.06375pt x 419.5675pt>
 File: ./figs/terminal/admin_fields_view.png Graphic file (type png)
 
 <use ./figs/terminal/admin_fields_view.png>
@@ -2132,11 +2137,11 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 121.
  ) 
 Here is how much of TeX's memory you used:
- 23068 strings out of 495028
- 340031 string characters out of 6181498
- 586907 words of memory out of 5000000
- 25383 multiletter control sequences out of 15000+600000
- 87146 words of font info for 134 fonts, out of 8000000 for 9000
+ 23077 strings out of 495028
+ 340138 string characters out of 6181498
+ 587112 words of memory out of 5000000
+ 25384 multiletter control sequences out of 15000+600000
+ 87666 words of font info for 138 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  58i,13n,48p,1753b,660s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dv
@@ -2152,10 +2157,10 @@ are/texmf/fonts/type1/public/lm/lmss17.pfb></usr/share/texmf/fonts/type1/public
 /lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share
 /texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texmf/fonts/type1/public/lm/
 lmtt10.pfb>
-Output written on main.pdf (65 pages, 812129 bytes).
+Output written on main.pdf (65 pages, 813759 bytes).
 PDF statistics:
- 1128 PDF objects out of 1200 (max. 8388607)
- 1003 compressed objects within 11 object streams
+ 1131 PDF objects out of 1200 (max. 8388607)
+ 1006 compressed objects within 11 object streams
  222 named destinations out of 1000 (max. 500000)
  22075 words of extra memory for PDF output out of 24883 (max. 10000000)
 
