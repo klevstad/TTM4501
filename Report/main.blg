@@ -18,8 +18,8 @@ Warning--to sort, need author or key in iDASH
 Warning--to sort, need author or key in cryptdb_homepage
 Warning--to sort, need author or key in mylar_homepage
 Warning--to sort, need author or key in phpBB
-Warning--to sort, need author or key in mysql_doc
 Warning--to sort, need author or key in docker_homepage
+Warning--to sort, need author or key in mysql_doc
 Warning--to sort, need author or key in python
 Warning--to sort, need author or key in mysqldb
 Warning--to sort, need author or key in mysql_workbench
@@ -27,7 +27,7 @@ Warning--empty publisher in ope_cryptdb
 Warning--empty publisher in damgaard2012secure
 You've used 29 entries,
             2253 wiz_defined-function locations,
-            679 strings with 8240 characters,
+            678 strings with 8220 characters,
 and the built_in function-call counts, 8798 in all, are:
 = -- 892
 > -- 232
