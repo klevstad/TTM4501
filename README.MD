@@ -1,12 +1,16 @@
-# TTM4501 Specialization Project
-##### The Department of Telematics
-##### The Norwegian University of Science and Technology (NTNU)
 
-######Fall 2015
-
-
-* *Student:* Eirik Klevstad
-* *Supervisor:* Chris Carr 
-* *Responsible Professor:* Colin Boyd
+```
+TTM4501 - Specialization Project in Communication Technology
+Department of Telematics (ITEM)
+Norwegian University of Science and Technology (NTNU)
+Fall 2015
+```
+---
+```
+Topic:      Exploring CryptDB, a Practical Homomorphic Encryption Scheme for SQL Queries
+Student:    Eirik Klevstad
+Supervisor: Chris Carr 
+Professor:  Colin Boyd
+```
 
 
