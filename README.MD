@@ -12,5 +12,10 @@ Student:    Eirik Klevstad
 Supervisor: Chris Carr 
 Professor:  Colin Boyd
 ```
+---
+```
+CryptDB for Docker: https://github.com/klevstad/CryptDB_Docker
+Demo application:   https://github.com/klevstad/TTM4501-Demo-Application
+```
 
 
